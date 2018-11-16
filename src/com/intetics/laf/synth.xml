@@ -37,6 +37,11 @@ limitations under the License.
     <int>125</int>
     <int>100</int>
   </object>
+  <object id="LightBlue" class="javax.swing.plaf.ColorUIResource">
+    <int>214</int>
+    <int>224</int>
+    <int>238</int>
+  </object>
   <object id="painter" class="com.intetics.laf.painter.SkinSynthPainter"/>
 
   <!-- Default style -->
@@ -122,6 +127,17 @@ limitations under the License.
       <property key="LafSynth.arrow.down.pressed" type="idref" value="ArrowDownPressed" default="false"/>
       <imageIcon id="ArrowRightPressed" path="resource/1204972243953_arrow_right_press.png"/>
       <property key="LafSynth.arrow.right.pressed" type="idref" value="ArrowRightPressed" default="false"/>
+    </state>
+
+    <state value="DISABLED">
+      <imageIcon id="ArrowUpDisabled" path="resource/1204972279156_arrow_up_disable.png"/>
+      <property key="LafSynth.arrow.up.disabled" type="idref" value="ArrowUpDisabled" default="false"/>
+      <imageIcon id="ArrowLeftDisabled" path="resource/1204972286015_arrow_left_disable.png"/>
+      <property key="LafSynth.arrow.left.disabled" type="idref" value="ArrowLeftDisabled" default="false"/>
+      <imageIcon id="ArrowDownDisabled" path="resource/1204972293703_arrow_down_disable.png"/>
+      <property key="LafSynth.arrow.down.disabled" type="idref" value="ArrowDownDisabled" default="false"/>
+      <imageIcon id="ArrowRightDisabled" path="resource/1204972301171_arrow_right_disable.png"/>
+      <property key="LafSynth.arrow.right.disabled" type="idref" value="ArrowRightDisabled" default="false"/>
     </state>
 
   </style>
@@ -290,7 +306,6 @@ limitations under the License.
   </style>
   <bind style="panel" type="region" key="Panel"/>
 
-
   <!--<style id="loadingBarStyle">
     <state>
       <color value="BLUE" type="BACKGROUND" />
@@ -300,7 +315,6 @@ limitations under the License.
     </state>
   </style>
   <bind style="loadingBarStyle" type="region" key="ProgressBar" />-->
-
 
   <!--List style-->
   <style id="listStyle">
@@ -319,19 +333,38 @@ limitations under the License.
   </style>
   <bind style="listStyle" type="region" key="List" />
 
-  <style id="scrollBarArrowStyle">
-    <property key="ArrowButton.size" type="integer" value="14" />
+  <!--The style for scroll bar component.-->
+  <style id="scrollBarStyle">
+    <property key="ScrollBar.minimumThumbSize" type="dimension" value="18 18" default="false"/>
+    <!--<object id="ScrollBarBgColor" idref="background"/>-->
+    <object id="ScrollBarBgColor" idref="LightBlue"/>
+    <defaultsProperty key="LafSynth.scrollbar.bgcolor" type="idref" value="ScrollBarBgColor" default="true"/>
+    <object id="ScrollBarBorderColor" idref="foreground"/>
+    <defaultsProperty key="LafSynth.scrollbar.bordercolor" type="idref" value="ScrollBarBorderColor" default="true"/>
+    <painter idref="painter" method="scrollBarBackground"/>
+    <painter idref="painter" method="scrollBarBorder"/>
+    <property key="ScrollBar.thumbHeight" type="integer" value="16" default="false"/>
   </style>
-  <bind style="scrollBarArrowStyle" type="REGION" key="ArrowButton" />
+  <bind style="scrollBarStyle" type="region" key="ScrollBar" />
 
-  <style id="scrollbarTrackStyle">
-    <opaque value="true"/>
-    <state>
-      <insets top="1" right="1" bottom="1" left="1"/>
-      <color value="#ffffff" type="BACKGROUND"/>
-    </state>
+  <!--The style for the track of scroll bar.-->
+  <style id="scrollBarTrackStyle">
+    <object id="ScrollBarTrackBgColor" class="javax.swing.plaf.ColorUIResource">
+      <int>255</int>
+      <int>255</int>
+      <int>255</int>
+    </object>
+    <defaultsProperty key="LafSynth.scrollbar.track.bgcolor" type="idref" value="ScrollBarTrackBgColor" default="true"/>
+    <object id="ScrollBarTrackBorderColor" class="javax.swing.plaf.ColorUIResource">
+      <int>255</int>
+      <int>225</int>
+      <int>228</int>
+    </object>
+    <defaultsProperty key="LafSynth.scrollbar.track.bordercolor" type="idref" value="ScrollBarTrackBorderColor" default="true"/>
+    <painter idref="painter" method="scrollBarTrackBackground"/>
+    <painter idref="painter" method="scrollBarTrackBorder"/>
   </style>
-  <bind style="scrollbarTrackStyle" type="region" key="ScrollBarTrack" />
+  <bind style="scrollBarTrackStyle" type="region" key="ScrollBarTrack" />
 
 
   <!--The style for table component.-->

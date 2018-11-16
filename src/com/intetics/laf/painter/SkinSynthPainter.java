@@ -114,21 +114,6 @@ public class SkinSynthPainter extends SynthPainter {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   @Override
   public void paintTableHeaderBackground(SynthContext context, Graphics g, int x, int y, int w, int h) {
     JTableHeader jTableHeader = (JTableHeader) context.getComponent();
@@ -149,6 +134,74 @@ public class SkinSynthPainter extends SynthPainter {
       int offsetX = x + (w - width) / 2;
       int offsetY = y + (h - height) / 2;
       g.drawImage(imageIcon.getImage(), offsetX, offsetY, offsetX + width, offsetY + height, 0, 0, width, height, null);
+    }
+  }
+
+  @Override
+  public void paintScrollBarBackground(SynthContext context, Graphics graphics, int x, int y, int w, int h) {
+    UIDefaults uIDefaults = UIManager.getDefaults();
+    Color color = uIDefaults.getColor("LafSynth.scrollbar.bgcolor");
+    if (color == null) {
+      color = Color.WHITE;
+    }
+    graphics.setColor(color);
+    graphics.fillRect(x, y, w, h);
+  }
+
+  @Override
+  public void paintScrollBarBorder(SynthContext context, Graphics graphics, int x, int y, int w, int h) {
+    UIDefaults uIDefaults = UIManager.getDefaults();
+    Color color = uIDefaults.getColor("LafSynth.scrollbar.bordercolor");
+    if (color == null) {
+      color = Color.DARK_GRAY;
+    }
+    graphics.setColor(color);
+    graphics.drawRect(x, y, w - 1, h - 1);
+  }
+
+  @Override
+  public void paintScrollBarTrackBackground(SynthContext context, Graphics graphics, int x, int y, int w, int h) {
+    Color color;
+    UIDefaults uIDefaults = UIManager.getDefaults();
+    if ((color = uIDefaults.getColor("LafSynth.scrollbar.track.bgcolor")) == null) {
+      color = Color.LIGHT_GRAY;
+    }
+    graphics.setColor(color);
+    graphics.fillRect(x, y, w, h);
+
+  }
+
+  @Override
+  public void paintScrollBarTrackBorder(SynthContext context, Graphics graphics, int x, int y, int w, int h) {
+    UIDefaults uIDefaults = UIManager.getDefaults();
+    Color color = uIDefaults.getColor("EaSynth.scrollbar.track.bordercolor");
+    if (color == null) {
+      color = Color.DARK_GRAY;
+    }
+    graphics.setColor(color);
+    graphics.drawRect(x, y, w - 1, h - 1);
+  }
+
+  public static void gradientFillRect(Graphics graphics, int n, int n2, int n3, int n4, Color color, Color color2, boolean bl) {
+    Graphics2D graphics2D = (Graphics2D)graphics.create();
+    double d = color2.getRed() - color.getRed();
+    double d2 = color2.getGreen() - color.getGreen();
+    double d3 = color2.getBlue() - color.getBlue();
+    double d4 = color2.getAlpha() - color.getAlpha();
+    if (bl) {
+      for (int i = 1; i <= n4; ++i) {
+        double d5 = (double)i / (double)n4;
+        Color color3 = new Color(color.getRed() + (int)(d * d5), color.getGreen() + (int)(d2 * d5), color.getBlue() + (int)(d3 * d5), color.getAlpha() + (int)(d4 * d5));
+        graphics2D.setPaint(color3);
+        graphics2D.drawLine(n, n2 + i - 1, n + n3 - 1, n2 + i - 1);
+      }
+    } else {
+      for (int i = 1; i <= n3; ++i) {
+        double d6 = (double)i / (double)n3;
+        Color color4 = new Color(color.getRed() + (int)(d * d6), color.getGreen() + (int)(d2 * d6), color.getBlue() + (int)(d3 * d6), color.getAlpha() + (int)(d4 * d6));
+        graphics2D.setPaint(color4);
+        graphics2D.drawLine(n + i - 1, n2, n + i - 1, n2 + n4 - 1);
+      }
     }
   }
 }
