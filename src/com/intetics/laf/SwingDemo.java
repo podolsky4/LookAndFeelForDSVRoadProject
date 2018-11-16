@@ -14,7 +14,6 @@ public class SwingDemo extends JFrame{
 
   private JPanel rootPane;
   private JMenuBar menuBar;
-  private JLabel yellowLabel;
   private JMenu menu, submenu;
   private JMenuItem menuItem;
   private JRadioButtonMenuItem rbMenuItem;
