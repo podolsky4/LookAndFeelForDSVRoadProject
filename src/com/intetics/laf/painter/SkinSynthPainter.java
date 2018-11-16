@@ -1,10 +1,8 @@
 package com.intetics.laf.painter;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.plaf.BorderUIResource;
 import javax.swing.plaf.ColorUIResource;
-import javax.swing.plaf.TableHeaderUI;
 import javax.swing.plaf.synth.ColorType;
 import javax.swing.plaf.synth.SynthContext;
 import javax.swing.plaf.synth.SynthPainter;

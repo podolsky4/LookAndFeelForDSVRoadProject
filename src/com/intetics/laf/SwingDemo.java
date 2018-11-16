@@ -3,15 +3,12 @@ package com.intetics.laf;
 import javax.swing.*;
 import javax.swing.plaf.synth.SynthLookAndFeel;
 import javax.swing.text.*;
-import javax.swing.tree.*;
+import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
-import java.util.Formatter;
 
 public class SwingDemo extends JFrame{
 
