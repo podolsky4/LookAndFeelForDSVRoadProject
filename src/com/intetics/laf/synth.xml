@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2018 Yuri Podolsky
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+ -->
+
+<synth>
+
+  <object class="javax.swing.plaf.ColorUIResource" id="foreground">
+    <int>0</int>
+    <int>38</int>
+    <int>100</int>
+  </object>
+  <object class="javax.swing.plaf.ColorUIResource" id="background">
+    <int>255</int>
+    <int>255</int>
+    <int>255</int>
+  </object>
+  <object class="javax.swing.plaf.ColorUIResource" id="focus">
+    <int>50</int>
+    <int>50</int>
+    <int>127</int>
+  </object>
+  <object id="TitledBorder_Color" class="javax.swing.plaf.ColorUIResource">
+    <int>250</int>
+    <int>125</int>
+    <int>100</int>
+  </object>
+  <object id="painter" class="com.intetics.laf.painter.SkinSynthPainter"/>
+
+  <!-- Default style -->
+  <!--This backing style will make sure that any components that
+   do not match a specific style will have a default style.-->
+  <style id="default">
+    <opaque value="false"/>
+    <font name="Noto Sans" size="14" />
+    <state>
+      <color type="FOREGROUND" idref="foreground"/>
+      <color type="BACKGROUND" idref="background"/>
+      <!-- The color used in highlighting components. -->
+      <color type="FOCUS" idref="focus"/>
+    </state>
+    <state value="DISABLED">
+      <color type="TEXT_FOREGROUND" value="#999999"/>
+    </state>
+    <defaultsProperty key="TitledBorder.titleColor" type="idref" value="foreground" default="true"/>
+  </style>
+  <bind style="default" type="region" key=".*"/>
+
+  <!--Padding for specified components-->
+  <style id="padding">
+    <insets top="5" right="5" bottom="5" left="5"/>
+  </style>
+  <bind style="padding" type="region" key="ComboBox"/>
+  <bind style="padding" type="region" key="PasswordField"/>
+  <bind style="padding" type="region" key="TextField"/>
+  <bind style="padding" type="region" key="TextArea"/>
+  <bind style="padding" type="region" key="EditorPane"/>
+  <bind style="padding" type="region" key="Tree"/>
+
+  <!--<style id="labelStyle">
+    <state>
+      <color value="#002664" type="FOREGROUND" />
+    </state>
+  </style>
+  <bind style="labelStyle" type="region" key="Label"/>-->
+
+  <!-- Text field style -->
+  <style id="textfield">
+    // describe colors, fonts, and states
+  </style>
+  <bind style="textfield" type="region" key="Textfield"/>
+
+
+  <!--The style for arrow buttons.-->
+  <style id="arrowButtonStyle">
+    <property key="ArrowButton.size" type="integer" value="14" default="false"/>
+    <painter idref="painter" method="arrowButtonForeground" direction="north"/>
+    <painter idref="painter" method="arrowButtonForeground" direction="west"/>
+    <painter idref="painter" method="arrowButtonForeground" direction="south"/>
+    <painter idref="painter" method="arrowButtonForeground" direction="east"/>
+
+    <state>
+      <imageIcon id="ArrowUpEnabled" path="resource/1204972099671_arrow_up_normal.png"/>
+      <property key="LafSynth.arrow.up.enabled" type="idref" value="ArrowUpEnabled" default="false"/>
+      <imageIcon id="ArrowLeftEnabled" path="resource/1204972109765_arrow_left_normal.png"/>
+      <property key="LafSynth.arrow.left.enabled" type="idref" value="ArrowLeftEnabled" default="false"/>
+      <imageIcon id="ArrowDownEnabled" path="resource/1204972119562_arrow_down_normal.png"/>
+      <property key="LafSynth.arrow.down.enabled" type="idref" value="ArrowDownEnabled" default="false"/>
+      <imageIcon id="ArrowRightEnabled" path="resource/1204972131593_arrow_right_normal.png"/>
+      <property key="LafSynth.arrow.right.enabled" type="idref" value="ArrowRightEnabled" default="false"/>
+    </state>
+
+    <state value="MOUSE_OVER">
+      <imageIcon id="ArrowUpMouseOver" path="resource/1204972154296_arrow_up_over.png"/>
+      <property key="LafSynth.arrow.up.mouseover" type="idref" value="ArrowUpMouseOver" default="false"/>
+      <imageIcon id="ArrowLeftMouseOver" path="resource/1204972172953_arrow_left_over.png"/>
+      <property key="LafSynth.arrow.left.mouseover" type="idref" value="ArrowLeftMouseOver" default="false"/>
+      <imageIcon id="ArrowDownMouseOver" path="resource/1204972180796_arrow_down_over.png"/>
+      <property key="LafSynth.arrow.down.mouseover" type="idref" value="ArrowDownMouseOver" default="false"/>
+      <imageIcon id="ArrowRightMouseOver" path="resource/1204972188046_arrow_right_over.png"/>
+      <property key="LafSynth.arrow.right.mouseover" type="idref" value="ArrowRightMouseOver" default="false"/>
+    </state>
+
+    <state value="PRESSED">
+      <imageIcon id="ArrowUpPressed" path="resource/1204972222593_arrow_up_press.png"/>
+      <property key="LafSynth.arrow.up.pressed" type="idref" value="ArrowUpPressed" default="false"/>
+      <imageIcon id="ArrowLeftPressed" path="resource/1204972229812_arrow_left_press.png"/>
+      <property key="LafSynth.arrow.left.pressed" type="idref" value="ArrowLeftPressed" default="false"/>
+      <imageIcon id="ArrowDownPressed" path="resource/1204972236828_arrow_down_press.png"/>
+      <property key="LafSynth.arrow.down.pressed" type="idref" value="ArrowDownPressed" default="false"/>
+      <imageIcon id="ArrowRightPressed" path="resource/1204972243953_arrow_right_press.png"/>
+      <property key="LafSynth.arrow.right.pressed" type="idref" value="ArrowRightPressed" default="false"/>
+    </state>
+
+  </style>
+  <bind style="arrowButtonStyle" type="region" key="ArrowButton"/>
+
+  <!--Button style-->
+  <style id="button">
+    // describe colors, fonts, and states
+    <opaque value="true"/>
+    <insets top="3" left="15" right="15" bottom="3"/>
+
+    <state>
+      <color idref="foreground" type="BACKGROUND"/>
+      <color value="#F47920" type="FOREGROUND"/>
+    </state>
+    <state value="PRESSED">
+      <color value="#0026AA" type="BACKGROUND"/>
+    </state>
+  </style>
+  <bind style="button" type="region" key="Button"/>
+
+  <!--The style for radio button.-->
+  <style id="radioButtonStyle">
+    <property key="RadioButton.margin" type="insets" value="2 2 2 2" default="false"/>
+    <imageIcon id="RadioButtonNormal" path="resource/radio_enabled.png"/>
+    <property key="RadioButton.icon" type="idref" value="RadioButtonNormal" default="false"/>
+    <state value="SELECTED">
+      <imageIcon id="RadioButtonSelected" path="resource/radio_selected.png"/>
+      <property key="RadioButton.icon" type="idref" value="RadioButtonSelected" default="false"/>
+    </state>
+    <state value="PRESSED">
+      <imageIcon id="RadioButtonPressed" path="resource/radio_pressed.png"/>
+      <property key="RadioButton.icon" type="idref" value="RadioButtonPressed" default="false"/>
+    </state>
+    <state value="MOUSE_OVER">
+      <imageIcon id="RadioButtonMouseOver" path="resource/radio_mouseover.png"/>
+      <property key="RadioButton.icon" value="RadioButtonMouseOver"/>
+    </state>
+    <state value="DISABLED">
+      <imageIcon id="RadioButtonDisabled" path="resource/radio_disabled.png"/>
+      <property key="RadioButton.icon" type="idref" value="RadioButtonDisabled" default="false"/>
+      <color type="TEXT_FOREGROUND" value="#999999"/>
+    </state>
+    <state value="DISABLED and SELECTED">
+      <imageIcon id="RadioButtonDisabledSelected" path="resource/radio_disabled_selected.png"/>
+      <property key="RadioButton.icon" type="idref" value="RadioButtonDisabledSelected" default="false"/>
+    </state>
+  </style>
+  <bind style="radioButtonStyle" type="region" key="RadioButton"/>
+
+  <!--The style for check box button.-->
+  <style id="checkBoxStyle">
+    <property key="CheckBox.margin" type="insets" value="2 2 2 2" default="false"/>
+    <imageIcon id="CheckboxNormal" path="resource/checkbox_normal.png"/>
+    <property key="CheckBox.icon" type="idref" value="CheckboxNormal" default="false"/>
+    <state value="MOUSE_OVER">
+      <imageIcon id="CheckboxMouseOver" path="resource/checkbox_mouseover.png"/>
+      <property key="CheckBox.icon" value="CheckboxMouseOver"/>
+    </state>
+    <state value="SELECTED">
+      <imageIcon id="CheckboxSelected" path="resource/checkbox_selected.png"/>
+      <property key="CheckBox.icon" type="idref" value="CheckboxSelected" default="false"/>
+    </state>
+    <state value="SELECTED and MOUSE_OVER">
+      <property key="CheckBox.icon" type="idref" value="CheckboxSelected" default="false"/>
+    </state>
+    <state value="PRESSED">
+      <imageIcon id="CheckboxPressed" path="resource/checkbox_pressed.png"/>
+      <property key="CheckBox.icon" type="idref" value="CheckboxPressed" default="false"/>
+    </state>
+    <state value="DISABLED">
+      <imageIcon id="CheckboxDisabled" path="resource/checkbox_disabled.png"/>
+      <property key="CheckBox.icon" type="idref" value="CheckboxDisabled" default="false"/>
+      <color type="TEXT_FOREGROUND" value="#999999"/>
+    </state>
+    <state value="DISABLED and SELECTED">
+      <imageIcon id="CheckboxDisabledSelected" path="resource/checkbox_disabled_selected.png"/>
+      <property key="CheckBox.icon" type="idref" value="CheckboxDisabledSelected" default="false"/>
+      <color type="TEXT_FOREGROUND" value="#999999"/>
+
+    </state>
+  </style>
+  <bind style="checkBoxStyle" type="region" key="CheckBox"/>
+
+  <!--Style for combo box component.-->
+  <style id="comboBoxStyle">
+    <opaque value="true"/>
+    <insets top="5" left="5" right="5" bottom="5"/>
+    <state>
+      <color value="#F5F5F5" type="BACKGROUND"/>
+    </state>
+    <object id="LineBorder" class="javax.swing.border.LineBorder">
+      <object idref="foreground"/>
+    </object>
+    <defaultsProperty key="ComboBox.border" type="idref" value="LineBorder"/>
+  </style>
+  <bind style="comboBoxStyle" type="region" key="ComboBox"/>
+
+  <!--The style for slider component..-->
+  <style id="sliderStyle">
+    <property key="Slider.paintValue" type="boolean" value="true" default="false"/>
+    <property key="Slider.thumbWidth" type="integer" value="14" default="false"/>
+    <property key="Slider.thumbHeight" type="integer" value="14" default="false"/>
+  </style>
+  <bind style="sliderStyle" type="region" key="Slider"/>
+
+  <!--The style for the track of slider.-->
+  <style id="sliderTrackStyle">
+    <imagePainter method="sliderTrackBackground" path="resource/SliderTrack.png"
+                  sourceInsets="7 7 7 7"  paintCenter="true" stretch="true" center="false"/>
+    <state value="DISABLED">
+      <imagePainter method="sliderTrackBackground" path="resource/SliderTrack_Disabled.png"
+                    sourceInsets="7 7 7 7" paintCenter="true" stretch="true"/>
+    </state>
+  </style>
+  <bind style="sliderTrackStyle" type="region" key="SliderTrack"/>
+
+  <!--The style for the thumb of slider.-->
+  <style id="sliderThumbStyle">
+    <painter idref="painter" method="sliderThumbBackground"/>
+    <imageIcon id="SliderThumbImageNormal" path="resource/SliderThumb.png"/>
+    <property key="LafSynth.slider.thumb.image.normal" type="idref" value="SliderThumbImageNormal" default="false"/>
+    <imageIcon id="SliderThumbImageMouseOver" path="resource/SliderThumbMouseOver.png"/>
+    <property key="LafSynth.slider.thumb.image.mouseover" type="idref" value="SliderThumbImageMouseOver" default="false"/>
+    <imageIcon id="SliderThumbImageDisabled" path="resource/SliderThumbDisabled.png"/>
+    <property key="LafSynth.slider.thumb.image.disabled" type="idref" value="SliderThumbImageDisabled" default="false"/>
+  </style>
+  <bind style="sliderThumbStyle" type="region" key="SliderThumb"/>
+
+
+  <style id="menu">
+    <opaque value="true"/>
+    <state>
+      <color value="#FFFFFF" type="BACKGROUND"/>
+    </state>
+  </style>
+  <bind style="menu" type="region" key="Menu"/>
+
+  <!--<style id="panel">
+    <state>
+      <color value="#F5F500" type="BACKGROUND"/>
+    </state>
+
+
+    <object id="LineBorder" class="javax.swing.border.LineBorder">
+      <object idref="TitledBorder_Color"/>
+    </object>
+
+    <defaultsProperty key="TitledBorder.border" type="idref" value="LineBorder"/>
+  </style>
+  <bind style="panel" type="region" key="Panel"/>-->
+  <style id="panel">
+    <!--<object class="javax.swing.plaf.ColorUIResource" id="panelBackground">
+      <int>150</int>
+      <int>100</int>
+      <int>127</int>
+    </object>-->
+    <object id="LineBorder" class="javax.swing.border.LineBorder">
+      <object idref="background"/>
+    </object>
+    <defaultsProperty key="TitledBorder.border" type="idref" value="LineBorder"/>
+    <state>
+      <color value="#F5F5F5" type="BACKGROUND" />
+    </state>
+    <!--<painter method="panelBackground" idref="painter"/>-->
+  </style>
+  <bind style="panel" type="region" key="Panel"/>
+
+
+  <!--<style id="loadingBarStyle">
+    <state>
+      <color value="BLUE" type="BACKGROUND" />
+      <color value="GREEN" type="FOREGROUND" />
+      <imagePainter method="progressBarBorder" path="laf/loadingbar_outside.png"
+                    sourceInsets="6 6 6 6" paintCenter="false" />
+    </state>
+  </style>
+  <bind style="loadingBarStyle" type="region" key="ProgressBar" />-->
+
+
+  <!--List style-->
+  <style id="listStyle">
+    <opaque value="true"/>
+    <!--<insets top="5" left="8" right="5" bottom="8"/>-->
+    <property key="List.rendererUseUIBorder" type="boolean" value="true" default="false"/>
+    <property key="List.cellHeight" type="integer" value="18" default="false"/>
+    <property key="List.rendererUseListColors" type="boolean" value="true" default="false"/>
+    <state value="DISABLED">
+      <color value="#EEEEEE" type="BACKGROUND" />
+      <color value="BLACK" type="FOREGROUND" />
+    </state>
+    <state value="SELECTED">
+      <color value="#D6E0EE" type="TEXT_BACKGROUND" />
+    </state>
+  </style>
+  <bind style="listStyle" type="region" key="List" />
+
+  <style id="scrollBarArrowStyle">
+    <property key="ArrowButton.size" type="integer" value="14" />
+  </style>
+  <bind style="scrollBarArrowStyle" type="REGION" key="ArrowButton" />
+
+  <style id="scrollbarTrackStyle">
+    <opaque value="true"/>
+    <state>
+      <insets top="1" right="1" bottom="1" left="1"/>
+      <color value="#ffffff" type="BACKGROUND"/>
+    </state>
+  </style>
+  <bind style="scrollbarTrackStyle" type="region" key="ScrollBarTrack" />
+
+
+  <!--The style for table component.-->
+  <style id="tableStyle">
+    <!--If true setBorder on the renderer will succeed regardless of the border passed in,
+     otherwise setBorder on the renderer will only succeed if it is a Synth Border.-->
+    <insets top="5" right="5" bottom="5" left="5"/>
+    <property key="Table.rendererUseUIBorder" type="boolean" value="false" default="false"/>
+    <object id="TableGridColor" idref="foreground" />
+    <property key="Table.gridColor" type="idref" value="TableGridColor" default="false"/>
+
+    <state value="DISABLED">
+      <color type="TEXT_FOREGROUND" value="#CCCCCC" />
+      <color type="BACKGROUND" value="#EEEEEE" />
+    </state>
+    <state value="SELECTED">
+      <color type="TEXT_FOREGROUND" value="#002664" />
+      <color type="TEXT_BACKGROUND" value="#D6E0EE" />
+      <color type="FOCUS" value="#FFEEDD" />
+    </state>
+
+  </style>
+  <bind style="tableStyle" type="region" key="Table"/>
+
+  <!--The style for the header component of table.-->
+  <style id="tableHeaderStyle">
+
+    <insets top="3" right="3" bottom="3" left="3"/>
+    <!--<property key="TableHeader.background" type="idref" value="foreground" default="true"/>-->
+
+    <state>
+      <painter idref="painter" method="tableHeaderBorder"/>
+      <painter method="tableHeaderBackground" idref="painter"/>
+      <painter method="tableHeaderBorder" idref="painter"/>
+    </state>
+    <state value="DISABLED">
+      <color type="TEXT_FOREGROUND" value="#CCCCCC" />
+      <imagePainter method="tableHeaderBackground" path="resource/table_header_bg_disabled.png"
+                    sourceInsets="0 0 0 0" paintCenter="true" stretch="true"/>
+    </state>
+
+  </style>
+  <bind style="tableHeaderStyle" type="region" key="TableHeader"/>
+
+</synth>
