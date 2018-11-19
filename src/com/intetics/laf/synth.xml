@@ -42,6 +42,11 @@ limitations under the License.
     <int>224</int>
     <int>238</int>
   </object>
+  <object id="Gray" class="javax.swing.plaf.ColorUIResource">
+    <int>238</int>
+    <int>238</int>
+    <int>238</int>
+  </object>
   <object id="painter" class="com.intetics.laf.painter.SkinSynthPainter"/>
 
   <!-- Default style -->
@@ -337,7 +342,7 @@ limitations under the License.
   <style id="scrollBarStyle">
     <property key="ScrollBar.minimumThumbSize" type="dimension" value="18 18" default="false"/>
     <!--<object id="ScrollBarBgColor" idref="background"/>-->
-    <object id="ScrollBarBgColor" idref="LightBlue"/>
+    <object id="ScrollBarBgColor" idref="Gray"/>
     <defaultsProperty key="LafSynth.scrollbar.bgcolor" type="idref" value="ScrollBarBgColor" default="true"/>
     <object id="ScrollBarBorderColor" idref="foreground"/>
     <defaultsProperty key="LafSynth.scrollbar.bordercolor" type="idref" value="ScrollBarBorderColor" default="true"/>
@@ -349,23 +354,31 @@ limitations under the License.
 
   <!--The style for the track of scroll bar.-->
   <style id="scrollBarTrackStyle">
-    <object id="ScrollBarTrackBgColor" class="javax.swing.plaf.ColorUIResource">
-      <int>255</int>
-      <int>255</int>
-      <int>255</int>
-    </object>
+    <object id="ScrollBarTrackBgColor" idref="background"/>
     <defaultsProperty key="LafSynth.scrollbar.track.bgcolor" type="idref" value="ScrollBarTrackBgColor" default="true"/>
-    <object id="ScrollBarTrackBorderColor" class="javax.swing.plaf.ColorUIResource">
-      <int>255</int>
-      <int>225</int>
-      <int>228</int>
-    </object>
+    <object id="ScrollBarTrackBorderColor" idref="foreground"/>
     <defaultsProperty key="LafSynth.scrollbar.track.bordercolor" type="idref" value="ScrollBarTrackBorderColor" default="true"/>
     <painter idref="painter" method="scrollBarTrackBackground"/>
     <painter idref="painter" method="scrollBarTrackBorder"/>
   </style>
   <bind style="scrollBarTrackStyle" type="region" key="ScrollBarTrack" />
 
+  <!--The style for the thumb of the scroll bar.-->
+  <style id="scrollBarThumbStyle">
+
+    <object id="ScrollBarThumbBgColor" idref="Gray"/>
+    <defaultsProperty key="LafSynth.scrollbar.thumb.bgcolor" type="idref" value="ScrollBarThumbBgColor" default="true"/>
+    <object id="ScrollBarThumbBorderColor" idref="foreground"/>
+    <defaultsProperty key="LafSynth.scrollbar.thumb.borderthick" type="integer" value="1" default="true"/>
+    <defaultsProperty key="LafSynth.scrollbar.thumb.bordercolor" type="idref" value="ScrollBarThumbBorderColor" default="true"/>
+
+    <imageIcon id="ScrollBarThumbImage" path="resource/1204450922734_scrollbar_thumb.png"/>
+    <property key="LafSynth.scrollbar.thumb.image" type="idref" value="ScrollBarThumbImage" default="true" />
+    <painter idref="painter" method="scrollBarThumbBackground"/>
+    <painter idref="painter" method="scrollBarThumbBorder"/>
+
+  </style>
+  <bind style="scrollBarThumbStyle" type="region" key="ScrollBarThumb"/>
 
   <!--The style for table component.-->
   <style id="tableStyle">

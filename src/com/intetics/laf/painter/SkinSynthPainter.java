@@ -9,16 +9,18 @@ import javax.swing.plaf.synth.SynthPainter;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumnModel;
 import java.awt.*;
+import java.awt.geom.Area;
+import java.awt.geom.RoundRectangle2D;
 
 public class SkinSynthPainter extends SynthPainter {
 
   public void paintPanelBackground(SynthContext context, Graphics g, int x, int y, int w, int h) {
     Color start = UIManager.getColor("Panel.startBackground");
     Color end = UIManager.getColor("Panel.endBackground");
-    Graphics2D g2 = (Graphics2D)g;
+    Graphics2D g2 = (Graphics2D) g;
     GradientPaint grPaint = new GradientPaint(
-            (float)x, (float)y, start,
-            (float)w, (float)h, end);
+            (float) x, (float) y, start,
+            (float) w, (float) h, end);
     g2.setPaint(grPaint);
     g2.fillRect(x, y, w, h);
     g2.setPaint(null);
@@ -31,16 +33,9 @@ public class SkinSynthPainter extends SynthPainter {
     super.paintPanelBorder(context, g, x, y, w, h);
   }
 
-  @Override
-  public void paintScrollBarThumbBackground(SynthContext context, Graphics g, int x, int y, int w, int h, int i4) {
-    Graphics2D g2 = (Graphics2D)g;
-    int arc = getArc(context);
-
-    g2.setColor(createTransparentColor(context.getStyle().getColor(context, ColorType.BACKGROUND).darker().darker()));
-    g2.fillRoundRect(x + 1, y + 1, w - 2, h - 2, arc, arc);
-  }
-
-  /** Make an existing colour transparent. */
+  /**
+   * Make an existing colour transparent.
+   */
   private static Color createTransparentColor(Color color) {
     return new Color(color.getRed(), color.getGreen(), color.getBlue(), 0x88);
   }
@@ -51,14 +46,14 @@ public class SkinSynthPainter extends SynthPainter {
 
   public static int getArc(Component component) {
     // lists appear to mess up arcs
-    return component instanceof  JList ? 0 : component.getFont().getSize() / 2;
+    return component instanceof JList ? 0 : component.getFont().getSize() / 2;
   }
 
   @Override
   public void paintTableHeaderBorder(SynthContext synthContext, Graphics graphics, int x, int y, int w, int h) {
-    Graphics2D graphics2D = (Graphics2D)graphics.create();
+    Graphics2D graphics2D = (Graphics2D) graphics.create();
     Color color2 = new Color(0, 0, 0, 0);
-    JTableHeader jTableHeader = (JTableHeader)synthContext.getComponent();
+    JTableHeader jTableHeader = (JTableHeader) synthContext.getComponent();
     jTableHeader.setBorder(new BorderUIResource.LineBorderUIResource(Color.BLACK));
     TableColumnModel tableColumnModel = jTableHeader.getColumnModel();
     int columnCount = tableColumnModel.getColumnCount();
@@ -103,7 +98,7 @@ public class SkinSynthPainter extends SynthPainter {
     } else {
       stringBuilder.append("enabled");
     }
-    ImageIcon imageIcon = (ImageIcon)context.getStyle().getIcon(context, stringBuilder.toString());
+    ImageIcon imageIcon = (ImageIcon) context.getStyle().getIcon(context, stringBuilder.toString());
     if (imageIcon != null) {
       int n6 = imageIcon.getIconWidth();
       int n7 = imageIcon.getIconHeight();
@@ -113,21 +108,20 @@ public class SkinSynthPainter extends SynthPainter {
     }
   }
 
-
   @Override
   public void paintTableHeaderBackground(SynthContext context, Graphics g, int x, int y, int w, int h) {
     JTableHeader jTableHeader = (JTableHeader) context.getComponent();
-    jTableHeader.setBackground(new ColorUIResource(214, 224,238));
+    jTableHeader.setBackground(new ColorUIResource(214, 224, 238));
   }
 
   @Override
   public void paintSliderThumbBackground(SynthContext context, Graphics g, int x, int y, int w, int h, int orientation) {
     ImageIcon imageIcon;
     imageIcon = (context.getComponentState() & 8) != 0
-            ? (ImageIcon)context.getStyle().getIcon(context, "LafSynth.slider.thumb.image.disabled")
+            ? (ImageIcon) context.getStyle().getIcon(context, "LafSynth.slider.thumb.image.disabled")
             : ((context.getComponentState() & 2) != 0
-            ? (ImageIcon)context.getStyle().getIcon(context, "LafSynth.slider.thumb.image.mouseover")
-            : (ImageIcon)context.getStyle().getIcon(context, "LafSynth.slider.thumb.image.normal"));
+            ? (ImageIcon) context.getStyle().getIcon(context, "LafSynth.slider.thumb.image.mouseover")
+            : (ImageIcon) context.getStyle().getIcon(context, "LafSynth.slider.thumb.image.normal"));
     if (imageIcon != null) {
       int width = imageIcon.getIconWidth();
       int height = imageIcon.getIconHeight();
@@ -168,13 +162,12 @@ public class SkinSynthPainter extends SynthPainter {
     }
     graphics.setColor(color);
     graphics.fillRect(x, y, w, h);
-
   }
 
   @Override
   public void paintScrollBarTrackBorder(SynthContext context, Graphics graphics, int x, int y, int w, int h) {
     UIDefaults uIDefaults = UIManager.getDefaults();
-    Color color = uIDefaults.getColor("EaSynth.scrollbar.track.bordercolor");
+    Color color = uIDefaults.getColor("LafSynth.scrollbar.track.bordercolor");
     if (color == null) {
       color = Color.DARK_GRAY;
     }
@@ -182,26 +175,49 @@ public class SkinSynthPainter extends SynthPainter {
     graphics.drawRect(x, y, w - 1, h - 1);
   }
 
-  public static void gradientFillRect(Graphics graphics, int n, int n2, int n3, int n4, Color color, Color color2, boolean bl) {
-    Graphics2D graphics2D = (Graphics2D)graphics.create();
-    double d = color2.getRed() - color.getRed();
-    double d2 = color2.getGreen() - color.getGreen();
-    double d3 = color2.getBlue() - color.getBlue();
-    double d4 = color2.getAlpha() - color.getAlpha();
-    if (bl) {
-      for (int i = 1; i <= n4; ++i) {
-        double d5 = (double)i / (double)n4;
-        Color color3 = new Color(color.getRed() + (int)(d * d5), color.getGreen() + (int)(d2 * d5), color.getBlue() + (int)(d3 * d5), color.getAlpha() + (int)(d4 * d5));
-        graphics2D.setPaint(color3);
-        graphics2D.drawLine(n, n2 + i - 1, n + n3 - 1, n2 + i - 1);
+  @Override
+  public void paintScrollBarThumbBackground(SynthContext context, Graphics graphics, int x, int y, int w, int h, int orientation) {
+    JScrollBar jScrollBar;
+    Color color;
+    boolean bl;
+    UIDefaults uIDefaults = UIManager.getDefaults();
+    int thickness = uIDefaults.getInt("LafSynth.scrollbar.thumb.borderthick");
+
+    if ((color = uIDefaults.getColor("LafSynth.scrollbar.thumb.bgcolor")) == null) {
+      color = Color.LIGHT_GRAY;
+    }
+    boolean bl2 = bl = (jScrollBar = (JScrollBar) context.getComponent()).getOrientation() == JScrollBar.VERTICAL;
+
+    graphics.setColor(color);
+    graphics.fillRect(x, y, w - 1, h - 1);
+  }
+
+  @Override
+  public void paintScrollBarThumbBorder(SynthContext context, Graphics graphics, int x, int y, int w, int h, int orientation) {
+    UIDefaults uIDefaults = UIManager.getDefaults();
+    int thickness = uIDefaults.getInt("LafSynth.scrollbar.thumb.borderthick");
+    Color color = uIDefaults.getColor("LafSynth.scrollbar.thumb.bordercolor");
+    if (color == null) {
+      color = Color.DARK_GRAY;
+    }
+    if ((context.getComponentState() & 8) != 0) {
+      color = Color.LIGHT_GRAY;
+    } else if ((context.getComponentState() & 2) != 0) {
+      color = color.brighter();
+    }
+    graphics.setColor(color);
+    JScrollBar jScrollBar = (JScrollBar) context.getComponent();
+    if (jScrollBar.getOrientation() == JScrollBar.VERTICAL) {
+      if (h > thickness * 2) {
+        graphics.fillRect(x, y, w, thickness);
+        graphics.fillRect(x, y + h - thickness, w, thickness);
       }
-    } else {
-      for (int i = 1; i <= n3; ++i) {
-        double d6 = (double)i / (double)n3;
-        Color color4 = new Color(color.getRed() + (int)(d * d6), color.getGreen() + (int)(d2 * d6), color.getBlue() + (int)(d3 * d6), color.getAlpha() + (int)(d4 * d6));
-        graphics2D.setPaint(color4);
-        graphics2D.drawLine(n + i - 1, n2, n + i - 1, n2 + n4 - 1);
-      }
+    } else if (w > thickness * 2) {
+      graphics.fillRect(x, y, thickness, h);
+      graphics.fillRect(x + w - thickness, y, thickness, h);
     }
   }
+
+
+
 }
