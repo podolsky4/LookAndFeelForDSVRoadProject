@@ -455,5 +455,19 @@ limitations under the License.
   </style>
   <bind style="tabbedPaneTabAreaStyle" type="region" key="TabbedPaneTabArea"/>
 
+  <!--The style for tool tip.-->
+  <style id="toolTipStyle">
+    <opaque value="true"/>
+    <insets top="5" left="5" right="5" bottom="5"/>
+    <painter method="toolTipBorder" idref="painter"/>
+    <state>
+      <color type="BACKGROUND" value="#D6E0EE"/>
+      <color type="TEXT_FOREGROUND" value="#002664"/>
+    </state>
+    <state value="DISABLED">
+      <color type="TEXT_FOREGROUND" value="#999999"/>
+    </state>
+  </style>
+  <bind style="toolTipStyle" type="region" key="Tooltip"/>
 
 </synth>
