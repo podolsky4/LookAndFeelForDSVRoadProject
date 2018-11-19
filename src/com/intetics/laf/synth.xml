@@ -301,7 +301,7 @@ limitations under the License.
       <int>127</int>
     </object>-->
     <object id="LineBorder" class="javax.swing.border.LineBorder">
-      <object idref="background"/>
+      <object idref="foreground"/>
     </object>
     <defaultsProperty key="TitledBorder.border" type="idref" value="LineBorder"/>
     <state>
@@ -365,20 +365,60 @@ limitations under the License.
 
   <!--The style for the thumb of the scroll bar.-->
   <style id="scrollBarThumbStyle">
-
     <object id="ScrollBarThumbBgColor" idref="Gray"/>
     <defaultsProperty key="LafSynth.scrollbar.thumb.bgcolor" type="idref" value="ScrollBarThumbBgColor" default="true"/>
     <object id="ScrollBarThumbBorderColor" idref="foreground"/>
     <defaultsProperty key="LafSynth.scrollbar.thumb.borderthick" type="integer" value="1" default="true"/>
     <defaultsProperty key="LafSynth.scrollbar.thumb.bordercolor" type="idref" value="ScrollBarThumbBorderColor" default="true"/>
-
     <imageIcon id="ScrollBarThumbImage" path="resource/1204450922734_scrollbar_thumb.png"/>
     <property key="LafSynth.scrollbar.thumb.image" type="idref" value="ScrollBarThumbImage" default="true" />
     <painter idref="painter" method="scrollBarThumbBackground"/>
     <painter idref="painter" method="scrollBarThumbBorder"/>
-
   </style>
   <bind style="scrollBarThumbStyle" type="region" key="ScrollBarThumb"/>
+
+  <!--The style for scroll pane component.-->
+  <style id="scrollPaneStyle">
+    <insets top="2" left="2" bottom="2" right="2"/>
+    <object id="ScrollPaneBorderColor" idref="foreground"/>
+    <defaultsProperty key="LafSynth.scrollpane.bordercolor" type="idref" value="ScrollPaneBorderColor" default="true"/>
+    <painter method="scrollPaneBorder" idref="painter"/>
+    <state value="DISABLED">
+      <imagePainter method="scrollPaneBorder" path="resource/1263604559077_border_disabled.png" sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
+    </state>
+  </style>
+  <bind style="scrollPaneStyle" type="region" key="ScrollPane"/>
+
+  <!--The style for separator component.-->
+  <style id="separatorStyle">
+    <opaque value="true"/>
+    <property key="Separator.thickness" type="integer" value="1" default="false"/>
+    <state>
+      <color type="BACKGROUND" value="#002664"/>
+    </state>
+    <state value="DISABLED">
+      <color type="BACKGROUND" value="#CCCCCC"/>
+    </state>
+  </style>
+  <bind style="separatorStyle" type="region" key="Separator"/>
+
+  <!--The style for the split pane component.-->
+  <style id="splitPaneStyle">
+    <property key="SplitPane.centerOneTouchButtons" type="boolean" value="true" default="false"/>
+    <property key="SplitPane.size" type="integer" value="10" default="false"/>
+  </style>
+  <bind style="splitPaneStyle" type="region" key="SplitPane"/>
+
+  <!--The style for the divider of split pane.-->
+  <style id="splitPaneDividerStyle">
+    <object id="SplitPaneDividerMainColor" idref="foreground"/>
+    <defaultsProperty key="LafSynth.splitpane.divider.maincolor" type="idref" value="SplitPaneDividerMainColor" default="true"/>
+    <imageIcon id="SplitPaneDividerImage" path="resource/1204451219828_splitpane_divider_image.png"/>
+    <property key="LafSynth.splitpane.divider.image" type="idref" value="SplitPaneDividerImage" default="false"/>
+    <painter idref="painter" method="splitPaneDividerBackground"/>
+    <painter idref="painter" method="splitPaneDragDivider"/>
+  </style>
+  <bind style="splitPaneDividerStyle" type="region" key="SplitPaneDivider"/>
 
   <!--The style for table component.-->
   <style id="tableStyle">

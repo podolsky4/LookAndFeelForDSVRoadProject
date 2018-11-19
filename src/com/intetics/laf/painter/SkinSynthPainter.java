@@ -218,6 +218,50 @@ public class SkinSynthPainter extends SynthPainter {
     }
   }
 
+  @Override
+  public void paintScrollPaneBorder(SynthContext context, Graphics g, int x, int y, int w, int h) {
+    UIDefaults uIDefaults = UIManager.getDefaults();
+    Color color = uIDefaults.getColor("LafSynth.scrollpane.bordercolor");
+    if (color == null) {
+      color = Color.DARK_GRAY;
+    }
+    g.setColor(color);
+    JScrollPane scrollPane = (JScrollPane) context.getComponent();
+    scrollPane.setBorder(new BorderUIResource.LineBorderUIResource(Color.BLACK));
+  }
 
+  @Override
+  public void paintSplitPaneDividerBackground(SynthContext synthContext, Graphics graphics, int x, int y, int w, int h) {
+    UIDefaults uIDefaults = UIManager.getDefaults();
+    Color color = uIDefaults.getColor("LafSynth.splitpane.divider.maincolor");
+    if (color == null) {
+      color = Color.LIGHT_GRAY;
+    }
+    graphics.setColor(color);
+    graphics.fillRect(x, y, w, h);
+    ImageIcon imageIcon = (ImageIcon)synthContext.getStyle().getIcon(synthContext, "EaSynth.splitpane.divider.image");
+    if (imageIcon != null) {
+      int iconWidth = imageIcon.getIconWidth();
+      int iconHeight = imageIcon.getIconHeight();
+      JSplitPane jSplitPane = (JSplitPane)synthContext.getComponent();
+      if (jSplitPane.getOrientation() == JSplitPane.HORIZONTAL_SPLIT && h >= iconHeight * 9) {
+        int offsetHorX = x + (w - iconWidth) / 2;
+        int offsetHorY = y + (h - iconHeight * 3) / 2;
+        graphics.drawImage(imageIcon.getImage(), offsetHorX, offsetHorY, offsetHorX + iconWidth, offsetHorY + iconHeight, 0, 0, iconWidth, iconHeight, null);
+        graphics.drawImage(imageIcon.getImage(), offsetHorX, offsetHorY + iconHeight, offsetHorX + iconWidth, offsetHorY + iconHeight * 2, 0, 0, iconWidth, iconHeight, null);
+        graphics.drawImage(imageIcon.getImage(), offsetHorX, offsetHorY + iconHeight * 2, offsetHorX + iconWidth, offsetHorY + iconHeight * 3, 0, 0, iconWidth, iconHeight, null);
+      } else if (w >= iconWidth * 9) {
+        int offsetVerX = x + (w - iconWidth * 3) / 2;
+        int offsetVerY = y + (h - iconHeight) / 2;
+        graphics.drawImage(imageIcon.getImage(), offsetVerX, offsetVerY, offsetVerX + iconWidth, offsetVerY + iconHeight, 0, 0, iconWidth, iconHeight, null);
+        graphics.drawImage(imageIcon.getImage(), offsetVerX + iconWidth, offsetVerY, offsetVerX + iconWidth * 2, offsetVerY + iconHeight, 0, 0, iconWidth, iconHeight, null);
+        graphics.drawImage(imageIcon.getImage(), offsetVerX + iconWidth * 2, offsetVerY, offsetVerX + iconWidth * 3, offsetVerY + iconHeight, 0, 0, iconWidth, iconHeight, null);
+      }
+    }
+  }
 
+  @Override
+  public void paintSplitPaneDragDivider(SynthContext context, Graphics graphics, int x, int y, int w, int h, int orientation) {
+    this.paintSplitPaneDividerBackground(context, graphics, x, y, w, h);
+  }
 }
