@@ -281,25 +281,7 @@ limitations under the License.
   </style>
   <bind style="menu" type="region" key="Menu"/>
 
-  <!--<style id="panel">
-    <state>
-      <color value="#F5F500" type="BACKGROUND"/>
-    </state>
-
-
-    <object id="LineBorder" class="javax.swing.border.LineBorder">
-      <object idref="TitledBorder_Color"/>
-    </object>
-
-    <defaultsProperty key="TitledBorder.border" type="idref" value="LineBorder"/>
-  </style>
-  <bind style="panel" type="region" key="Panel"/>-->
   <style id="panel">
-    <!--<object class="javax.swing.plaf.ColorUIResource" id="panelBackground">
-      <int>150</int>
-      <int>100</int>
-      <int>127</int>
-    </object>-->
     <object id="LineBorder" class="javax.swing.border.LineBorder">
       <object idref="foreground"/>
     </object>
@@ -311,17 +293,7 @@ limitations under the License.
   </style>
   <bind style="panel" type="region" key="Panel"/>
 
-  <!--<style id="loadingBarStyle">
-    <state>
-      <color value="BLUE" type="BACKGROUND" />
-      <color value="GREEN" type="FOREGROUND" />
-      <imagePainter method="progressBarBorder" path="laf/loadingbar_outside.png"
-                    sourceInsets="6 6 6 6" paintCenter="false" />
-    </state>
-  </style>
-  <bind style="loadingBarStyle" type="region" key="ProgressBar" />-->
-
-  <!--List style-->
+  <!--The style for list component.-->
   <style id="listStyle">
     <opaque value="true"/>
     <!--<insets top="5" left="8" right="5" bottom="8"/>-->
@@ -341,7 +313,6 @@ limitations under the License.
   <!--The style for scroll bar component.-->
   <style id="scrollBarStyle">
     <property key="ScrollBar.minimumThumbSize" type="dimension" value="18 18" default="false"/>
-    <!--<object id="ScrollBarBgColor" idref="background"/>-->
     <object id="ScrollBarBgColor" idref="Gray"/>
     <defaultsProperty key="LafSynth.scrollbar.bgcolor" type="idref" value="ScrollBarBgColor" default="true"/>
     <object id="ScrollBarBorderColor" idref="foreground"/>
@@ -422,8 +393,6 @@ limitations under the License.
 
   <!--The style for table component.-->
   <style id="tableStyle">
-    <!--If true setBorder on the renderer will succeed regardless of the border passed in,
-     otherwise setBorder on the renderer will only succeed if it is a Synth Border.-->
     <insets top="5" right="5" bottom="5" left="5"/>
     <property key="Table.rendererUseUIBorder" type="boolean" value="false" default="false"/>
     <object id="TableGridColor" idref="foreground" />
@@ -438,28 +407,53 @@ limitations under the License.
       <color type="TEXT_BACKGROUND" value="#D6E0EE" />
       <color type="FOCUS" value="#FFEEDD" />
     </state>
-
   </style>
   <bind style="tableStyle" type="region" key="Table"/>
 
   <!--The style for the header component of table.-->
   <style id="tableHeaderStyle">
-
     <insets top="3" right="3" bottom="3" left="3"/>
     <!--<property key="TableHeader.background" type="idref" value="foreground" default="true"/>-->
+    <painter method="tableHeaderBackground" idref="painter"/>
+    <painter method="tableHeaderBorder" idref="painter"/>
 
-    <state>
-      <painter idref="painter" method="tableHeaderBorder"/>
-      <painter method="tableHeaderBackground" idref="painter"/>
-      <painter method="tableHeaderBorder" idref="painter"/>
-    </state>
     <state value="DISABLED">
       <color type="TEXT_FOREGROUND" value="#CCCCCC" />
       <imagePainter method="tableHeaderBackground" path="resource/table_header_bg_disabled.png"
                     sourceInsets="0 0 0 0" paintCenter="true" stretch="true"/>
     </state>
-
   </style>
   <bind style="tableHeaderStyle" type="region" key="TableHeader"/>
+
+  <!--The style for the tabbed pane component.-->
+  <style id="tabbedPaneStyle">
+    <property key="TabbedPane.textIconGap" type="integer" value="2" default="true"/>
+  </style>
+  <bind style="tabbedPaneStyle" type="region" key="TabbedPane"/>
+
+  <!--The style for the tabs of tabbed pane.-->
+  <style id="tabbedPaneTabStyle">
+    <insets top="5" left="5" bottom="2" right="5"/>
+    <imagePainter method="tabbedPaneTabBorder" path="resource/1204440390390_tab_border.png"
+                  sourceInsets="0 1 0 1" paintCenter="true" stretch="true"/>
+    <imagePainter method="tabbedPaneTabBackground" path="resource/1204726737093_tab_bg_enabled.png"
+                  sourceInsets="6 5 3 5" paintCenter="true" stretch="true"/>
+    <state value="DISABLED">
+      <imagePainter method="tabbedPaneTabBackground" path="resource/1204439604828_tab_bg_disabled.png"
+                    sourceInsets="6 5 3 5" paintCenter="true" stretch="true"/>
+    </state>
+    <state value="SELECTED">
+      <imagePainter method="tabbedPaneTabBackground" path="resource/1204451361468_tab_bg_selected.png"
+                    sourceInsets="6 5 3 5" paintCenter="true" stretch="true"/>
+    </state>
+  </style>
+  <bind style="tabbedPaneTabStyle" type="region" key="TabbedPaneTab"/>
+
+  <!--The style for the tab area of tabbed pane.-->
+  <style id="tabbedPaneTabAreaStyle">
+    <insets top="3" left="5" bottom="0" right="5"/>
+  </style>
+  <bind style="tabbedPaneTabAreaStyle" type="region" key="TabbedPaneTabArea"/>
+
 
 </synth>

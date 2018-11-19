@@ -264,4 +264,6 @@ public class SkinSynthPainter extends SynthPainter {
   public void paintSplitPaneDragDivider(SynthContext context, Graphics graphics, int x, int y, int w, int h, int orientation) {
     this.paintSplitPaneDividerBackground(context, graphics, x, y, w, h);
   }
+
+
 }
