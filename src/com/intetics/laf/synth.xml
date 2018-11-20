@@ -48,7 +48,7 @@ limitations under the License.
     <int>238</int>
   </object>
   <object id="painter" class="com.intetics.laf.painter.SkinSynthPainter"/>
-  <object id="graphicsUtils" class="com.intetics.laf.painter.LafSynthGraphicsUtils"/>
+  <object id="graphicsUtils" class="com.intetics.laf.utils.LafSynthGraphicsUtils"/>
 
   <!-- Default style -->
   <!--This backing style will make sure that any components that

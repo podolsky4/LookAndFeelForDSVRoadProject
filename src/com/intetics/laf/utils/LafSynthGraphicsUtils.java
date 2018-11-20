@@ -1,4 +1,4 @@
-package com.intetics.laf.painter;
+package com.intetics.laf.utils;
 
 import javax.swing.plaf.synth.SynthGraphicsUtils;
 
