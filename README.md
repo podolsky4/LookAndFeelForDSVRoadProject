@@ -41,7 +41,7 @@ To connect new skin to the current project:
 ## Feedback
 
 If you have any questions, feel free to contact me for help.
-> Impltech company, 2018     
+> #### Impltech company, 2018
 > Yuri Podolsky   
 > Java Software Engineer   
 > e-mail: podolsky4@gmail.com

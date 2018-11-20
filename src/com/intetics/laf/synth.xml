@@ -48,6 +48,7 @@ limitations under the License.
     <int>238</int>
   </object>
   <object id="painter" class="com.intetics.laf.painter.SkinSynthPainter"/>
+  <object id="graphicsUtils" class="com.intetics.laf.painter.LafSynthGraphicsUtils"/>
 
   <!-- Default style -->
   <!--This backing style will make sure that any components that
@@ -637,6 +638,45 @@ limitations under the License.
   </style>
   <bind style="TableHeaderRendererStyle" type="name" key="TableHeader.renderer"/>
 
+  <!--The style for tree component.-->
+  <style id="treeStyle">
+    <opaque value="true"/>
+    <property key="Tree.leftChildIndent" type="integer" value="10" default="true"/>
+    <property key="Tree.rightChildIndent" type="integer" value="10" default="true"/>
+    <imageIcon id="TreeCollapseIcon" path="resource/1204977613109_tree_cell_collapse.png"/>
+    <property key="Tree.collapsedIcon" type="idref" value="TreeCollapseIcon" default="false"/>
+    <imageIcon id="TreeExpandIcon" path="resource/1204977624531_tree_cell_expand.png"/>
+    <property key="Tree.expandedIcon" type="idref" value="TreeExpandIcon" default="false"/>
+    <defaultsProperty key="LafSynth.graphicsutils.drawline.arc.width" type="integer" value="0" default="true"/>
+    <defaultsProperty key="LafSynth.graphicsutils.drawline.arc.height" type="integer" value="0" default="true"/>
+    <object id="TreeLineColor" idref="foreground"/>
+    <defaultsProperty key="LafSynth.graphicsutils.drawline.color" type="idref" value="TreeLineColor" default="true"/>
+    <!-- TODO Write down class GraphicsUtils -->
+    <!--<graphicsUtils idref="graphicsUtils"/>-->
+    <state>
+      <color type="BACKGROUND" value="#FFFFFF"/>
+    </state>
+    <state value="DISABLED">
+      <color type="BACKGROUND" value="#EEEEEE"/>
+    </state>
+  </style>
+  <bind style="treeStyle" type="region" key="Tree"/>
+
+  <!--The style for the cell of the tree component.-->
+  <style id="treeCellStyle">
+    <opaque value="true"/>
+    <imageIcon id="TreeFolderCloseIcon" path="resource/1204455288906_tree_folder_close.png"/>
+    <imageIcon id="TreeFolderOpenIcon" path="resource/1204455296437_tree_folder_open.png"/>
+    <imageIcon id="TreeLeafIcon" path="resource/1204397671453_tree_leaf_icon.png"/>
+    <defaultsProperty key="Tree.leafIcon" type="idref" value="TreeLeafIcon" default="true"/>
+    <defaultsProperty key="Tree.openIcon" type="idref" value="TreeFolderOpenIcon" default="true"/>
+    <defaultsProperty key="Tree.closedIcon" type="idref" value="TreeFolderCloseIcon" default="true"/>
+    <state value="SELECTED">
+      <color type="TEXT_FOREGROUND" value="#CC6600"/>
+      <color type="BACKGROUND" value="#FFEEDD"/>
+    </state>
+
+  </style>
 
 
 </synth>
