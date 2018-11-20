@@ -415,7 +415,7 @@ limitations under the License.
     <insets top="3" right="3" bottom="3" left="3"/>
     <!--<property key="TableHeader.background" type="idref" value="foreground" default="true"/>-->
     <painter method="tableHeaderBackground" idref="painter"/>
-    <painter method="tableHeaderBorder" idref="painter"/>
+    <!--<painter method="tableHeaderBorder" idref="painter"/>-->
 
     <state value="DISABLED">
       <color type="TEXT_FOREGROUND" value="#CCCCCC" />
@@ -469,5 +469,174 @@ limitations under the License.
     </state>
   </style>
   <bind style="toolTipStyle" type="region" key="Tooltip"/>
+
+  <!--The style for text field component.-->
+  <style id="textFieldStyle">
+    <opaque value="true"/>
+    <insets top="3" left="3" right="3" bottom="3"/>
+    <state>
+      <imagePainter method="textFieldBorder" path="resource/1263604524327_border_enabled.png"
+                    sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
+      <color type="BACKGROUND" value="#FFFFFF"/>
+      <color type="TEXT_FOREGROUND" value="#000000"/>
+      <color type="TEXT_BACKGROUND" value="#FFFFFF"/>
+    </state>
+    <state value="DISABLED">
+      <imagePainter method="textFieldBorder" path="resource/1263604559077_border_disabled.png"
+                    sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
+      <color type="BACKGROUND" value="#F0F0F0"/>
+      <color type="TEXT_FOREGROUND" value="#999999"/>
+    </state>
+    <state value="SELECTED">
+      <color type="TEXT_FOREGROUND" value="#FFFFFF"/>
+      <color type="TEXT_BACKGROUND" value="#A57A62"/>
+    </state>
+  </style>
+  <bind style="textFieldStyle" type="region" key="TextField"/>
+
+  <!--The style for formatted text field component.-->
+  <style id="formattedTextFieldStyle">
+    <opaque value="true"/>
+    <insets top="3" left="3" right="3" bottom="3"/>
+    <state>
+      <imagePainter method="formattedTextFieldBorder" path="resource/1263604524327_border_enabled.png"
+                    sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
+      <color type="BACKGROUND" value="#FFFFFF"/>
+      <color type="TEXT_FOREGROUND" value="#000000"/>
+      <color type="TEXT_BACKGROUND" value="#FFFFFF"/>
+    </state>
+    <state value="DISABLED">
+      <imagePainter method="formattedTextFieldBorder" path="resource/1263604559077_border_disabled.png"
+                    sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
+      <color type="BACKGROUND" value="#F0F0F0"/>
+      <color type="TEXT_FOREGROUND" value="#999999"/>
+    </state>
+    <state value="SELECTED">
+      <color type="TEXT_FOREGROUND" value="#FFFFFF"/>
+      <color type="TEXT_BACKGROUND" value="#A57A62"/>
+    </state>
+  </style>
+  <bind style="formattedTextFieldStyle" type="region" key="FormattedTextField"/>
+
+  <!--The style for password field.-->
+  <style id="passwordFieldStyle">
+    <opaque value="true"/>
+    <insets top="3" left="3" right="3" bottom="3"/>
+    <state>
+      <imagePainter method="passwordFieldBorder" path="resource/1263604524327_border_enabled.png"
+                    sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
+      <color type="BACKGROUND" value="#FFFFFF"/>
+      <color type="TEXT_FOREGROUND" value="#000000"/>
+      <color type="TEXT_BACKGROUND" value="#FFFFFF"/>
+    </state>
+    <state value="DISABLED">
+      <imagePainter method="passwordFieldBorder" path="resource/1263604559077_border_disabled.png"
+                    sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
+      <color type="BACKGROUND" value="#F0F0F0"/>
+      <color type="TEXT_FOREGROUND" value="#999999"/>
+    </state>
+    <state value="SELECTED">
+      <color type="TEXT_FOREGROUND" value="#FFFFFF"/>
+      <color type="TEXT_BACKGROUND" value="#A57A62"/>
+    </state>
+  </style>
+  <bind style="passwordFieldStyle" type="region" key="PasswordField"/>
+
+  <!--The style for text area component.-->
+  <style id="textAreaStyle">
+    <opaque value="true"/>
+    <insets top="3" left="3" right="3" bottom="3"/>
+    <state>
+      <color type="BACKGROUND" value="#FFFFFF"/>
+      <color type="TEXT_FOREGROUND" value="#000000"/>
+      <color type="TEXT_BACKGROUND" value="#FFFFFF"/>
+    </state>
+    <state value="DISABLED">
+      <color type="BACKGROUND" value="#F0F0F0"/>
+      <color type="TEXT_FOREGROUND" value="#999999"/>
+    </state>
+    <state value="SELECTED">
+      <color type="TEXT_FOREGROUND" value="#FFFFFF"/>
+      <color type="TEXT_BACKGROUND" value="#A57A62"/>
+    </state>
+  </style>
+  <bind style="textAreaStyle" type="region" key="TextArea"/>
+
+  <!--The style for text pane component.-->
+  <style id="textPaneStyle">
+    <state>
+      <color type="BACKGROUND" value="#FFFFFF"/>
+      <color type="TEXT_FOREGROUND" value="#000000"/>
+      <color type="TEXT_BACKGROUND" value="#FFFFFF"/>
+    </state>
+    <state value="DISABLED">
+      <color type="BACKGROUND" value="#F0F0F0"/>
+      <color type="TEXT_FOREGROUND" value="#999999"/>
+    </state>
+    <state value="SELECTED">
+      <color type="TEXT_FOREGROUND" value="#FFFFFF"/>
+      <color type="TEXT_BACKGROUND" value="#A57A62"/>
+    </state>
+  </style>
+  <bind style="textPaneStyle" type="region" key="TextPane"/>
+
+  <!--The style for editor pane component.-->
+  <style id="editorPaneStyle">
+    <state>
+      <color type="BACKGROUND" value="#FFFFFF"/>
+      <color type="TEXT_FOREGROUND" value="#000000"/>
+      <color type="TEXT_BACKGROUND" value="#FFFFFF"/>
+    </state>
+    <state value="DISABLED">
+      <color type="BACKGROUND" value="#F0F0F0"/>
+      <color type="TEXT_FOREGROUND" value="#999999"/>
+    </state>
+    <state value="SELECTED">
+      <color type="TEXT_FOREGROUND" value="#FFFFFF"/>
+      <color type="TEXT_BACKGROUND" value="#A57A62"/>
+    </state>
+  </style>
+  <bind style="editorPaneStyle" type="region" key="EditorPane"/>
+
+  <!--The style for spinner component.-->
+  <style id="spinnerStyle">
+    <opaque value="true"/>
+  </style>
+  <bind style="spinnerStyle" type="region" key="Spinner"/>
+
+  <!--The style for the list renderer of JComboBox-->
+  <style id="ComboBoxListRenderer">
+    <opaque value="true"/>
+    <insets top="5" left="5" right="5" bottom="5"/>
+    <state>
+      <color type="TEXT_FOREGROUND" value="#000000"/>
+    </state>
+    <state value="DISABLED">
+      <color type="TEXT_FOREGROUND" value="#999999"/>
+    </state>
+    <state value="SELECTED">
+      <color type="TEXT_FOREGROUND" value="#CC6600"/>
+      <color type="TEXT_BACKGROUND" value="#FFEEDD"/>
+    </state>
+  </style>
+  <bind style="ComboBoxListRenderer" type="name" key="ComboBox.listRenderer"/>
+
+  <!--The style for the renderer of dragging table header-->
+  <style id="TableHeaderRendererStyle">
+    <insets top="3" left="5" right="5" bottom="3"/>
+    <!--<imagePainter method="labelBackground" path="resource/1204728244468_table_header_bg_enabled.png"
+                  sourceInsets="0 0 0 0" paintCenter="true" stretch="true"/>-->
+    <state>
+      <color type="TEXT_FOREGROUND" value="#002664"/>
+    </state>
+    <state value="DISABLED">
+      <color type="TEXT_FOREGROUND" value="#CCCCCC"/>
+      <imagePainter method="labelBackground" path="resource/1204449497890_table_header_bg_disabled.png"
+                    sourceInsets="0 0 0 0" paintCenter="true" stretch="true"/>
+    </state>
+  </style>
+  <bind style="TableHeaderRendererStyle" type="name" key="TableHeader.renderer"/>
+
+
 
 </synth>

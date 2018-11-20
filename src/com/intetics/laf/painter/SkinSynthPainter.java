@@ -49,7 +49,7 @@ public class SkinSynthPainter extends SynthPainter {
     return component instanceof JList ? 0 : component.getFont().getSize() / 2;
   }
 
-  @Override
+  /*@Override
   public void paintTableHeaderBorder(SynthContext synthContext, Graphics graphics, int x, int y, int w, int h) {
     Graphics2D graphics2D = (Graphics2D) graphics.create();
     Color color2 = new Color(0, 0, 0, 0);
@@ -66,7 +66,7 @@ public class SkinSynthPainter extends SynthPainter {
       pointX += tableColumnModel.getColumnMargin();
     }
 
-  }
+  }*/
 
   @Override
   public void paintArrowButtonForeground(SynthContext context, Graphics graphics, int x, int y, int w, int h, int orientation) {
