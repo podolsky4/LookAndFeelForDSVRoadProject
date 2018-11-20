@@ -1,20 +1,20 @@
 # Syntetica Look and Feel for DSV Road project
 
-### Introduction
+## Introduction
 New Synth Look and Feel for DSV Road Project according mock-ups:
 1) Mock up #1
-![](mockup/DSV Road Mock Up 1.png)
+![](mockup/DSV_Road_Mock_Up_1.png)
 2) Mock up #2
-![](mockup/DSV Road Mock Up 2.png)
+![](mockup/DSV_Road_Mock_Up_2.png)
 
-### Color pallete
+## Color pallete
 
 Uses mostly blue shades:
 ![](mockup/VFT_color-mockup-UI_v01.png)
 
 ![](mockup/VFT_color-mockup-UI_v02.png)
 
-### Installation
+## Installation
 To connect new skin to the current project:
 1. Put the snippet into your code:
 ``` java
@@ -38,7 +38,7 @@ To connect new skin to the current project:
 2. Change class SwingDemo to project's entry point.
 3. Check it out!
 
-### Feedback
+## Feedback
 
 If you have any questions, feel free to contact me for help.
 > Impltech company, 2018     
