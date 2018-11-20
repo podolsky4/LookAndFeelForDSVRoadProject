@@ -3,9 +3,9 @@
 ### Introduction
 New Synth Look and Feel for DSV Road Project according mock-ups:
 1) Mock up #1
-![](mockup/DSV Road Mock Up 1.png)
+![](mockup/DSV_Road_Mock_Up_1.png)
 2) Mock up #2
-![](mockup/DSV Road Mock Up 2.png)
+![](mockup/DSV_Road_Mock_Up_2.png)
 
 ### Color pallete
 
