@@ -183,17 +183,11 @@ public class SkinSynthPainter extends SynthPainter {
 
   @Override
   public void paintScrollBarThumbBackground(SynthContext context, Graphics graphics, int x, int y, int w, int h, int orientation) {
-    JScrollBar jScrollBar;
     Color color;
-    boolean bl;
     UIDefaults uIDefaults = UIManager.getDefaults();
-    int thickness = uIDefaults.getInt("LafSynth.scrollbar.thumb.borderthick");
-
     if ((color = uIDefaults.getColor("LafSynth.scrollbar.thumb.bgcolor")) == null) {
       color = Color.LIGHT_GRAY;
     }
-    boolean bl2 = bl = (jScrollBar = (JScrollBar) context.getComponent()).getOrientation() == JScrollBar.VERTICAL;
-
     graphics.setColor(color);
     graphics.fillRect(x, y, w - 1, h - 1);
   }
@@ -296,9 +290,9 @@ public class SkinSynthPainter extends SynthPainter {
             try {
               Font font = context.getStyle().getFont(context);
               FontMetrics fontMetrics = Toolkit.getDefaultToolkit().getFontMetrics(font);
-              int n5 = context.getStyle().getGraphicsUtils(context).computeStringWidth(context, font, fontMetrics, string);
+              int stringWidth = context.getStyle().getGraphicsUtils(context).computeStringWidth(context, font, fontMetrics, string);
               Rectangle rectangle = jProgressBar.getBounds();
-              Rectangle rectangle2 = new Rectangle(rectangle.width / 2 - n5 / 2, (rectangle.height - (fontMetrics.getAscent() + fontMetrics.getDescent())) / 2, n5, fontMetrics.getAscent() + fontMetrics.getDescent());
+              Rectangle rectangle2 = new Rectangle(rectangle.width / 2 - stringWidth / 2, (rectangle.height - (fontMetrics.getAscent() + fontMetrics.getDescent())) / 2, stringWidth, fontMetrics.getAscent() + fontMetrics.getDescent());
               Insets insets = (Insets)context.getStyle().get(context, "LafSynth.progressbar.bg.insets");
               if (insets == null) {
                 insets = new Insets(0, 0, 0, 0);
@@ -417,6 +411,46 @@ public class SkinSynthPainter extends SynthPainter {
           graphics.drawImage(imageIcon.getImage(), n11, n12, n11 + iconWidth, n12 + iconHeight, 0, 0, iconWidth, iconHeight, null);
         }
       }
+    }
+  }
+
+  @Override
+  public void paintMenuBackground(SynthContext context, Graphics graphics, int x, int y, int w, int h) {
+    Color color;
+    UIDefaults uIDefaults = UIManager.getDefaults();
+    Color color2 = uIDefaults.getColor("LafSynth.menu.bg.color.normal");
+    if (color2 == null) {
+      color2 = Color.LIGHT_GRAY;
+    }
+    if ((color = uIDefaults.getColor("LafSynth.menu.bg.color.selected")) == null) {
+      color = Color.GRAY;
+    }
+    JMenu jMenu = (JMenu)context.getComponent();
+    if ((context.getComponentState() & 512) != 0) {
+      graphics.setColor(color);
+      graphics.fillRect(x, y, w, h);
+    } else if ((context.getComponentState() & 8) != 0) {
+      if (!(jMenu.getParent() instanceof JMenuBar)) {
+        graphics.setColor(color2);
+        graphics.fillRect(x, y, w, h);
+      }
+    } else if (!(jMenu.getParent() instanceof JMenuBar)) {
+      graphics.setColor(color2);
+      graphics.fillRect(x, y, w, h);
+    }
+  }
+
+  @Override
+  public void paintPopupMenuBackground(SynthContext context, Graphics graphics, int x, int y, int w, int h) {
+    ImageIcon imageIcon;
+    JPopupMenu jPopupMenu = (JPopupMenu)context.getComponent();
+    JPanel jPanel = (JPanel)jPopupMenu.getParent();
+    BufferedImage bufferedImage = (BufferedImage)jPanel.getClientProperty("POPUP_BACKGROUND_IMAGE");
+    if (bufferedImage != null) {
+      graphics.drawImage(bufferedImage, x, y, null);
+    }
+    if ((imageIcon = (ImageIcon)context.getStyle().getIcon(context, "LafSynth.popup.menu.bg")) != null) {
+      LafSynthGraphicsUtils.drawImageWith9Grids(graphics, imageIcon.getImage(), x, y, (x + w), (y + h), context.getStyle().getInsets(context, null), true);
     }
   }
 
