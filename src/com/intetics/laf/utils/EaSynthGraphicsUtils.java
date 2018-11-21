@@ -1,8 +1,11 @@
+/*
 package com.intetics.laf.utils;
 
+*/
 /*
  * Decompiled with CFR 0_132.
- */
+ *//*
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -61,4 +64,4 @@ public class EaSynthGraphicsUtils extends SynthGraphicsUtils {
       graphics.drawImage(image, n + insets.left, n2 + insets.top, n3 - insets.right, n4 - insets.bottom, insets.left, insets.top, n5 - insets.right, n6 - insets.bottom, null);
     }
   }
-}
+}*/

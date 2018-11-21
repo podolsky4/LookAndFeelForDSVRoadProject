@@ -385,8 +385,6 @@ limitations under the License.
   <style id="splitPaneDividerStyle">
     <object id="SplitPaneDividerMainColor" idref="foreground"/>
     <defaultsProperty key="LafSynth.splitpane.divider.maincolor" type="idref" value="SplitPaneDividerMainColor" default="true"/>
-    <imageIcon id="SplitPaneDividerImage" path="resource/1204451219828_splitpane_divider_image.png"/>
-    <property key="LafSynth.splitpane.divider.image" type="idref" value="SplitPaneDividerImage" default="false"/>
     <painter idref="painter" method="splitPaneDividerBackground"/>
     <painter idref="painter" method="splitPaneDragDivider"/>
   </style>
@@ -640,7 +638,7 @@ limitations under the License.
 
   <!--The style for tree component.-->
   <style id="treeStyle">
-    <opaque value="true"/>
+    <opaque value="false"/>
     <property key="Tree.leftChildIndent" type="integer" value="10" default="true"/>
     <property key="Tree.rightChildIndent" type="integer" value="10" default="true"/>
     <imageIcon id="TreeCollapseIcon" path="resource/1204977613109_tree_cell_collapse.png"/>
@@ -651,11 +649,7 @@ limitations under the License.
     <defaultsProperty key="LafSynth.graphicsutils.drawline.arc.height" type="integer" value="0" default="true"/>
     <object id="TreeLineColor" idref="foreground"/>
     <defaultsProperty key="LafSynth.graphicsutils.drawline.color" type="idref" value="TreeLineColor" default="true"/>
-    <!-- TODO Write down class GraphicsUtils -->
-    <!--<graphicsUtils idref="graphicsUtils"/>-->
-    <state>
-      <color type="BACKGROUND" value="#FFFFFF"/>
-    </state>
+    <graphicsUtils idref="graphicsUtils"/>
     <state value="DISABLED">
       <color type="BACKGROUND" value="#EEEEEE"/>
     </state>
@@ -672,11 +666,43 @@ limitations under the License.
     <defaultsProperty key="Tree.openIcon" type="idref" value="TreeFolderOpenIcon" default="true"/>
     <defaultsProperty key="Tree.closedIcon" type="idref" value="TreeFolderCloseIcon" default="true"/>
     <state value="SELECTED">
-      <color type="TEXT_FOREGROUND" value="#CC6600"/>
-      <color type="BACKGROUND" value="#FFEEDD"/>
+      <color type="BACKGROUND" idref="LightBlue"/>
     </state>
+  </style>
+  <bind style="treeCellStyle" type="region" key="TreeCell"/>
+
+  <!--The style for tool bar component.-->
+  <style id="toolBarStyle">
+    <imageIcon id="ToolBarHandleIcon" path="resource/1204547880578_toolbar_handle_icon.png"/>
+    <property key="ToolBar.handleIcon" type="idref" value="ToolBarHandleIcon" default="false"/>
+    <object id="ToolBarBgColor" idref="background"/>
+    <defaultsProperty key="LafSynth.toolbar.bgcolor" type="idref" value="ToolBarBgColor" default="true"/>
+    <painter idref="painter" method="toolBarBackground"/>
 
   </style>
+  <bind style="toolBarStyle" type="region" key="ToolBar"/>
 
+  <!--The style for tool bar separator.-->
+  <style id="toolBarSeparatorStyle">
+    <opaque value="true"/>
+    <property key="Separator.thickness" type="integer" value="6" default="false"/>
+  </style>
+  <bind style="toolBarSeparatorStyle" type="region" key="ToolBarSeparator"/>
+
+  <!--The style for tool bar drag window.-->
+  <style id="toolBarDragWindowStyle">
+    <imagePainter method="toolBarDragWindowBackground" path="resource/1204466391828_toolbar_background_enabled.png"
+                  sourceInsets="0 0 0 0" paintCenter="true" stretch="true"/>
+
+  </style>
+  <bind style="toolBarDragWindowStyle" type="region" key="ToolBarDragWindow"/>
+
+  <!--The style for root pane.-->
+  <style id="rootPaneStyle">
+    <imageIcon id="RootPaneBgImage" path="resource/1291545702389_rootpane_background.png"/>
+    <property key="LafSynth.rootpanel.bg.image" type="idref" value="RootPaneBgImage" default="false"/>
+    <painter idref="painter" method="rootPaneBackground"/>
+  </style>
+  <bind style="rootPaneStyle" type="region" key="RootPane"/>
 
 </synth>

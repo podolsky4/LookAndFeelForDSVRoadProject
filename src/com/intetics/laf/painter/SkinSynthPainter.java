@@ -11,6 +11,7 @@ import javax.swing.table.TableColumnModel;
 import java.awt.*;
 import java.awt.geom.Area;
 import java.awt.geom.RoundRectangle2D;
+import java.awt.image.BufferedImage;
 
 public class SkinSynthPainter extends SynthPainter {
 
@@ -239,25 +240,6 @@ public class SkinSynthPainter extends SynthPainter {
     }
     graphics.setColor(color);
     graphics.fillRect(x, y, w, h);
-    ImageIcon imageIcon = (ImageIcon)synthContext.getStyle().getIcon(synthContext, "EaSynth.splitpane.divider.image");
-    if (imageIcon != null) {
-      int iconWidth = imageIcon.getIconWidth();
-      int iconHeight = imageIcon.getIconHeight();
-      JSplitPane jSplitPane = (JSplitPane)synthContext.getComponent();
-      if (jSplitPane.getOrientation() == JSplitPane.HORIZONTAL_SPLIT && h >= iconHeight * 9) {
-        int offsetHorX = x + (w - iconWidth) / 2;
-        int offsetHorY = y + (h - iconHeight * 3) / 2;
-        graphics.drawImage(imageIcon.getImage(), offsetHorX, offsetHorY, offsetHorX + iconWidth, offsetHorY + iconHeight, 0, 0, iconWidth, iconHeight, null);
-        graphics.drawImage(imageIcon.getImage(), offsetHorX, offsetHorY + iconHeight, offsetHorX + iconWidth, offsetHorY + iconHeight * 2, 0, 0, iconWidth, iconHeight, null);
-        graphics.drawImage(imageIcon.getImage(), offsetHorX, offsetHorY + iconHeight * 2, offsetHorX + iconWidth, offsetHorY + iconHeight * 3, 0, 0, iconWidth, iconHeight, null);
-      } else if (w >= iconWidth * 9) {
-        int offsetVerX = x + (w - iconWidth * 3) / 2;
-        int offsetVerY = y + (h - iconHeight) / 2;
-        graphics.drawImage(imageIcon.getImage(), offsetVerX, offsetVerY, offsetVerX + iconWidth, offsetVerY + iconHeight, 0, 0, iconWidth, iconHeight, null);
-        graphics.drawImage(imageIcon.getImage(), offsetVerX + iconWidth, offsetVerY, offsetVerX + iconWidth * 2, offsetVerY + iconHeight, 0, 0, iconWidth, iconHeight, null);
-        graphics.drawImage(imageIcon.getImage(), offsetVerX + iconWidth * 2, offsetVerY, offsetVerX + iconWidth * 3, offsetVerY + iconHeight, 0, 0, iconWidth, iconHeight, null);
-      }
-    }
   }
 
   @Override
@@ -265,5 +247,33 @@ public class SkinSynthPainter extends SynthPainter {
     this.paintSplitPaneDividerBackground(context, graphics, x, y, w, h);
   }
 
+  @Override
+  public void paintToolBarBackground(SynthContext synthContext, Graphics graphics, int x, int y, int w, int h) {
+    Color color;
+    UIDefaults uIDefaults = UIManager.getDefaults();
+    if ((color = uIDefaults.getColor("LafSynth.toolbar.bgcolor")) == null) {
+      color = Color.LIGHT_GRAY;
+    }
+    graphics.setColor(color);
+    graphics.fillRect(x, y, w, h);
+  }
+
+  @Override
+  public void paintRootPaneBackground(SynthContext context, Graphics graphics, int x, int y, int w, int h) {
+    ImageIcon imageIcon = (ImageIcon)context.getStyle().getIcon(context, "LafSynth.rootpanel.bg.image");
+    if (imageIcon != null) {
+      Image image = imageIcon.getImage();
+      int width = image.getWidth(null);
+      int height = image.getHeight(null);
+      if (width > 0 && height > 0) {
+        BufferedImage bufferedImage = new BufferedImage(width, height, 1);
+        bufferedImage.createGraphics().drawImage(image, 0, 0, null);
+        TexturePaint texturePaint = new TexturePaint(bufferedImage, new Rectangle(0, 0, bufferedImage.getWidth(), bufferedImage.getHeight()));
+        Graphics2D graphics2D = (Graphics2D)graphics.create();
+        graphics2D.setPaint(texturePaint);
+        graphics2D.fill(graphics2D.getClip());
+      }
+    }
+  }
 
 }
