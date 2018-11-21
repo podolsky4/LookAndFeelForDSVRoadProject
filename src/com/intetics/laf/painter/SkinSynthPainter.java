@@ -1,10 +1,13 @@
 package com.intetics.laf.painter;
 
+import com.intetics.laf.utils.LafSynthGraphicsUtils;
+
 import javax.swing.*;
 import javax.swing.plaf.BorderUIResource;
 import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.synth.ColorType;
 import javax.swing.plaf.synth.SynthContext;
+import javax.swing.plaf.synth.SynthGraphicsUtils;
 import javax.swing.plaf.synth.SynthPainter;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumnModel;
@@ -12,6 +15,8 @@ import java.awt.*;
 import java.awt.geom.Area;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
+import java.lang.reflect.Method;
 
 public class SkinSynthPainter extends SynthPainter {
 
@@ -275,5 +280,145 @@ public class SkinSynthPainter extends SynthPainter {
       }
     }
   }
+
+  @Override
+  public void paintProgressBarBorder(SynthContext context, Graphics graphics, int x, int y, int w, int h) {
+    block8 : {
+      JProgressBar jProgressBar = (JProgressBar)context.getComponent();
+      if (jProgressBar.isIndeterminate() && jProgressBar.isStringPainted()) {
+        boolean bl = context.getStyle().getBoolean(context, "LafSynth.progressbar.indeterminate.paintstring", false);
+        String string = jProgressBar.getString();
+        if (bl && string != null) {
+          Class<?> class_ = jProgressBar.getUI().getClass();
+          try {
+            Method method = class_.getDeclaredMethod("paintText", SynthContext.class, Graphics.class, String.class);
+            if (method == null) break block8;
+            try {
+              Font font = context.getStyle().getFont(context);
+              FontMetrics fontMetrics = Toolkit.getDefaultToolkit().getFontMetrics(font);
+              int n5 = context.getStyle().getGraphicsUtils(context).computeStringWidth(context, font, fontMetrics, string);
+              Rectangle rectangle = jProgressBar.getBounds();
+              Rectangle rectangle2 = new Rectangle(rectangle.width / 2 - n5 / 2, (rectangle.height - (fontMetrics.getAscent() + fontMetrics.getDescent())) / 2, n5, fontMetrics.getAscent() + fontMetrics.getDescent());
+              Insets insets = (Insets)context.getStyle().get(context, "LafSynth.progressbar.bg.insets");
+              if (insets == null) {
+                insets = new Insets(0, 0, 0, 0);
+              }
+              if (jProgressBar.getOrientation() == 0 && rectangle2.y >= insets.top || jProgressBar.getOrientation() == 1 && rectangle2.x >= insets.left) {
+                graphics.setColor(new Color(0, 38, 100));
+                graphics.fillRect(rectangle2.x, rectangle2.y, rectangle2.width, rectangle2.height);
+              }
+            }
+            catch (Exception exception) {
+              // empty catch block
+            }
+            method.setAccessible(true);
+            method.invoke(jProgressBar.getUI(), context, graphics, string);
+            method.setAccessible(false);
+          }
+          catch (Exception exception) {
+            exception.printStackTrace();
+          }
+        }
+      }
+    }
+  }
+
+  @Override
+  public void paintProgressBarBackground(SynthContext context, Graphics graphics, int x, int y, int w, int h) {
+    Graphics2D graphics2D = (Graphics2D)graphics.create();
+    ImageIcon imageIcon = (ImageIcon)context.getStyle().getIcon(context, "LafSynth.progressbar.background.image");
+    Insets insets = (Insets)context.getStyle().get(context, "LafSynth.progressbar.bg.insets");
+    if (imageIcon != null) {
+      LafSynthGraphicsUtils.drawImageWith9Grids(graphics, imageIcon.getImage(), x, y, (x + w), (y + h), (insets == null ? new Insets(0, 0, 0, 0) : insets), (boolean)true);
+    } else {
+      UIDefaults uIDefaults = UIManager.getDefaults();
+       Color color = uIDefaults.getColor("LafSynth.progressbar.background.color");
+      if (color != null) {
+        graphics2D.setColor(color);
+        graphics2D.fillRect(x, y, w, h);
+      }
+    }
+    JProgressBar progressBar = (JProgressBar) context.getComponent();
+    ImageIcon image = (ImageIcon)context.getStyle().getIcon(context, "LafSynth.progressbar.indication.image");
+    if (image != null && w > 0 && h > 0) {
+      int iconWidth = image.getIconWidth();
+      int iconHeight = image.getIconHeight();
+      if (progressBar.getOrientation() == JProgressBar.HORIZONTAL) {
+        graphics2D.setPaint(new Color(0, 0, 0, 130));
+        graphics2D.drawLine((x + w) / 2 - 1, y + iconHeight / 2, (x + w) / 2 - 1, y + h - iconHeight / 2);
+        graphics2D.setPaint(new Color(255, 255, 255, 130));
+        graphics2D.drawLine((x + w) / 2 + 1, y + iconHeight / 2, (x + w) / 2 + 1, y + h - iconHeight / 2);
+        graphics2D.setPaint(new Color(0, 0, 0, 180));
+        graphics2D.drawLine((x + w) / 2, y + iconHeight / 2, (x + w) / 2, y + h - iconHeight / 2);
+      } else {
+        graphics2D.setPaint(new Color(0, 0, 0, 130));
+        graphics2D.drawLine(x + iconWidth / 2, (y + h) / 2 - 1, x + w - iconWidth / 2, (y + h) / 2 - 1);
+        graphics2D.setPaint(new Color(255, 255, 255, 130));
+        graphics2D.drawLine(x + iconWidth / 2, (y + h) / 2 + 1, x + w - iconWidth / 2, (y + h) / 2 + 1);
+        graphics2D.setPaint(new Color(0, 0, 0, 180));
+        graphics2D.drawLine(x + iconWidth / 2, (y + h) / 2, x + w - iconWidth / 2, (y + h) / 2);
+      }
+    }
+  }
+
+  @Override
+  public void paintProgressBarForeground(SynthContext context, Graphics graphics, int x, int y, int w, int h, int orientation) {
+    Graphics2D graphics2D = (Graphics2D)graphics.create();
+    ImageIcon imageIcon = (ImageIcon)context.getStyle().getIcon(context, "LafSynth.progressbar.indication.image");
+    JProgressBar jProgressBar = (JProgressBar)context.getComponent();
+    boolean bl = (context.getComponentState() & 8) != 0;
+    UIDefaults uIDefaults = UIManager.getDefaults();
+    Color color = uIDefaults.getColor("LafSynth.progressbar.line.color");
+    if (color == null) {
+      color = new Color(255, 255, 255, 130);
+    }
+    if (imageIcon != null && w > 0 && h > 0) {
+      int iconWidth = imageIcon.getIconWidth();
+      int iconHeight = imageIcon.getIconHeight();
+      if (0 == orientation) {
+        if (!jProgressBar.isIndeterminate() && w >= iconWidth) {
+          graphics2D.setPaint(color.brighter());
+          graphics2D.drawLine(x + iconWidth / 2, (y + h) / 2 - 1, x + w - iconWidth / 2, (y + h) / 2 - 1);
+          graphics2D.setPaint(color.darker());
+          graphics2D.drawLine(x + iconWidth / 2, (y + h) / 2 + 1, x + w - iconWidth / 2, (y + h) / 2 + 1);
+          graphics2D.setPaint(color);
+          graphics2D.drawLine(x + iconWidth / 2, (y + h) / 2, x + w - iconWidth / 2, (y + h) / 2);
+        }
+        if (!bl) {
+          int n8;
+          int n9 = x + w - iconWidth;
+          if (jProgressBar.isIndeterminate()) {
+            n8 = jProgressBar.getWidth() - w;
+            int n10 = iconWidth / 2 + (jProgressBar.getWidth() - iconWidth) * x / n8;
+            n9 = n10 - iconWidth / 2;
+          }
+          if (n9 >= 0) {
+            n8 = y + (h - iconHeight) / 2;
+            graphics.drawImage(imageIcon.getImage(), n9, n8, n9 + iconWidth, n8 + iconHeight, 0, 0, iconWidth, iconHeight, null);
+          }
+        }
+      } else {
+        if (!jProgressBar.isIndeterminate() && h >= iconHeight) {
+          graphics2D.setPaint(color.brighter());
+          graphics2D.drawLine((x + w) / 2 - 1, y + iconHeight / 2, (x + w) / 2 - 1, y + h - iconHeight / 2);
+          graphics2D.setPaint(color.darker());
+          graphics2D.drawLine((x + w) / 2 + 1, y + iconHeight / 2, (x + w) / 2 + 1, y + h - iconHeight / 2);
+          graphics2D.setPaint(color);
+          graphics2D.drawLine((x + w) / 2, y + iconHeight / 2, (x + w) / 2, y + h - iconHeight / 2);
+        }
+        if (!bl) {
+          int n11 = x + (w - iconWidth) / 2;
+          int n12 = y;
+          if (jProgressBar.isIndeterminate()) {
+            int n13 = jProgressBar.getHeight() - h;
+            int n14 = iconHeight / 2 + (jProgressBar.getHeight() - iconHeight) * y / n13;
+            n12 = n14 - iconHeight / 2;
+          }
+          graphics.drawImage(imageIcon.getImage(), n11, n12, n11 + iconWidth, n12 + iconHeight, 0, 0, iconWidth, iconHeight, null);
+        }
+      }
+    }
+  }
+
 
 }

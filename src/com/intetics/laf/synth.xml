@@ -693,7 +693,6 @@ limitations under the License.
   <style id="toolBarDragWindowStyle">
     <imagePainter method="toolBarDragWindowBackground" path="resource/1204466391828_toolbar_background_enabled.png"
                   sourceInsets="0 0 0 0" paintCenter="true" stretch="true"/>
-
   </style>
   <bind style="toolBarDragWindowStyle" type="region" key="ToolBarDragWindow"/>
 
@@ -704,5 +703,33 @@ limitations under the License.
     <painter idref="painter" method="rootPaneBackground"/>
   </style>
   <bind style="rootPaneStyle" type="region" key="RootPane"/>
+
+  <!--The style for progress bar component.-->
+  <style id="progressBarStyle">
+    <painter idref="painter" method="progressBarForeground"/>
+    <painter idref="painter" method="progressBarBackground"/>
+    <painter idref="painter" method="progressBarBorder"/>
+    <imageIcon id="ProgressbarIndicationImage" path="resource/1204213052578_progressbar_indication.png"/>
+    <property key="LafSynth.progressbar.indication.image" type="idref" value="ProgressbarIndicationImage" default="false"/>
+    <object id="ProgressbarBackgroundColor" idref="background"/>
+    <defaultsProperty key="LafSynth.progressbar.background.color" type="idref" value="ProgressbarBackgroundColor" default="true" />
+    <object id="ProgressBarLineColor" class="java.awt.Color">
+      <int>0</int>
+      <int>38</int>
+      <int>100</int>
+    </object>
+    <defaultsProperty key="LafSynth.progressbar.line.color" type="idref" value="ProgressBarLineColor" default="true" />
+    <imageIcon id="ProgressbarBackgroundImage" path="resource/1235960155687_ProgressBarBg.png"/>
+    <property key="LafSynth.progressbar.background.image" type="idref" value="ProgressbarBackgroundImage" default="false"/>
+    <object id="ProgressbarBgInsets" class="java.awt.Insets">
+      <int>4</int>
+      <int>4</int>
+      <int>4</int>
+      <int>4</int>
+    </object>
+    <property key="LafSynth.progressbar.bg.insets" type="idref" value="ProgressbarBgInsets" default="false"/>
+    <property key="LafSynth.progressbar.indeterminate.paintstring" type="boolean" value="true" default="false"/>
+  </style>
+  <bind style="progressBarStyle" type="region" key="ProgressBar"/>
 
 </synth>
