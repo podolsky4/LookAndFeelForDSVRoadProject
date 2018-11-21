@@ -886,4 +886,18 @@ limitations under the License.
   </style>
   <bind style="popupMenuStyle" type="region" key="PopupMenu"/>
 
+  <!--The style for option pane component.-->
+  <style id="optionPaneStyle">
+    <insets top="10" left="10" bottom="10" right="10"/>
+    <imageIcon id="OptionPaneErrorIcon" path="resource/1230876526015_error.png"/>
+    <imageIcon id="OptionPaneWarningIcon" path="resource/1230876549625_warning.png"/>
+    <imageIcon id="OptionPaneInfoIcon" path="resource/1230876565968_information.png"/>
+    <imageIcon id="OptionPaneQuestionIcon" path="resource/1230876580718_question.png"/>
+    <property key="OptionPane.errorIcon" type="idref" value="OptionPaneErrorIcon" default="false"/>
+    <property key="OptionPane.warningIcon" type="idref" value="OptionPaneWarningIcon" default="false"/>
+    <property key="OptionPane.informationIcon" type="idref" value="OptionPaneInfoIcon" default="false"/>
+    <property key="OptionPane.questionIcon" type="idref" value="OptionPaneQuestionIcon" default="false"/>
+  </style>
+  <bind style="optionPaneStyle" type="region" key="OptionPane"/>
+
 </synth>
