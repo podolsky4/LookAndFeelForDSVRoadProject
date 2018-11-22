@@ -628,15 +628,32 @@ limitations under the License.
   </style>
   <bind style="TableHeaderRendererStyle" type="name" key="TableHeader.renderer"/>
 
-  <!--The style for tree component.-->
-  <style id="treeStyle">
-    <opaque value="false"/>
-    <property key="Tree.leftChildIndent" type="integer" value="10" default="true"/>
-    <property key="Tree.rightChildIndent" type="integer" value="10" default="true"/>
-    <imageIcon id="TreeCollapseIcon" path="resource/1204977613109_tree_cell_collapse.png"/>
-    <property key="Tree.collapsedIcon" type="idref" value="TreeCollapseIcon" default="false"/>
-    <imageIcon id="TreeExpandIcon" path="resource/1204977624531_tree_cell_expand.png"/>
-    <property key="Tree.expandedIcon" type="idref" value="TreeExpandIcon" default="false"/>
+  <!--
+  *******************************************************************************
+  Tree
+  *******************************************************************************
+  -->
+  <style id="tree">
+    <opaque value="true"/>
+    <imageIcon id="treeExpandedIcon" path="resource/treeExpandedIcon.png"/>
+    <imageIcon id="treeCollapsedIcon" path="resource/treeCollapsedIcon.png"/>
+    <!--<imageIcon id="treeLeafIcon" path="resource/treeLeafIcon.png" />
+    <imageIcon id="treeOpenIcon" path="resource/treeOpenIcon.png" />
+    <imageIcon id="treeClosedIcon" path="resource/treeClosedIcon.png" />-->
+
+    <property key="Tree.leftChildIndent" type="integer" value="4"/>
+    <property key="Tree.rightChildIndent" type="integer" value="12"/>
+    <property key="Tree.scrollsHorizontallyAndVertically" type="boolean" value="true"/>
+    <property key="Tree.rowHeight" type="integer" value="-1"/>
+
+    <state>
+      <property key="Tree.expandedIcon" value="treeExpandedIcon"/>
+      <property key="Tree.collapsedIcon" value="treeCollapsedIcon"/>
+      <!--<defaultsProperty key="Tree.leafIcon" type="idref" value="treeLeafIcon"/>
+      <defaultsProperty key="Tree.openIcon" type="idref" value="treeOpenIcon"/>
+      <defaultsProperty key="Tree.closedIcon" type="idref" value="treeClosedIcon"/>-->
+    </state>
+
     <defaultsProperty key="LafSynth.graphicsutils.drawline.arc.width" type="integer" value="0" default="true"/>
     <defaultsProperty key="LafSynth.graphicsutils.drawline.arc.height" type="integer" value="0" default="true"/>
     <object id="TreeLineColor" idref="foreground"/>
@@ -646,24 +663,24 @@ limitations under the License.
       <color type="BACKGROUND" value="#EEEEEE"/>
     </state>
   </style>
-  <bind style="treeStyle" type="region" key="Tree"/>
+  <bind style="tree" type="region" key="Tree"/>
 
   <!--The style for the cell of the tree component.-->
-  <style id="treeCellStyle">
-    <opaque value="true"/>
-    <imageIcon id="TreeFolderCloseIcon" path="resource/1204455288906_tree_folder_close.png"/>
+  <style id="treeCell">
+    <!--<imageIcon id="TreeFolderCloseIcon" path="resource/1204455288906_tree_folder_close.png"/>
     <imageIcon id="TreeFolderOpenIcon" path="resource/1204455296437_tree_folder_open.png"/>
     <imageIcon id="TreeLeafIcon" path="resource/1204397671453_tree_leaf_icon.png"/>
     <defaultsProperty key="Tree.leafIcon" type="idref" value="TreeLeafIcon" default="true"/>
     <defaultsProperty key="Tree.openIcon" type="idref" value="TreeFolderOpenIcon" default="true"/>
-    <defaultsProperty key="Tree.closedIcon" type="idref" value="TreeFolderCloseIcon" default="true"/>
-    <state value="SELECTED">
-      <color type="BACKGROUND" idref="LightBlue"/>
-    </state>
-  </style>
-  <bind style="treeCellStyle" type="region" key="TreeCell"/>
+    <defaultsProperty key="Tree.closedIcon" type="idref" value="TreeFolderCloseIcon" default="true"/>-->
+  <state value="SELECTED">
+    <opaque value="true"/>
+    <color type="BACKGROUND" idref="LightBlue"/>
+  </state>
+</style>
+<bind style="treeCell" type="region" key="TreeCell"/>
 
-  <!--The style for tool bar component.-->
+<!--The style for tool bar component.-->
   <style id="toolBarStyle">
     <imageIcon id="ToolBarHandleIcon" path="resource/1204547880578_toolbar_handle_icon.png"/>
     <property key="ToolBar.handleIcon" type="idref" value="ToolBarHandleIcon" default="false"/>
@@ -731,7 +748,11 @@ limitations under the License.
   </style>
   <bind style="menuBarStyle" type="region" key="MenuBar"/>
 
-  <!--The style for menu.-->
+  <!--
+  *******************************************************************************
+  The style for menu
+  *******************************************************************************
+  -->
   <style id="menuStyle">
     <opaque value="false"/>
     <font name="Arial" size="13" style="BOLD"/>
@@ -754,7 +775,11 @@ limitations under the License.
   </style>
   <bind style="menuStyle" type="region" key="Menu"/>
 
-  <!--The style for menu item.-->
+  <!--
+  *******************************************************************************
+  The style for menu item
+  *******************************************************************************
+  -->
   <style id="menuItemStyle">
     <object id="MenuItemBgColorMouseOver" idref="LightBlue"/>
     <object id="MenuItemBgColorEnabled" idref="background"/>
@@ -876,10 +901,10 @@ limitations under the License.
 
   <!--The style for popup menu.-->
   <style id="popupMenuStyle">
-    <insets top="4" left="4" bottom="10" right="8"/>
-    <imageIcon id="LafSynthPopupMenuBg" path="resource/1227873224531_PopupMenu-Background.png"/>
+    <insets top="4" left="4" bottom="8" right="8"/>
+    <imageIcon id="SynthPopupMenuBg" path="resource/popupMenuBackground.png"/>
     <painter idref="painter" method="popupMenuBackground"/>
-    <property key="LafSynth.popup.menu.bg" type="idref" value="LafSynthPopupMenuBg" default="false"/>
+    <property key="LafSynth.popup.menu.bg" type="idref" value="SynthPopupMenuBg" default="false"/>
   </style>
   <bind style="popupMenuStyle" type="region" key="PopupMenu"/>
 
@@ -989,5 +1014,16 @@ limitations under the License.
     <property key="FileChooser.listViewIcon" type="idref" value="FileChooserListIcon" default="false"/>
   </style>
   <bind style="fileChooserStyle" type="region" key="FileChooser"/>
+
+  <!--
+  *******************************************************************************
+  Viewport
+  *******************************************************************************
+  -->
+  <style id="viewport">
+    <state>
+    </state>
+  </style>
+  <bind style="viewport" type="region" key="Viewport"/>
 
 </synth>
