@@ -75,15 +75,28 @@ limitations under the License.
   <bind style="default" type="region" key=".*"/>
 
   <!--Padding for specified components-->
-  <style id="padding">
-    <insets top="5" right="5" bottom="5" left="5"/>
+  <style id="paddingTextFields">
+    <insets top="3" left="5" right="5" bottom="3"/>
   </style>
-  <bind style="padding" type="region" key="ComboBox"/>
-  <bind style="padding" type="region" key="PasswordField"/>
-  <bind style="padding" type="region" key="TextField"/>
-  <bind style="padding" type="region" key="TextArea"/>
-  <bind style="padding" type="region" key="EditorPane"/>
-  <bind style="padding" type="region" key="Tree"/>
+  <bind style="paddingTextFields" type="region" key="TextField"/>
+  <bind style="paddingTextFields" type="region" key="FormattedTextField"/>
+  <bind style="paddingTextFields" type="region" key="PasswordField"/>
+
+  <style id="paddingTextAreas">
+    <insets top="5" left="5" right="5" bottom="5"/>
+  </style>
+  <bind style="paddingTextAreas" type="region" key="TextArea"/>
+  <bind style="paddingTextAreas" type="region" key="TextPane"/>
+  <bind style="paddingTextAreas" type="region" key="EditorPane"/>
+  <bind style="paddingTextAreas" type="region" key="Tree"/>
+  <bind style="paddingTextAreas" type="region" key="Tooltip"/>
+  <bind style="paddingTextAreas" type="region" key="Table"/>
+
+  <style id="paddingInternalFrame">
+    <insets top="3" left="3" bottom="3" right="3"/>
+  </style>
+  <bind style="paddingInternalFrame" type="region" key="InternalFrame"/>
+  <bind style="paddingInternalFrame" type="region" key="InternalFrameTitlePane"/>
 
   <!--The style for arrow buttons.-->
   <style id="arrowButtonStyle">
@@ -217,7 +230,7 @@ limitations under the License.
   <!--Style for combo box component.-->
   <style id="comboBoxStyle">
     <opaque value="true"/>
-    <insets top="5" left="5" right="5" bottom="5"/>
+    <insets top="0" left="5" right="5" bottom="0"/>
     <state>
       <color value="#F5F5F5" type="BACKGROUND"/>
     </state>
@@ -334,7 +347,8 @@ limitations under the License.
     <defaultsProperty key="LafSynth.scrollpane.bordercolor" type="idref" value="ScrollPaneBorderColor" default="true"/>
     <painter method="scrollPaneBorder" idref="painter"/>
     <state value="DISABLED">
-      <imagePainter method="scrollPaneBorder" path="resource/1263604559077_border_disabled.png" sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
+      <imagePainter method="scrollPaneBorder" path="resource/1263604559077_border_disabled.png"
+                    sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
     </state>
   </style>
   <bind style="scrollPaneStyle" type="region" key="ScrollPane"/>
@@ -370,7 +384,6 @@ limitations under the License.
 
   <!--The style for table component.-->
   <style id="tableStyle">
-    <insets top="5" right="5" bottom="5" left="5"/>
     <property key="Table.rendererUseUIBorder" type="boolean" value="false" default="false"/>
     <object id="TableGridColor" idref="foreground" />
     <property key="Table.gridColor" type="idref" value="TableGridColor" default="false"/>
@@ -393,7 +406,6 @@ limitations under the License.
     <!--<property key="TableHeader.background" type="idref" value="foreground" default="true"/>-->
     <painter method="tableHeaderBackground" idref="painter"/>
     <!--<painter method="tableHeaderBorder" idref="painter"/>-->
-
     <state value="DISABLED">
       <color type="TEXT_FOREGROUND" value="#CCCCCC" />
       <imagePainter method="tableHeaderBackground" path="resource/table_header_bg_disabled.png"
@@ -435,7 +447,6 @@ limitations under the License.
   <!--The style for tool tip.-->
   <style id="toolTipStyle">
     <opaque value="true"/>
-    <insets top="5" left="5" right="5" bottom="5"/>
     <painter method="toolTipBorder" idref="painter"/>
     <state>
       <color type="BACKGROUND" value="#D6E0EE"/>
@@ -450,7 +461,6 @@ limitations under the License.
   <!--The style for text field component.-->
   <style id="textFieldStyle">
     <opaque value="true"/>
-    <insets top="3" left="3" right="3" bottom="3"/>
     <state>
       <imagePainter method="textFieldBorder" path="resource/1263604524327_border_enabled.png"
                     sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
@@ -474,7 +484,6 @@ limitations under the License.
   <!--The style for formatted text field component.-->
   <style id="formattedTextFieldStyle">
     <opaque value="true"/>
-    <insets top="3" left="3" right="3" bottom="3"/>
     <state>
       <imagePainter method="formattedTextFieldBorder" path="resource/1263604524327_border_enabled.png"
                     sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
@@ -498,7 +507,6 @@ limitations under the License.
   <!--The style for password field.-->
   <style id="passwordFieldStyle">
     <opaque value="true"/>
-    <insets top="3" left="3" right="3" bottom="3"/>
     <state>
       <imagePainter method="passwordFieldBorder" path="resource/1263604524327_border_enabled.png"
                     sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
@@ -522,7 +530,6 @@ limitations under the License.
   <!--The style for text area component.-->
   <style id="textAreaStyle">
     <opaque value="true"/>
-    <insets top="3" left="3" right="3" bottom="3"/>
     <state>
       <color type="BACKGROUND" value="#FFFFFF"/>
       <color type="TEXT_FOREGROUND" value="#000000"/>
@@ -687,18 +694,18 @@ limitations under the License.
     <painter idref="painter" method="progressBarForeground"/>
     <painter idref="painter" method="progressBarBackground"/>
     <painter idref="painter" method="progressBarBorder"/>
-    <imageIcon id="ProgressbarIndicationImage" path="resource/1204213052578_progressbar_indication.png"/>
-    <property key="LafSynth.progressbar.indication.image" type="idref" value="ProgressbarIndicationImage" default="false"/>
-    <object id="ProgressbarBackgroundColor" idref="background"/>
-    <defaultsProperty key="LafSynth.progressbar.background.color" type="idref" value="ProgressbarBackgroundColor" default="true" />
+    <imageIcon id="ProgressbarImage" path="resource/1204213052578_progressbar_indication.png"/>
+    <property key="LafSynth.progressbar.indication.image" type="idref" value="ProgressbarImage" default="false"/>
+    <object id="ProgressbarBgColor" idref="background"/>
+    <defaultsProperty key="LafSynth.progressbar.background.color" type="idref" value="ProgressbarBgColor" default="true"/>
     <object id="ProgressBarLineColor" class="java.awt.Color">
       <int>0</int>
       <int>38</int>
       <int>100</int>
     </object>
-    <defaultsProperty key="LafSynth.progressbar.line.color" type="idref" value="ProgressBarLineColor" default="true" />
-    <imageIcon id="ProgressbarBackgroundImage" path="resource/1235960155687_ProgressBarBg.png"/>
-    <property key="LafSynth.progressbar.background.image" type="idref" value="ProgressbarBackgroundImage" default="false"/>
+    <defaultsProperty key="LafSynth.progressbar.line.color" type="idref" value="ProgressBarLineColor" default="true"/>
+    <imageIcon id="ProgressbarBgImage" path="resource/1235960155687_ProgressBarBg.png"/>
+    <property key="LafSynth.progressbar.background.image" type="idref" value="ProgressbarBgImage" default="false"/>
     <object id="ProgressbarBgInsets" class="java.awt.Insets">
       <int>4</int>
       <int>4</int>
@@ -713,9 +720,11 @@ limitations under the License.
   <!--The style for menu bar.-->
   <style id="menuBarStyle">
     <insets top="3" left="3" bottom="3" right="3"/>
-    <imagePainter method="menuBarBackground" path="resource/1204812856281_menubar_bg_enabled.png" sourceInsets="2 2 2 2" paintCenter="true" stretch="true"/>
+    <imagePainter method="menuBarBackground" path="resource/1204812856281_menubar_bg_enabled.png"
+                  sourceInsets="2 2 2 2" paintCenter="true" stretch="true"/>
     <state value="DISABLED">
-      <imagePainter method="menuBarBackground" path="resource/1204812879093_menubar_bg_disabled.png" sourceInsets="2 2 2 2" paintCenter="true" stretch="true"/>
+      <imagePainter method="menuBarBackground" path="resource/1204812879093_menubar_bg_disabled.png"
+                    sourceInsets="2 2 2 2" paintCenter="true" stretch="true"/>
     </state>
   </style>
   <bind style="menuBarStyle" type="region" key="MenuBar"/>
@@ -723,7 +732,7 @@ limitations under the License.
   <!--The style for menu.-->
   <style id="menuStyle">
     <!--<opaque value="true"/>-->
-    <insets top="4" left="0" bottom="4" right="0"/>
+    <insets top="4" left="4" bottom="4" right="4"/>
     <imageIcon id="MenuArrowIcon" path="resource/1204475729593_arrow_right_over.png"/>
     <property key="Menu.arrowIcon" type="idref" value="MenuArrowIcon" default="false"/>
     <object id="MenuBgColorNormal" class="java.awt.Color">
@@ -747,14 +756,15 @@ limitations under the License.
     </state>
     <state value="SELECTED">
       <color value="#002664" type="TEXT_FOREGROUND"/>
-      <imagePainter method="menuBackground" path="resource/1291547124749_Menubar_Selected_Bg.png" sourceInsets="2 2 2 2" paintCenter="true" stretch="true"/>
+      <imagePainter method="menuBackground" path="resource/1291547124749_Menubar_Selected_Bg.png"
+                    sourceInsets="2 2 2 2" paintCenter="true" stretch="true"/>
     </state>
   </style>
   <bind style="menuStyle" type="region" key="Menu"/>
 
   <!--The style for menu item.-->
   <style id="menuItemStyle">
-    <insets top="4" left="0" bottom="4" right="0"/>
+    <insets top="4" left="4" bottom="4" right="4"/>
     <state>
       <color value="#000000" type="TEXT_FOREGROUND"/>
       <imagePainter method="menuItemBackground" path="resource/1204817049984_menu_item_bg_enabled.png"
@@ -895,7 +905,6 @@ limitations under the License.
 
   <!--The style for internal frame.-->
   <style id="internalFrameStyle">
-    <insets top="3" left="3" bottom="3" right="3"/>
     <imageIcon id="InternalFrameIcon" path="resource/1204292723703_internal_frame_icon.png"/>
     <property key="InternalFrame.icon" type="idref" value="InternalFrameIcon" default="false"/>
     <defaultsProperty key="LafSynth.internalframe.main.color" type="idref" value="InternalFrameMainColor" default="true"/>
@@ -906,7 +915,6 @@ limitations under the License.
 
   <!--The style for the title pane of internal frame.-->
   <style id="internalFrameTitlePaneStyle">
-    <insets top="2" left="2" bottom="2" right="2"/>
     <property key="InternalFrameTitlePane.titleSpacing" type="integer" value="5" default="false"/>
     <property key="InternalFrameTitlePane.maxFrameIconSize" type="dimension" value="24 24" default="false"/>
     <imageIcon id="InternalFrameMaximizeButtonIcon" path="resource/1204294372812_internal_frame_max_icon.png"/>
@@ -924,29 +932,16 @@ limitations under the License.
   <bind style="internalFrameTitlePaneStyle" type="region" key="InternalFrameTitlePane"/>
 
   <!--Button styles for internal frame-->
-  <style id="InternalFrameCloseButton">
+  <style id="InternalFrameButton">
     <opaque value="true"/>
     <state>
       <color idref="InternalFrameMainColor" type="BACKGROUND"/>
     </state>
   </style>
-  <bind style="InternalFrameCloseButton" type="name" key="InternalFrameTitlePane.closeButton"/>
 
-  <style id="InternalFrameMinimizeButton">
-    <opaque value="true"/>
-    <state>
-      <color idref="InternalFrameMainColor" type="BACKGROUND"/>
-    </state>
-  </style>
-  <bind style="InternalFrameMinimizeButton" type="name" key="InternalFrameTitlePane.iconifyButton"/>
-
-  <style id="InternalFrameMaximizeButton">
-    <opaque value="true"/>
-    <state>
-      <color idref="InternalFrameMainColor" type="BACKGROUND"/>
-    </state>
-  </style>
-  <bind style="InternalFrameMaximizeButton" type="name" key="InternalFrameTitlePane.maximizeButton"/>
+  <bind style="InternalFrameButton" type="name" key="InternalFrameTitlePane.closeButton"/>
+  <bind style="InternalFrameButton" type="name" key="InternalFrameTitlePane.iconifyButton"/>
+  <bind style="InternalFrameButton" type="name" key="InternalFrameTitlePane.maximizeButton"/>
 
   <!--The style for desktop icon (iconified internal frame).-->
   <style id="desktopIconStyle">
