@@ -960,4 +960,46 @@ limitations under the License.
   </style>
   <bind style="desktopPaneStyle" type="region" key="DesktopPane"/>
 
+  <!--The style for color chooser component.-->
+  <style id="colorChooserStyle">
+    <!--describe your styles here   -->
+  </style>
+  <bind style="colorChooserStyle" type="region" key="ColorChooser"/>
+
+  <!--TThe style for panel component..-->
+  <style id="panelStyle">
+    <!--describe your styles here   -->
+  </style>
+  <bind style="panelStyle" type="region" key="Panel"/>
+
+  <!--The style for file chooser component.-->
+  <style id="fileChooserStyle">
+    <insets top="10" left="10" bottom="10" right="10"/>
+    <imageIcon id="FileChooserCancelIcon" path="resource/1204902668718_filechooser_cancel_icon.png"/>
+    <property key="FileChooser.cancelIcon" type="idref" value="FileChooserCancelIcon" default="false"/>
+    <imageIcon id="FileChooserOkIcon" path="resource/1204902652625_filechooser_ok_icon.png"/>
+    <property key="FileChooser.okIcon" type="idref" value="FileChooserOkIcon" default="false"/>
+    <imageIcon id="FileChooserFolderIcon" path="resource/1204876252109_filechooser_folder_icon.png"/>
+    <property key="FileView.directoryIcon" type="idref" value="FileChooserFolderIcon" default="false"/>
+    <imageIcon id="FileChooserFileIcon" path="resource/1204876252109_filechooser_folder_icon.png"/>
+    <property key="FileView.fileIcon" type="idref" value="FileChooserFileIcon" default="false"/>
+    <imageIcon id="FileChooserComputerIcon" path="resource/1204902960359_filechooser_computer_icon.png"/>
+    <property key="FileView.computerIcon" type="idref" value="FileChooserComputerIcon" default="false"/>
+    <imageIcon id="FileChooserHarddiskIcon" path="resource/1204902960359_filechooser_computer_icon.png"/>
+    <property key="FileView.hardDriveIcon" type="idref" value="FileChooserHarddiskIcon" default="false"/>
+    <imageIcon id="FileChooserFloppydriverIcon" path="resource/1204905250468_filechooser_floppydriver_icon.png"/>
+    <property key="FileView.floppyDriveIcon" type="idref" value="FileChooserFloppydriverIcon" default="false"/>
+    <imageIcon id="FileChooserNewFolderIcon" path="resource/1204903127984_filechooser_newfolder_icon.png"/>
+    <property key="FileChooser.newFolderIcon" type="idref" value="FileChooserNewFolderIcon" default="false"/>
+    <imageIcon id="FileChooserUpperFolderIcon" path="resource/1204903072437_filechooser_upperfolder_icon.png"/>
+    <property key="FileChooser.upFolderIcon" type="idref" value="FileChooserUpperFolderIcon" default="false"/>
+    <imageIcon id="FileChooserHomeIcon" path="resource/1204904952625_filechooser_home_icon.png"/>
+    <property key="FileChooser.homeFolderIcon" type="idref" value="FileChooserHomeIcon" default="false"/>
+    <imageIcon id="FileChooserDetailsIcon" path="resource/1204905941328_filechooser_details_icon.png"/>
+    <property key="FileChooser.detailsViewIcon" type="idref" value="FileChooserDetailsIcon" default="false"/>
+    <imageIcon id="FileChooserListIcon" path="resource/1204905931656_filechooser_list_icon.png"/>
+    <property key="FileChooser.listViewIcon" type="idref" value="FileChooserListIcon" default="false"/>
+  </style>
+  <bind style="fileChooserStyle" type="region" key="FileChooser"/>
+
 </synth>
