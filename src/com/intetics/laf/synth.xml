@@ -47,6 +47,11 @@ limitations under the License.
     <int>238</int>
     <int>238</int>
   </object>
+  <object id="InternalFrameMainColor" class="javax.swing.plaf.ColorUIResource">
+    <int>190</int>
+    <int>160</int>
+    <int>140</int>
+  </object>
   <object id="painter" class="com.intetics.laf.painter.SkinSynthPainter"/>
   <object id="graphicsUtils" class="com.intetics.laf.utils.LafSynthGraphicsUtils"/>
 
@@ -80,13 +85,6 @@ limitations under the License.
   <bind style="padding" type="region" key="EditorPane"/>
   <bind style="padding" type="region" key="Tree"/>
 
-  <!-- Text field style -->
-  <style id="textfield">
-    // describe colors, fonts, and states
-  </style>
-  <bind style="textfield" type="region" key="Textfield"/>
-
-
   <!--The style for arrow buttons.-->
   <style id="arrowButtonStyle">
     <property key="ArrowButton.size" type="integer" value="14" default="false"/>
@@ -94,7 +92,6 @@ limitations under the License.
     <painter idref="painter" method="arrowButtonForeground" direction="west"/>
     <painter idref="painter" method="arrowButtonForeground" direction="south"/>
     <painter idref="painter" method="arrowButtonForeground" direction="east"/>
-
     <state>
       <imageIcon id="ArrowUpEnabled" path="resource/1204972099671_arrow_up_normal.png"/>
       <property key="LafSynth.arrow.up.enabled" type="idref" value="ArrowUpEnabled" default="false"/>
@@ -105,7 +102,6 @@ limitations under the License.
       <imageIcon id="ArrowRightEnabled" path="resource/1204972131593_arrow_right_normal.png"/>
       <property key="LafSynth.arrow.right.enabled" type="idref" value="ArrowRightEnabled" default="false"/>
     </state>
-
     <state value="MOUSE_OVER">
       <imageIcon id="ArrowUpMouseOver" path="resource/1204972154296_arrow_up_over.png"/>
       <property key="LafSynth.arrow.up.mouseover" type="idref" value="ArrowUpMouseOver" default="false"/>
@@ -116,7 +112,6 @@ limitations under the License.
       <imageIcon id="ArrowRightMouseOver" path="resource/1204972188046_arrow_right_over.png"/>
       <property key="LafSynth.arrow.right.mouseover" type="idref" value="ArrowRightMouseOver" default="false"/>
     </state>
-
     <state value="PRESSED">
       <imageIcon id="ArrowUpPressed" path="resource/1204972222593_arrow_up_press.png"/>
       <property key="LafSynth.arrow.up.pressed" type="idref" value="ArrowUpPressed" default="false"/>
@@ -127,7 +122,6 @@ limitations under the License.
       <imageIcon id="ArrowRightPressed" path="resource/1204972243953_arrow_right_press.png"/>
       <property key="LafSynth.arrow.right.pressed" type="idref" value="ArrowRightPressed" default="false"/>
     </state>
-
     <state value="DISABLED">
       <imageIcon id="ArrowUpDisabled" path="resource/1204972279156_arrow_up_disable.png"/>
       <property key="LafSynth.arrow.up.disabled" type="idref" value="ArrowUpDisabled" default="false"/>
@@ -138,7 +132,6 @@ limitations under the License.
       <imageIcon id="ArrowRightDisabled" path="resource/1204972301171_arrow_right_disable.png"/>
       <property key="LafSynth.arrow.right.disabled" type="idref" value="ArrowRightDisabled" default="false"/>
     </state>
-
   </style>
   <bind style="arrowButtonStyle" type="region" key="ArrowButton"/>
 
@@ -899,5 +892,72 @@ limitations under the License.
     <property key="OptionPane.questionIcon" type="idref" value="OptionPaneQuestionIcon" default="false"/>
   </style>
   <bind style="optionPaneStyle" type="region" key="OptionPane"/>
+
+  <!--The style for internal frame.-->
+  <style id="internalFrameStyle">
+    <insets top="3" left="3" bottom="3" right="3"/>
+    <imageIcon id="InternalFrameIcon" path="resource/1204292723703_internal_frame_icon.png"/>
+    <property key="InternalFrame.icon" type="idref" value="InternalFrameIcon" default="false"/>
+    <defaultsProperty key="LafSynth.internalframe.main.color" type="idref" value="InternalFrameMainColor" default="true"/>
+    <painter idref="painter" method="internalFrameBackground"/>
+    <painter idref="painter" method="internalFrameBorder"/>
+  </style>
+  <bind style="internalFrameStyle" type="region" key="InternalFrame"/>
+
+  <!--The style for the title pane of internal frame.-->
+  <style id="internalFrameTitlePaneStyle">
+    <insets top="2" left="2" bottom="2" right="2"/>
+    <property key="InternalFrameTitlePane.titleSpacing" type="integer" value="5" default="false"/>
+    <property key="InternalFrameTitlePane.maxFrameIconSize" type="dimension" value="24 24" default="false"/>
+    <imageIcon id="InternalFrameMaximizeButtonIcon" path="resource/1204294372812_internal_frame_max_icon.png"/>
+    <property key="InternalFrameTitlePane.maximizeIcon" type="idref" value="InternalFrameMaximizeButtonIcon" default="false"/>
+    <imageIcon id="InternalFrameCloseButtonIcon" path="resource/1204294470625_internal_frame_close_icon.png"/>
+    <property key="InternalFrameTitlePane.closeIcon" type="idref" value="InternalFrameCloseButtonIcon" default="false"/>
+    <imageIcon id="InternalFrameRestoreButtonIcon" path="resource/1204295742281_internal_frame_restore_icon.png"/>
+    <property key="InternalFrameTitlePane.minimizeIcon" type="idref" value="InternalFrameRestoreButtonIcon" default="false"/>
+    <imageIcon id="InternalFrameMinimizeButtonIcon" path="resource/1204296642906_internal_frame_min_icon.png"/>
+    <property key="InternalFrameTitlePane.iconifyIcon" type="idref" value="InternalFrameMinimizeButtonIcon" default="false"/>
+    <painter idref="painter" method="internalFrameTitlePaneBackground"/>
+    <painter idref="painter" method="internalFrameTitlePaneBorder"/>
+    <defaultsProperty key="LafSynth.internalframe.main.color" type="idref" value="InternalFrameMainColor" default="true"/>
+  </style>
+  <bind style="internalFrameTitlePaneStyle" type="region" key="InternalFrameTitlePane"/>
+
+  <!--Button styles for internal frame-->
+  <style id="InternalFrameCloseButton">
+    <opaque value="true"/>
+    <state>
+      <color idref="InternalFrameMainColor" type="BACKGROUND"/>
+    </state>
+  </style>
+  <bind style="InternalFrameCloseButton" type="name" key="InternalFrameTitlePane.closeButton"/>
+
+  <style id="InternalFrameMinimizeButton">
+    <opaque value="true"/>
+    <state>
+      <color idref="InternalFrameMainColor" type="BACKGROUND"/>
+    </state>
+  </style>
+  <bind style="InternalFrameMinimizeButton" type="name" key="InternalFrameTitlePane.iconifyButton"/>
+
+  <style id="InternalFrameMaximizeButton">
+    <opaque value="true"/>
+    <state>
+      <color idref="InternalFrameMainColor" type="BACKGROUND"/>
+    </state>
+  </style>
+  <bind style="InternalFrameMaximizeButton" type="name" key="InternalFrameTitlePane.maximizeButton"/>
+
+  <!--The style for desktop icon (iconified internal frame).-->
+  <style id="desktopIconStyle">
+     <!--describe your styles here   -->
+  </style>
+  <bind style="desktopIconStyle" type="region" key="DesktopIcon"/>
+
+  <!--The style for desktop pane (the internal frame container).-->
+  <style id="desktopPaneStyle">
+    <!--describe your styles here   -->
+  </style>
+  <bind style="desktopPaneStyle" type="region" key="DesktopPane"/>
 
 </synth>

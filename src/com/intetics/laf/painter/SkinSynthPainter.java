@@ -454,5 +454,67 @@ public class SkinSynthPainter extends SynthPainter {
     }
   }
 
+  @Override
+  public void paintInternalFrameBackground(SynthContext context, Graphics graphics, int x, int y, int w, int h) {
+    UIDefaults uIDefaults = UIManager.getDefaults();
+    Color color = uIDefaults.getColor("LafSynth.internalframe.main.color");
+    if (color == null) {
+      color = Color.GRAY;
+    }
+    graphics.setColor(color);
+    graphics.fillRect(x, y, w, h);
+  }
 
+  @Override
+  public void paintInternalFrameBorder(SynthContext context, Graphics graphics, int x, int y, int w, int h) {
+    UIDefaults uIDefaults = UIManager.getDefaults();
+    Color color = uIDefaults.getColor("LafSynth.internalframe.main.color");
+    if (color == null) {
+      color = Color.GRAY;
+    }
+    graphics.setColor(color.darker());
+    graphics.drawLine(x, y + 1, x, h - 2);
+    graphics.drawLine(x + w - 1, y + 1, x + w - 1, h - 2);
+    graphics.drawLine(x + 1, y, x + w - 2, y);
+    graphics.drawLine(x + 1, y + h - 1, x + w - 2, y + h - 1);
+    graphics.setColor(color.brighter());
+    graphics.drawLine(x + 2, y + 3, x + 2, h - 4);
+    graphics.drawLine(x + w - 3, y + 3, x + w - 3, h - 4);
+    graphics.drawLine(x + 3, y + 2, x + w - 4, y + 2);
+    graphics.drawLine(x + 3, y + h - 3, x + w - 4, y + h - 3);
+  }
+
+  @Override
+  public void paintInternalFrameTitlePaneBorder(SynthContext context, Graphics graphics, int x, int y, int w, int h) {
+    UIDefaults uIDefaults = UIManager.getDefaults();
+    Color color = uIDefaults.getColor("LafSynth.internalframe.main.color");
+    if (color == null) {
+      color = Color.GRAY;
+    }
+    graphics.setColor(color.darker());
+    graphics.drawLine(x, y + h - 1, x + w, y + h - 1);
+  }
+
+  @Override
+  public void paintInternalFrameTitlePaneBackground(SynthContext context, Graphics graphics, int x, int y, int w, int h) {
+    this.paintInternalFrameBackground(context, graphics, x, y, w, h);
+    String string = System.getProperty("java.version");
+    if (string.compareTo("1.6") < 0) {
+      Container container;
+      JInternalFrame jInternalFrame;
+      int n5 = context.getStyle().getInt(context, "InternalFrameTitlePane.titleSpacing", 0);
+      for (container = context.getComponent(); !(container instanceof JInternalFrame) && container != null; container = container.getParent()) {
+      }
+      if (container instanceof JInternalFrame && (jInternalFrame = (JInternalFrame)container).getTitle() != null) {
+        graphics.setColor(Color.BLACK);
+        graphics.drawString(jInternalFrame.getTitle(), 20 + n5, 15);
+      }
+      for (container = context.getComponent(); !(container instanceof JInternalFrame.JDesktopIcon) && container != null; container = container.getParent()) {
+      }
+      if (container instanceof JInternalFrame.JDesktopIcon && (jInternalFrame = ((JInternalFrame.JDesktopIcon)container).getInternalFrame()).getTitle() != null) {
+        graphics.setColor(Color.BLACK);
+        graphics.drawString(jInternalFrame.getTitle(), 20 + n5, 15);
+      }
+    }
+  }
 }

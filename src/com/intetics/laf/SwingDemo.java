@@ -135,7 +135,7 @@ public class SwingDemo extends JFrame{
     menuBar.add(menu);
 
     //Set the menu bar and add the label to the content pane.
-    String[] data = {"Swing", "JavaFX", "Java", "Spring"};
+    String[] data = {"Swing", "JavaFX", "Java", "Spring", "Hibernate", "JUnit", "Mockito"};
     list = new JList(data); //data has type Object[]
     list.setPreferredSize(new Dimension(100, 200));
     list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -144,11 +144,11 @@ public class SwingDemo extends JFrame{
     JScrollPane listScroller = new JScrollPane(list);
     listScroller.setPreferredSize(new Dimension(120, 100));
     rootPane.add(listScroller);
-    String[] petStrings = { "Bird", "Cat", "Dog", "Rabbit", "Pig", "Horse", "Chicken" };
+    String[] petStrings = { "Bird", "Cat", "Dog", "Rabbit", "Pig", "Horse", "Chicken", "Cow", "Goat" };
     //Create the combo box, select item at index 4.
     //Indices start at 0, so 4 specifies the pig.
     comboBox = new JComboBox<>(petStrings);
-    comboBox.setMaximumRowCount(4);
+    comboBox.setMaximumRowCount(5);
     comboBox.setSelectedIndex(0);
     rootPane.add(comboBox);
     testBtn = new JButton("Test 204");
