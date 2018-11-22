@@ -441,6 +441,17 @@ public class SkinSynthPainter extends SynthPainter {
   }
 
   @Override
+  public void paintMenuItemBackground(SynthContext context, Graphics g, int x, int y, int w, int h) {
+    UIDefaults uIDefaults = UIManager.getDefaults();
+    Color color = uIDefaults.getColor("LafSynth.menuitem.bgcolor");
+    if (color == null) {
+      color = Color.WHITE;
+    }
+    g.setColor(color);
+    g.fillRect(x, y, w, h);
+  }
+
+  @Override
   public void paintPopupMenuBackground(SynthContext context, Graphics graphics, int x, int y, int w, int h) {
     ImageIcon imageIcon;
     JPopupMenu jPopupMenu = (JPopupMenu)context.getComponent();

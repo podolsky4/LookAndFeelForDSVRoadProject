@@ -14,7 +14,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
  -->
-
 <synth>
 
   <object class="javax.swing.plaf.ColorUIResource" id="foreground">
@@ -97,6 +96,14 @@ limitations under the License.
   </style>
   <bind style="paddingInternalFrame" type="region" key="InternalFrame"/>
   <bind style="paddingInternalFrame" type="region" key="InternalFrameTitlePane"/>
+
+  <style id="paddingMenuItem">
+    <insets top="4" left="0" bottom="4" right="0"/>
+  </style>
+  <bind style="paddingMenuItem" type="region" key="MenuItem"/>
+  <bind style="paddingMenuItem" type="region" key="CheckBoxMenuItem"/>
+  <bind style="paddingMenuItem" type="region" key="RadioButtonMenuItem"/>
+
 
   <!--The style for arrow buttons.-->
   <style id="arrowButtonStyle">
@@ -663,7 +670,6 @@ limitations under the License.
     <object id="ToolBarBgColor" idref="background"/>
     <defaultsProperty key="LafSynth.toolbar.bgcolor" type="idref" value="ToolBarBgColor" default="true"/>
     <painter idref="painter" method="toolBarBackground"/>
-
   </style>
   <bind style="toolBarStyle" type="region" key="ToolBar"/>
 
@@ -698,11 +704,7 @@ limitations under the License.
     <property key="LafSynth.progressbar.indication.image" type="idref" value="ProgressbarImage" default="false"/>
     <object id="ProgressbarBgColor" idref="background"/>
     <defaultsProperty key="LafSynth.progressbar.background.color" type="idref" value="ProgressbarBgColor" default="true"/>
-    <object id="ProgressBarLineColor" class="java.awt.Color">
-      <int>0</int>
-      <int>38</int>
-      <int>100</int>
-    </object>
+    <object id="ProgressBarLineColor" idref="foreground"/>
     <defaultsProperty key="LafSynth.progressbar.line.color" type="idref" value="ProgressBarLineColor" default="true"/>
     <imageIcon id="ProgressbarBgImage" path="resource/1235960155687_ProgressBarBg.png"/>
     <property key="LafSynth.progressbar.background.image" type="idref" value="ProgressbarBgImage" default="false"/>
@@ -719,81 +721,74 @@ limitations under the License.
 
   <!--The style for menu bar.-->
   <style id="menuBarStyle">
-    <insets top="3" left="3" bottom="3" right="3"/>
-    <imagePainter method="menuBarBackground" path="resource/1204812856281_menubar_bg_enabled.png"
-                  sourceInsets="2 2 2 2" paintCenter="true" stretch="true"/>
+    <opaque value="true"/>
+    <state>
+      <color value="#F5F5F5" type="BACKGROUND"/>
+    </state>
     <state value="DISABLED">
-      <imagePainter method="menuBarBackground" path="resource/1204812879093_menubar_bg_disabled.png"
-                    sourceInsets="2 2 2 2" paintCenter="true" stretch="true"/>
+      <color value="#EEEEEE" type="BACKGROUND"/>
     </state>
   </style>
   <bind style="menuBarStyle" type="region" key="MenuBar"/>
 
   <!--The style for menu.-->
   <style id="menuStyle">
-    <!--<opaque value="true"/>-->
-    <insets top="4" left="4" bottom="4" right="4"/>
+    <opaque value="false"/>
+    <font name="Arial" size="13" style="BOLD"/>
+    <insets top="4" left="10" bottom="4" right="10"/>
     <imageIcon id="MenuArrowIcon" path="resource/1204475729593_arrow_right_over.png"/>
     <property key="Menu.arrowIcon" type="idref" value="MenuArrowIcon" default="false"/>
-    <object id="MenuBgColorNormal" class="java.awt.Color">
-      <int>241</int>
-      <int>233</int>
-      <int>217</int>
-    </object>
-    <object id="MenuBgColorSelected" class="java.awt.Color">
-      <int>255</int>
-      <int>240</int>
-      <int>210</int>
-    </object>
+    <object id="MenuBgColorNormal" idref="background"/>
+    <object id="MenuBgColorSelected" idref="LightBlue"/>
     <defaultsProperty key="LafSynth.menu.bg.color.normal" type="idref" value="MenuBgColorNormal" default="true" />
     <defaultsProperty key="LafSynth.menu.bg.color.selected" type="idref" value="MenuBgColorSelected" default="true" />
-    <painter idref="painter" method="#menuBackground"/>
+    <painter idref="painter" method="menuBackground"/>
     <state>
-      <color value="#000000" type="TEXT_FOREGROUND"/>
+      <!--<color value="#002664" type="TEXT_FOREGROUND"/>-->
+      <!--<color value="#FFFFFF" type="BACKGROUND"/>-->
     </state>
     <state value="DISABLED">
       <color value="#999999" type="TEXT_FOREGROUND"/>
     </state>
-    <state value="SELECTED">
-      <color value="#002664" type="TEXT_FOREGROUND"/>
-      <imagePainter method="menuBackground" path="resource/1291547124749_Menubar_Selected_Bg.png"
-                    sourceInsets="2 2 2 2" paintCenter="true" stretch="true"/>
-    </state>
+
   </style>
   <bind style="menuStyle" type="region" key="Menu"/>
 
   <!--The style for menu item.-->
   <style id="menuItemStyle">
-    <insets top="4" left="4" bottom="4" right="4"/>
+    <object id="MenuItemBgColorMouseOver" idref="LightBlue"/>
+    <object id="MenuItemBgColorEnabled" idref="background"/>
+    <object id="MenuItemBgColorDisabled" idref="Gray"/>
+    <!--<defaultsProperty key="LafSynth.menuitem.bg.enabled" type="idref" value="MenuItemBgColorEnabled" default="false" />-->
+    <!--<defaultsProperty key="LafSynth.menuitem.bg.mouseover" type="idref" value="MenuItemBgColorMouseOver" default="false" />-->
+    <!--<defaultsProperty key="LafSynth.menuitem.bg.disabled" type="idref" value="MenuItemBgColorDisabled" default="false" />-->
     <state>
       <color value="#000000" type="TEXT_FOREGROUND"/>
-      <imagePainter method="menuItemBackground" path="resource/1204817049984_menu_item_bg_enabled.png"
-                    sourceInsets="0 0 0 0" paintCenter="true" stretch="true"/>
+      <!--<property key="LafSynth.menuitem.bg" type="idref" value="MenuItemBgColorEnabled" default="false" />-->
     </state>
     <state value="MOUSE_OVER">
-      <color value="#002664" type="TEXT_FOREGROUND"/>
-      <imagePainter method="menuItemBackground" path="resource/1264231987812_MenuItem_Selected.png"
-                    sourceInsets="0 0 0 0" paintCenter="true" stretch="true"/>
+      <color idref="foreground" type="TEXT_FOREGROUND"/>
+      <defaultsProperty key="LafSynth.menuitem.bgcolor" type="idref" value="MenuItemBgColorMouseOver" default="false" />
+      <painter method="menuItemBackground" idref="painter"/>
     </state>
-    <state value="DISABLED">
+    <!--<state value="DISABLED">
       <color value="#999999" type="TEXT_FOREGROUND"/>
       <imagePainter method="menuItemBackground" path="resource/1204817081656_menu_item_bg_disabled.png"
                     sourceInsets="0 0 0 0" paintCenter="true" stretch="true"/>
-    </state>
+    </state>-->
   </style>
   <bind style="menuItemStyle" type="region" key="MenuItem"/>
 
   <!--The style for menu item accelerator.-->
   <style id="menuItemAcceleratorStyle">
     <state>
-      <color value="#770000" type="TEXT_FOREGROUND"/>
+      <!--describe your styles here-->
     </state>
   </style>
   <bind style="menuItemAcceleratorStyle" type="region" key="MenuItemAccelerator"/>
 
   <!--The style for check box menu item.-->
   <style id="checkBoxMenuItemStyle">
-    <insets top="4" left="0" bottom="4" right="0"/>
     <imageIcon id="CheckBoxMenuItemCheckIconEnabled" path="resource/1252405736906_Checkbox_MenuItem_None.png"/>
     <imageIcon id="CheckBoxMenuItemCheckIconMouseOver" path="resource/1252405890781_Checkbox_MenuItem_Hover.png"/>
     <imageIcon id="CheckBoxMenuItemCheckIconSelected" path="resource/1252405906156_Checkbox_MenuItem_Selected.png"/>
@@ -831,7 +826,6 @@ limitations under the License.
 
   <!--The style for radio button menu item.-->
   <style id="radioButtonMenuItemStyle">
-    <insets top="4" left="0" bottom="4" right="0"/>
     <imageIcon id="RadioButtonMenuItemRadioIconEnabled" path="resource/1252407137734_Radiobutton_MenuItem_Normal.png"/>
     <imageIcon id="RadioButtonMenuItemRadioIconMouseOver" path="resource/1252458649609_Radiobutton_MenuItem_Hover.png"/>
     <imageIcon id="RadioButtonMenuItemRadioIconSelected" path="resource/1252407169453_Radiobutton_MenuItem_Selected.png"/>
@@ -845,19 +839,19 @@ limitations under the License.
     <state value="MOUSE_OVER">
       <imagePainter method="radioButtonMenuItemBackground" path="resource/1264231987812_MenuItem_Selected.png"
                     sourceInsets="2 2 2 2" paintCenter="true" stretch="true"/>
-      <color type="TEXT_FOREGROUND" value="#002664"/>
+      <color type="TEXT_FOREGROUND" idref="foreground"/>
       <property key="RadioButtonMenuItem.checkIcon" type="idref" value="RadioButtonMenuItemRadioIconMouseOver" default="false"/>
     </state>
     <state value="DISABLED">
       <imagePainter method="radioButtonMenuItemBackground" path="resource/1204817081656_menu_item_bg_disabled.png"
                     sourceInsets="0 0 0 0" paintCenter="true" stretch="true"/>
-      <color type="TEXT_FOREGROUND" value="#999999"/>
+      <color type="TEXT_FOREGROUND" idref="Gray"/>
       <property key="RadioButtonMenuItem.checkIcon" type="idref" value="RadioButtonMenuItemRadioIconDisabled" default="false"/>
     </state>
     <state value="SELECTED">
       <imagePainter method="radioButtonMenuItemBackground" path="resource/1204817049984_menu_item_bg_enabled.png"
                     sourceInsets="0 0 0 0" paintCenter="true" stretch="true"/>
-      <color type="TEXT_FOREGROUND" value="#AA4400"/>
+      <color type="TEXT_FOREGROUND" idref="foreground"/>
       <property key="RadioButtonMenuItem.checkIcon" type="idref" value="RadioButtonMenuItemRadioIconSelected" default="false"/>
     </state>
     <state value="MOUSE_OVER and SELECTED">
@@ -872,17 +866,17 @@ limitations under the License.
     <opaque value="true"/>
     <property key="Separator.thickness" type="integer" value="1" default="false"/>
     <state>
-      <color type="BACKGROUND" value="#CCBB99"/>
+      <color type="BACKGROUND" value="#f5f5f5"/>
     </state>
     <state value="DISABLED">
-      <color type="BACKGROUND" value="#CCCCCC"/>
+      <color type="BACKGROUND" value="#cccccc"/>
     </state>
   </style>
   <bind style="popupMenuSeparatorStyle" type="region" key="PopupMenuSeparator"/>
 
   <!--The style for popup menu.-->
   <style id="popupMenuStyle">
-    <insets top="4" left="4" bottom="10" right="9"/>
+    <insets top="4" left="4" bottom="10" right="8"/>
     <imageIcon id="LafSynthPopupMenuBg" path="resource/1227873224531_PopupMenu-Background.png"/>
     <painter idref="painter" method="popupMenuBackground"/>
     <property key="LafSynth.popup.menu.bg" type="idref" value="LafSynthPopupMenuBg" default="false"/>
@@ -938,7 +932,6 @@ limitations under the License.
       <color idref="InternalFrameMainColor" type="BACKGROUND"/>
     </state>
   </style>
-
   <bind style="InternalFrameButton" type="name" key="InternalFrameTitlePane.closeButton"/>
   <bind style="InternalFrameButton" type="name" key="InternalFrameTitlePane.iconifyButton"/>
   <bind style="InternalFrameButton" type="name" key="InternalFrameTitlePane.maximizeButton"/>

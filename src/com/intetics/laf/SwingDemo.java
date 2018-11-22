@@ -128,11 +128,24 @@ public class SwingDemo extends JFrame{
     menu.add(submenu);
 
     //Build second menu in the menu bar.
-    menu = new JMenu("About");
+    menu = new JMenu("Edit");
     menu.setMnemonic(KeyEvent.VK_N);
     menu.getAccessibleContext().setAccessibleDescription(
             "This menu does nothing");
     menuBar.add(menu);
+
+    menu = new JMenu("Loads");
+    menu.setMnemonic(KeyEvent.VK_L);
+    menu.getAccessibleContext().setAccessibleDescription(
+            "This menu does nothing");
+    menuBar.add(menu);
+
+    menu = new JMenu("Orders");
+    menu.setMnemonic(KeyEvent.VK_S);
+    menu.getAccessibleContext().setAccessibleDescription(
+            "This menu does nothing");
+    menuBar.add(menu);
+
 
     //Set the menu bar and add the label to the content pane.
     String[] data = {"Swing", "JavaFX", "Java", "Spring", "Hibernate", "JUnit", "Mockito"};
