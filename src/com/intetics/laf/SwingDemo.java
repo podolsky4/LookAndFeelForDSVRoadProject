@@ -18,7 +18,7 @@ public class SwingDemo extends JFrame{
   private JMenuItem menuItem;
   private JRadioButtonMenuItem rbMenuItem;
   private JCheckBoxMenuItem cbMenuItem;
-  private JList list;
+  private JList<String> list;
   private JComboBox<String> comboBox;
   private JButton testBtn;
   static final int FPS_MIN = 0;
@@ -148,9 +148,8 @@ public class SwingDemo extends JFrame{
 
 
     //Set the menu bar and add the label to the content pane.
-    String[] data = {"Swing", "JavaFX", "Java", "Spring", "Hibernate", "JUnit", "Mockito"};
-    list = new JList(data); //data has type Object[]
-    list.setPreferredSize(new Dimension(100, 200));
+    String[] data = {"Swing", "JavaFX", "Java", "Spring", "Hibernate", "JUnit", "Mockito", "Camel", "ActiveMQ", "JHipster"};
+    list = new JList<>(data); //data has type Object[]
     list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
     list.setLayoutOrientation(JList.VERTICAL);
     list.setVisibleRowCount(-1);
