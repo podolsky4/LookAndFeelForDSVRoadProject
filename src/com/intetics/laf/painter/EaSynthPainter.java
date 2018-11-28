@@ -180,7 +180,7 @@ public class EaSynthPainter extends SynthPainter {
       if (jProgressBar.isIndeterminate() && jProgressBar.isStringPainted()) {
         boolean bl = synthContext.getStyle().getBoolean(synthContext, "EaSynth.progressbar.indeterminate.paintstring", false);
         String string = jProgressBar.getString();
-        if (bl && string != null) {
+        if (bl && string != null) {ф
           Class<?> class_ = jProgressBar.getUI().getClass();
           try {
             Method method = class_.getDeclaredMethod("paintText", SynthContext.class, Graphics.class, String.class);

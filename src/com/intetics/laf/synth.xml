@@ -45,11 +45,8 @@ limitations under the License.
     <int>238</int>
     <int>238</int>
   </object>
-  <object id="InternalFrameMainColor" class="javax.swing.plaf.ColorUIResource">
-    <int>190</int>
-    <int>160</int>
-    <int>140</int>
-  </object>
+  <object id="InternalFrameMainColor" idref="foreground"/>
+
   <object id="painter" class="com.intetics.laf.painter.SkinSynthPainter"/>
   <object id="graphicsUtils" class="com.intetics.laf.utils.LafSynthGraphicsUtils"/>
 
@@ -58,7 +55,7 @@ limitations under the License.
    do not match a specific style will have a default style.-->
   <style id="default">
     <opaque value="false"/>
-    <font name="Ubuntu" size="15" />
+    <font name="Ubuntu" size="14" />
     <state>
       <color type="FOREGROUND" idref="foreground"/>
       <color type="BACKGROUND" idref="background"/>
@@ -360,8 +357,8 @@ limitations under the License.
   <style id="scrollPaneStyle">
     <insets top="2" left="2" bottom="2" right="2"/>
     <state>
-      <imagePainter method="scrollPaneBorder" path="resource/1263604524327_border_enabled.png"
-                    sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
+      <!--<imagePainter method="scrollPaneBorder" path="resource/1263604524327_border_enabled.png"
+                    sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>-->
     </state>
     <state value="DISABLED">
       <imagePainter method="scrollPaneBorder" path="resource/1263604559077_border_disabled.png"
@@ -407,10 +404,14 @@ limitations under the License.
   -->
 
   <!--The style for table component.-->
-  <style id="tableStyle">
-    <property key="Table.rendererUseUIBorder" type="boolean" value="false" default="false"/>
+  <style id="table">
+
+    <property key="Table.rendererUseUIBorder" type="boolean" value="false"/>
+
     <object id="TableGridColor" idref="foreground" />
     <property key="Table.gridColor" type="idref" value="TableGridColor" default="false"/>
+    <imagePainter method="tableBorder" path="resource/tableBorder.png"
+                  sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
 
     <state value="DISABLED">
       <color type="TEXT_FOREGROUND" value="#CCCCCC" />
@@ -422,39 +423,41 @@ limitations under the License.
       <color type="FOCUS" value="#FFEEDD" />
     </state>
   </style>
-  <bind style="tableStyle" type="region" key="Table"/>
+  <bind style="table" type="region" key="Table"/>
 
   <!--The style for the header component of table.-->
   <style id="tableHeader">
-    <insets top="3" left="5" bottom="3" right="5" />
+    <insets top="2" left="5" bottom="3" right="5" />
+
+    <painter method="tableHeaderBorder" idref="painter"/>
     <state>
-      <color type="FOREGROUND" value="#606060" />
-      <color type="BACKGROUND" value="#C3DEF0" />
-      <color type="TEXT_FOREGROUND" value="#002664"/>
-
-      <object class="javax.swing.plaf.ColorUIResource" id="gridColor">
-        <int>96</int>
-        <int>96</int>
-        <int>96</int>
-      </object>
-
-      <defaultsProperty key="LafSynth.tableHeader.gridColor" type="idref" value="gridColor"/>
-
-      <painter method="tableHeaderBackground" idref="painter"/>
+      <color type="BACKGROUND" idref="LightBlue"/>
     </state>
-    <!--<property key="TableHeader.background" type="idref" value="foreground" default="true"/>-->
-
-    <!--<painter method="tableHeaderBorder" idref="painter"/>-->
+    <state value="DISABLED">
+      <!--<imagePainter method="tableHeaderBackground" path="resource/table_header_bg_disabled.png"
+                    sourceInsets="0 0 0 0" paintCenter="true" stretch="true"/>-->
+      <color type="BACKGROUND" idref="Gray"/>
+      <color type="TEXT_FOREGROUND" value="#CCCCCC"/>
+    </state>
   </style>
   <bind style="tableHeader" type="region" key="TableHeader"/>
-  <!-- since V2.2.0, avoids plain header text with Java SE 6 on MOUSE_OVER -->
-  <bind style="tableHeader" type="name" key="TableHeader.renderer"/>
+
+  <style id="labelStyle">
+    <insets top="3" left="8" bottom="3" right="3" />
+    <state>
+      <color type="BACKGROUND" idref="LightBlue"/>
+    </state>
+
+    <state value="DISABLED">
+      <color type="BACKGROUND" idref="Gray"/>
+      <color type="TEXT_FOREGROUND" value="#CCCCCC"/>
+    </state>
+  </style>
+  <bind style="labelStyle" type="name" key="TableHeader.renderer"/>
 
   <style id="cellRenderer">
-    <state>
-      <opaque value="true"/>
-      <insets top="3" left="5" bottom="3" right="5"/>
-    </state>
+    <opaque value="true"/>
+    <insets top="3" left="5" bottom="3" right="5"/>
   </style>
   <bind style="cellRenderer" type="name" key="Table.cellRenderer"/>
 
@@ -679,9 +682,9 @@ limitations under the License.
 
   <!--The style for root pane.-->
   <style id="rootPaneStyle">
-    <imageIcon id="RootPaneBgImage" path="resource/1291545702389_rootpane_background.png"/>
-    <property key="LafSynth.rootpanel.bg.image" type="idref" value="RootPaneBgImage" default="false"/>
-    <painter idref="painter" method="rootPaneBackground"/>
+    <state>
+      <color type="BACKGROUND" value="WHITE"/>
+    </state>
   </style>
   <bind style="rootPaneStyle" type="region" key="RootPane"/>
 
@@ -731,7 +734,7 @@ limitations under the License.
   <style id="menu">
     <!--<opaque value="true"/>-->
     <!--<font name="Ubuntu" size="14" style="BOLD"/>-->
-    <insets top="2" left="8" bottom="2" right="2"/>
+    <insets top="2" left="8" bottom="2" right="0"/>
     <property key="Menu.textIconGap" type="integer" value="4"/>
     <imageIcon id="arrowIcon" path="resource/menuArrowIcon.png"/>
     <imageIcon id="arrowIconSelected" path="resource/menuArrowIcon_selected.png"/>

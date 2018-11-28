@@ -55,24 +55,26 @@ public class SkinSynthPainter extends SynthPainter {
     return component instanceof JList ? 0 : component.getFont().getSize() / 2;
   }
 
-  /*@Override
+  @Override
   public void paintTableHeaderBorder(SynthContext synthContext, Graphics graphics, int x, int y, int w, int h) {
-    Graphics2D graphics2D = (Graphics2D) graphics.create();
-    Color color2 = new Color(0, 0, 0, 0);
-    JTableHeader jTableHeader = (JTableHeader) synthContext.getComponent();
-    jTableHeader.setBorder(new BorderUIResource.LineBorderUIResource(Color.BLACK));
+    Graphics2D graphics2D = (Graphics2D)graphics.create();
+    JTableHeader jTableHeader = (JTableHeader)synthContext.getComponent();
     TableColumnModel tableColumnModel = jTableHeader.getColumnModel();
-    int columnCount = tableColumnModel.getColumnCount();
-    int pointX = 0;
-    for (int i = 0; i < columnCount; ++i) {
-      graphics2D.setPaint(Color.BLACK);
-      graphics2D.drawLine(x + pointX, y, x + pointX, y + h - 1);
-      graphics2D.setPaint(color2);
-      graphics2D.drawLine(x + pointX, y, x + (pointX += tableColumnModel.getColumn(i).getWidth() - 1), y + h - 1);
-      pointX += tableColumnModel.getColumnMargin();
+    int columns = tableColumnModel.getColumnCount();
+    graphics2D.setPaint(Color.BLACK);
+    int start = 0;
+    graphics2D.drawLine(x + start, y, x + start, y + h - 1);
+    for (int i = 0; i < columns; ++i) {
+      graphics2D.drawLine(x + start - 1, y, x + start - 1, y + h - 1);
+      /*graphics2D.setPaint(color2);
+      graphics2D.drawLine(x + start, y, x + (start += tableColumnModel.getColumn(i).getWidth() - 1), y + h - 1);*/
+      start += tableColumnModel.getColumn(i).getWidth() - 1;
+      start += tableColumnModel.getColumnMargin();
     }
+    graphics2D.drawLine(x + start - 1, y, x + start - 1, y + h - 1);
+    graphics2D.drawLine(0, 0, x + tableColumnModel.getTotalColumnWidth(), 0);
 
-  }*/
+  }
 
   @Override
   public void paintArrowButtonForeground(SynthContext context, Graphics graphics, int x, int y, int w, int h, int orientation) {
@@ -114,11 +116,11 @@ public class SkinSynthPainter extends SynthPainter {
     }
   }
 
-  @Override
+  /*@Override
   public void paintTableHeaderBackground(SynthContext context, Graphics g, int x, int y, int w, int h) {
     JTableHeader jTableHeader = (JTableHeader) context.getComponent();
-    jTableHeader.setBackground(new ColorUIResource(214, 224, 238));
-  }
+    jTableHeader.setBorder(new BorderUIResource.LineBorderUIResource(new ColorUIResource(0, 0, 0)));
+  }*/
 
   @Override
   public void paintSliderThumbBackground(SynthContext context, Graphics g, int x, int y, int w, int h, int orientation) {
