@@ -191,7 +191,7 @@ public class SkinSynthPainter extends SynthPainter {
       color = Color.LIGHT_GRAY;
     }
     graphics.setColor(color);
-    graphics.fillRect(x, y, w - 1, h - 1);
+    graphics.fillRect(x, y, w, h);
   }
 
   @Override
@@ -211,8 +211,10 @@ public class SkinSynthPainter extends SynthPainter {
     JScrollBar jScrollBar = (JScrollBar) context.getComponent();
     if (jScrollBar.getOrientation() == JScrollBar.VERTICAL) {
       if (h > thickness * 2) {
-        graphics.fillRect(x, y, w, thickness);
-        graphics.fillRect(x, y + h - thickness, w, thickness);
+//        graphics.fillRect(x, y, w, thickness);
+//        graphics.drawArc(x, y, w, thickness + 12, 0, 180);
+//        graphics.fillRect(x, y + h - thickness, w, thickness);
+        graphics.drawRoundRect(x, y, w, h, w, 16);
       }
     } else if (w > thickness * 2) {
       graphics.fillRect(x, y, thickness, h);
@@ -230,6 +232,17 @@ public class SkinSynthPainter extends SynthPainter {
     g.setColor(color);
     JScrollPane scrollPane = (JScrollPane) context.getComponent();
     scrollPane.setBorder(new BorderUIResource.LineBorderUIResource(Color.BLACK));
+  }
+
+  @Override
+  public void paintSplitPaneBorder(SynthContext context, Graphics g, int x, int y, int w, int h) {
+    UIDefaults uIDefaults = UIManager.getDefaults();
+    Color color = uIDefaults.getColor("LafSynth.splitpane.border.color");
+    if (color == null) {
+      color = Color.DARK_GRAY;
+    }
+    g.setColor(color);
+    g.fillRect(x, y, w, h);
   }
 
   @Override

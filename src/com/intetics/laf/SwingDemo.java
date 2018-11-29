@@ -349,6 +349,7 @@ public class SwingDemo extends JFrame{
             paneScrollPane);
     splitPane.setOneTouchExpandable(true);
     splitPane.setResizeWeight(0.5);
+
     JPanel rightPane = new JPanel(new GridLayout(1,0));
     rightPane.add(splitPane);
     rightPane.setBorder(BorderFactory.createCompoundBorder(

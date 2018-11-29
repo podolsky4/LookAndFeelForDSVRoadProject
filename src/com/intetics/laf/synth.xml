@@ -221,31 +221,45 @@ limitations under the License.
   <bind style="checkBoxStyle" type="region" key="CheckBox"/>
 
   <!--Style for combo box component.-->
-  <style id="comboBoxStyle">
+  <style id="comboBox">
     <opaque value="true"/>
-    <insets top="0" left="5" right="5" bottom="0"/>
+    <insets top="1" left="5" right="1" bottom="1"/>
     <state>
+      <imagePainter method="comboBoxBorder" path="resource/tableBorder.png"
+                    sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
       <color value="#F5F5F5" type="BACKGROUND"/>
     </state>
-    <object id="LineBorder" class="javax.swing.border.LineBorder">
-      <object idref="foreground"/>
-    </object>
-    <defaultsProperty key="ComboBox.border" type="idref" value="LineBorder"/>
+
   </style>
-  <bind style="comboBoxStyle" type="region" key="ComboBox"/>
+  <bind style="comboBox" type="region" key="ComboBox"/>
+
+  <!--Style for combo box of arrow button-->
+  <style id="DropArrowStyle">
+    <opaque value="true"/>
+    <insets top="1" left="5" right="1" bottom="1"/>
+    <state>
+      <color type="BACKGROUND" idref="LightBlue"/>
+      <imagePainter method="arrowButtonForeground" path="resource/arrow8x8Down.png" stretch="true" sourceInsets="1 1 1 1"/>
+    </state>
+    <state value="PRESSED">
+
+    </state>
+  </style>
+  <bind style="DropArrowStyle" type="name" key="ComboBox.arrowButton" />
+
 
   <!--The style for slider component..-->
   <style id="sliderStyle">
-    <property key="Slider.paintValue" type="boolean" value="true" default="false"/>
-    <property key="Slider.thumbWidth" type="integer" value="14" default="false"/>
-    <property key="Slider.thumbHeight" type="integer" value="14" default="false"/>
+    <property key="Slider.paintValue" type="boolean" value="true"/>
+    <property key="Slider.thumbWidth" type="integer" value="14"/>
+    <property key="Slider.thumbHeight" type="integer" value="14"/>
   </style>
   <bind style="sliderStyle" type="region" key="Slider"/>
 
   <!--The style for the track of slider.-->
   <style id="sliderTrackStyle">
     <imagePainter method="sliderTrackBackground" path="resource/SliderTrack.png"
-                  sourceInsets="7 7 7 7"  paintCenter="true" stretch="true" center="false"/>
+                  sourceInsets="7 7 7 7"  paintCenter="true" stretch="true"/>
     <state value="DISABLED">
       <imagePainter method="sliderTrackBackground" path="resource/SliderTrack_Disabled.png"
                     sourceInsets="7 7 7 7" paintCenter="true" stretch="true"/>
@@ -290,7 +304,7 @@ limitations under the License.
     <!--<opaque value="true"/>-->
     <!--<insets top="0" left="3" right="3" bottom="0"/>-->
     <property key="List.rendererUseUIBorder" type="boolean" value="true"/>
-    <property key="List.cellHeight" type="integer" value="18"/>
+    <property key="List.cellHeight" type="integer" value="17"/>
     <property key="List.rendererUseListColors" type="boolean" value="true"/>
 
     <object class="javax.swing.plaf.ColorUIResource" id="hlBorderColor">
@@ -317,14 +331,14 @@ limitations under the License.
 
   <!--The style for scroll bar component.-->
   <style id="scrollBarStyle">
-    <property key="ScrollBar.minimumThumbSize" type="dimension" value="18 18" default="false"/>
+    <property key="ScrollBar.minimumThumbSize" type="dimension" value="12 12" default="false"/>
     <object id="ScrollBarBgColor" idref="Gray"/>
     <defaultsProperty key="LafSynth.scrollbar.bgcolor" type="idref" value="ScrollBarBgColor" default="true"/>
     <object id="ScrollBarBorderColor" idref="foreground"/>
     <defaultsProperty key="LafSynth.scrollbar.bordercolor" type="idref" value="ScrollBarBorderColor" default="true"/>
     <painter idref="painter" method="scrollBarBackground"/>
     <painter idref="painter" method="scrollBarBorder"/>
-    <property key="ScrollBar.thumbHeight" type="integer" value="16" default="false"/>
+    <property key="ScrollBar.thumbHeight" type="integer" value="14" default="false"/>
   </style>
   <bind style="scrollBarStyle" type="region" key="ScrollBar" />
 
@@ -355,7 +369,9 @@ limitations under the License.
 
   <!--The style for scroll pane component.-->
   <style id="scrollPaneStyle">
-    <insets top="2" left="2" bottom="2" right="2"/>
+<!--
+    <insets top="3" left="2" bottom="3" right="1"/>
+-->
     <state>
       <!--<imagePainter method="scrollPaneBorder" path="resource/1263604524327_border_enabled.png"
                     sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>-->
@@ -382,8 +398,12 @@ limitations under the License.
 
   <!--The style for the split pane component.-->
   <style id="splitPaneStyle">
+    <insets top="4" left="2" bottom="3" right="1"/>
+    <object id="SplitPaneBorderColor" idref="foreground"/>
+    <defaultsProperty key="LafSynth.splitpane.border.color" type="idref" value="SplitPaneBorderColor" default="true"/>
     <property key="SplitPane.centerOneTouchButtons" type="boolean" value="true" default="false"/>
     <property key="SplitPane.size" type="integer" value="10" default="false"/>
+    <painter method="splitPaneBorder" idref="painter"/>
   </style>
   <bind style="splitPaneStyle" type="region" key="SplitPane"/>
 
@@ -493,7 +513,6 @@ limitations under the License.
   <bind style="tabbedPaneTabAreaStyle" type="region" key="TabbedPaneTabArea"/>
 
 
-
   <!--
   *******************************************************************************
   Tooltip
@@ -503,7 +522,7 @@ limitations under the License.
   <!--The style for tool tip.-->
   <style id="toolTipStyle">
     <state>
-      <imagePainter method="toolTipBorder" path="resource/1263604524327_border_enabled.png"
+      <imagePainter method="tooltipBorder" path="resource/tableBorder.png"
                     sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
       <color type="BACKGROUND" idref="LightBlue"/>
     </state>
@@ -524,11 +543,11 @@ limitations under the License.
   <style id="textFieldStyle">
     <opaque value="true"/>
     <state>
-      <imagePainter method="textFieldBorder" path="resource/1263604524327_border_enabled.png"
+      <imagePainter method="textFieldBorder" path="resource/tableBorder.png"
                     sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
-      <imagePainter method="formattedTextFieldBorder" path="resource/1263604524327_border_enabled.png"
+      <imagePainter method="formattedTextFieldBorder" path="resource/tableBorder.png"
                     sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
-      <imagePainter method="passwordFieldBorder" path="resource/1263604524327_border_enabled.png"
+      <imagePainter method="passwordFieldBorder" path="resource/tableBorder.png"
                     sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
       <color type="TEXT_FOREGROUND" value="BLACK"/>
       <color type="TEXT_BACKGROUND" value="WHITE"/>
@@ -561,6 +580,12 @@ limitations under the License.
   <!--The style for text pane components.-->
   <style id="textPane">
     <opaque value="true"/>
+    <!--<imagePainter method="textAreaBorder" path="resource/tableBorder.png"
+                  sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>-->
+    <!--<imagePainter method="textPaneBorder" path="resource/tableBorder.png"
+                  sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
+    <imagePainter method="editorPaneBorder" path="resource/tableBorder.png"
+                  sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>-->
     <state>
       <color type="TEXT_FOREGROUND" value="BLACK"/>
       <color type="TEXT_BACKGROUND" value="WHITE"/>
