@@ -211,15 +211,35 @@ public class SkinSynthPainter extends SynthPainter {
     JScrollBar jScrollBar = (JScrollBar) context.getComponent();
     if (jScrollBar.getOrientation() == JScrollBar.VERTICAL) {
       if (h > thickness * 2) {
-//        graphics.fillRect(x, y, w, thickness);
+        graphics.fillRect(x, y, w, thickness);
 //        graphics.drawArc(x, y, w, thickness + 12, 0, 180);
-//        graphics.fillRect(x, y + h - thickness, w, thickness);
-        graphics.drawRoundRect(x, y, w, h, w, 16);
+        graphics.fillRect(x, y + h - thickness, w, thickness);
+//        graphics.drawRoundRect(x, y, w, h, w, 16);
       }
     } else if (w > thickness * 2) {
       graphics.fillRect(x, y, thickness, h);
       graphics.fillRect(x + w - thickness, y, thickness, h);
     }
+  }
+
+  @Override
+  public void paintArrowButtonBorder(SynthContext context, Graphics g, int x, int y, int w, int h) {
+    UIDefaults uIDefaults = UIManager.getDefaults();
+    Color color = uIDefaults.getColor("LafSynth.combobox.bordercolor");
+    g.setColor(color);
+    g.drawLine(x,y, x, y + h);
+  }
+
+  @Override
+  public void paintComboBoxBorder(SynthContext context, Graphics g, int x, int y, int w, int h) {
+    UIDefaults uIDefaults = UIManager.getDefaults();
+    Color color = uIDefaults.getColor("LafSynth.combobox.bordercolor");
+    if (color == null || (context.getComponentState() & 8) != 0) {
+      color = Color.GRAY;
+    }
+    g.setColor(color);
+    JComboBox comboBox = (JComboBox) context.getComponent();
+    comboBox.setBorder(new BorderUIResource.LineBorderUIResource(color));
   }
 
   @Override

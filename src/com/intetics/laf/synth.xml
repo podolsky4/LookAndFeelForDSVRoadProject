@@ -146,7 +146,8 @@ limitations under the License.
   <style id="button">
     // describe colors, fonts, and states
     <opaque value="true"/>
-    <insets top="3" left="15" right="15" bottom="3"/>
+    <!--<insets top="3" left="15" right="15" bottom="3"/>-->
+    <property key="Button.margin" type="insets" value="3 15 3 15" default="false"/>
 
     <state>
       <color idref="foreground" type="BACKGROUND"/>
@@ -223,30 +224,61 @@ limitations under the License.
   <!--Style for combo box component.-->
   <style id="comboBox">
     <opaque value="true"/>
-    <insets top="1" left="5" right="1" bottom="1"/>
+    <defaultsProperty key="LafSynth.combobox.bordercolor" type="idref" value="foreground"/>
+    <painter method="comboBoxBorder" idref="painter"/>
     <state>
-      <imagePainter method="comboBoxBorder" path="resource/tableBorder.png"
-                    sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
-      <color value="#F5F5F5" type="BACKGROUND"/>
+      <!--<color value="#F5F5F5" type="BACKGROUND"/>-->
     </state>
 
   </style>
   <bind style="comboBox" type="region" key="ComboBox"/>
 
+  <!--The style for the list renderer of JComboBox-->
+  <style id="ComboBoxRenderer">
+    <opaque value="true"/>
+    <insets top="4" left="8" right="8" bottom="4"/>
+    <state>
+      <!--<color type="TEXT_FOREGROUND" value="#000000"/>-->
+    </state>
+    <state value="DISABLED">
+      <color type="TEXT_FOREGROUND" value="#999999"/>
+      <color type="BACKGROUND" value="#E6E6E6"/>
+    </state>
+    <state value="SELECTED">
+      <color type="TEXT_FOREGROUND" value="#CC6600"/>
+      <color type="TEXT_BACKGROUND" value="#FFEEDD"/>
+    </state>
+  </style>
+  <bind style="ComboBoxRenderer" type="name" key="ComboBox.listRenderer"/>
+  <bind style="ComboBoxRenderer" type="name" key="ComboBox.renderer"/>
+
+
   <!--Style for combo box of arrow button-->
   <style id="DropArrowStyle">
     <opaque value="true"/>
-    <insets top="1" left="5" right="1" bottom="1"/>
+    <defaultsProperty key="LafSynth.combobox.bordercolor" type="idref" value="foreground"/>
+    <!--<insets top="3" left="15" right="15" bottom="3"/>-->
+    <painter method="arrowButtonBorder" idref="painter"/>
+    <painter idref="painter" method="arrowButtonForeground" direction="south"/>
     <state>
       <color type="BACKGROUND" idref="LightBlue"/>
-      <imagePainter method="arrowButtonForeground" path="resource/arrow8x8Down.png" stretch="true" sourceInsets="1 1 1 1"/>
+      <imageIcon id="ArrowDown1" path="resource/arrowDownEnabled.png"/>
+      <property key="LafSynth.arrow.down.enabled" type="idref" value="ArrowDown1" default="false"/>
+    </state>
+    <state value="MOUSE_OVER">
+      <property key="LafSynth.arrow.down.mouseover" type="idref" value="ArrowDown1" default="false"/>
     </state>
     <state value="PRESSED">
-
+      <imageIcon id="ArrowDown3" path="resource/arrowDownHover.png"/>
+      <property key="LafSynth.arrow.down.pressed" type="idref" value="ArrowDown3" default="false"/>
+    </state>
+    <state value="DISABLED">
+      <color type="BACKGROUND" value="#E6E6E6"/>
+      <imageIcon id="ArrowDown4" path="resource/arrowDownDisabled.png"/>
+      <property key="LafSynth.arrow.down.disabled" type="idref" value="ArrowDown4" default="false"/>
     </state>
   </style>
   <bind style="DropArrowStyle" type="name" key="ComboBox.arrowButton" />
-
 
   <!--The style for slider component..-->
   <style id="sliderStyle">
@@ -331,14 +363,15 @@ limitations under the License.
 
   <!--The style for scroll bar component.-->
   <style id="scrollBarStyle">
-    <property key="ScrollBar.minimumThumbSize" type="dimension" value="12 12" default="false"/>
+    <property key="ScrollBar.minimumThumbSize" type="dimension" value="10 10" default="false"/>
+    <property key="ScrollBar.squareButtons" type="boolean" value="true" default="false"/>
     <object id="ScrollBarBgColor" idref="Gray"/>
     <defaultsProperty key="LafSynth.scrollbar.bgcolor" type="idref" value="ScrollBarBgColor" default="true"/>
     <object id="ScrollBarBorderColor" idref="foreground"/>
     <defaultsProperty key="LafSynth.scrollbar.bordercolor" type="idref" value="ScrollBarBorderColor" default="true"/>
     <painter idref="painter" method="scrollBarBackground"/>
     <painter idref="painter" method="scrollBarBorder"/>
-    <property key="ScrollBar.thumbHeight" type="integer" value="14" default="false"/>
+    <!--<property key="ScrollBar.thumbHeight" type="integer" value="14" default="false"/>-->
   </style>
   <bind style="scrollBarStyle" type="region" key="ScrollBar" />
 
@@ -371,15 +404,16 @@ limitations under the License.
   <style id="scrollPaneStyle">
 <!--
     <insets top="3" left="2" bottom="3" right="1"/>
--->
-    <state>
+
+    <property key="ScrollPane.viewportBorderInsets" type="insets" value="0 0 0 0" default="false"/>-->
+    <!--<state>-->
       <!--<imagePainter method="scrollPaneBorder" path="resource/1263604524327_border_enabled.png"
                     sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>-->
-    </state>
-    <state value="DISABLED">
+    <!--</state>-->
+    <!--<state value="DISABLED">
       <imagePainter method="scrollPaneBorder" path="resource/1263604559077_border_disabled.png"
                     sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
-    </state>
+    </state>-->
   </style>
   <bind style="scrollPaneStyle" type="region" key="ScrollPane"/>
 
@@ -407,6 +441,82 @@ limitations under the License.
   </style>
   <bind style="splitPaneStyle" type="region" key="SplitPane"/>
 
+  <!--
+  *******************************************************************************
+  Split pane one touch buttons
+  *******************************************************************************
+  -->
+
+  <style id="splitPaneButton">
+    <property key="ArrowButton.size" type="integer" value="14" default="false"/>
+    <painter idref="painter" method="arrowButtonForeground" direction="north"/>
+    <painter idref="painter" method="arrowButtonForeground" direction="west"/>
+    <painter idref="painter" method="arrowButtonForeground" direction="south"/>
+    <painter idref="painter" method="arrowButtonForeground" direction="east"/>
+    <state>
+      <imageIcon id="ArrowUpEnabled" path="resource/1204972099671_arrow_up_normal.png"/>
+      <property key="LafSynth.arrow.up.enabled" type="idref" value="ArrowUpEnabled" default="false"/>
+      <imageIcon id="ArrowLeftEnabled" path="resource/1204972109765_arrow_left_normal.png"/>
+      <property key="LafSynth.arrow.left.enabled" type="idref" value="ArrowLeftEnabled" default="false"/>
+      <imageIcon id="ArrowDownEnabled" path="resource/1204972119562_arrow_down_normal.png"/>
+      <property key="LafSynth.arrow.down.enabled" type="idref" value="ArrowDownEnabled" default="false"/>
+      <imageIcon id="ArrowRightEnabled" path="resource/1204972131593_arrow_right_normal.png"/>
+      <property key="LafSynth.arrow.right.enabled" type="idref" value="ArrowRightEnabled" default="false"/>
+    </state>
+    <state value="MOUSE_OVER">
+      <imageIcon id="ArrowUpMouseOver" path="resource/1204972154296_arrow_up_over.png"/>
+      <property key="LafSynth.arrow.up.mouseover" type="idref" value="ArrowUpMouseOver" default="false"/>
+      <imageIcon id="ArrowLeftMouseOver" path="resource/1204972172953_arrow_left_over.png"/>
+      <property key="LafSynth.arrow.left.mouseover" type="idref" value="ArrowLeftMouseOver" default="false"/>
+      <imageIcon id="ArrowDownMouseOver" path="resource/1204972180796_arrow_down_over.png"/>
+      <property key="LafSynth.arrow.down.mouseover" type="idref" value="ArrowDownMouseOver" default="false"/>
+      <imageIcon id="ArrowRightMouseOver" path="resource/1204972188046_arrow_right_over.png"/>
+      <property key="LafSynth.arrow.right.mouseover" type="idref" value="ArrowRightMouseOver" default="false"/>
+    </state>
+    <state value="PRESSED">
+      <imageIcon id="ArrowUpPressed" path="resource/1204972222593_arrow_up_press.png"/>
+      <property key="LafSynth.arrow.up.pressed" type="idref" value="ArrowUpPressed" default="false"/>
+      <imageIcon id="ArrowLeftPressed" path="resource/1204972229812_arrow_left_press.png"/>
+      <property key="LafSynth.arrow.left.pressed" type="idref" value="ArrowLeftPressed" default="false"/>
+      <imageIcon id="ArrowDownPressed" path="resource/1204972236828_arrow_down_press.png"/>
+      <property key="LafSynth.arrow.down.pressed" type="idref" value="ArrowDownPressed" default="false"/>
+      <imageIcon id="ArrowRightPressed" path="resource/1204972243953_arrow_right_press.png"/>
+      <property key="LafSynth.arrow.right.pressed" type="idref" value="ArrowRightPressed" default="false"/>
+    </state>
+    <state value="DISABLED">
+      <imageIcon id="ArrowUpDisabled" path="resource/1204972279156_arrow_up_disable.png"/>
+      <property key="LafSynth.arrow.up.disabled" type="idref" value="ArrowUpDisabled" default="false"/>
+      <imageIcon id="ArrowLeftDisabled" path="resource/1204972286015_arrow_left_disable.png"/>
+      <property key="LafSynth.arrow.left.disabled" type="idref" value="ArrowLeftDisabled" default="false"/>
+      <imageIcon id="ArrowDownDisabled" path="resource/1204972293703_arrow_down_disable.png"/>
+      <property key="LafSynth.arrow.down.disabled" type="idref" value="ArrowDownDisabled" default="false"/>
+      <imageIcon id="ArrowRightDisabled" path="resource/1204972301171_arrow_right_disable.png"/>
+      <property key="LafSynth.arrow.right.disabled" type="idref" value="ArrowRightDisabled" default="false"/>
+    </state>
+  </style>
+  <bind style="splitPaneButton" type="name" key="SplitPaneDivider.leftOneTouchButton"/>
+  <bind style="splitPaneButton" type="name" key="SplitPaneDivider.rightOneTouchButton"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <!--The style for the divider of split pane.-->
   <style id="splitPaneDividerStyle">
     <object id="SplitPaneDividerMainColor" idref="foreground"/>
@@ -425,9 +535,7 @@ limitations under the License.
 
   <!--The style for table component.-->
   <style id="table">
-
     <property key="Table.rendererUseUIBorder" type="boolean" value="false"/>
-
     <object id="TableGridColor" idref="foreground" />
     <property key="Table.gridColor" type="idref" value="TableGridColor" default="false"/>
     <imagePainter method="tableBorder" path="resource/tableBorder.png"
@@ -580,12 +688,12 @@ limitations under the License.
   <!--The style for text pane components.-->
   <style id="textPane">
     <opaque value="true"/>
-    <!--<imagePainter method="textAreaBorder" path="resource/tableBorder.png"
-                  sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>-->
-    <!--<imagePainter method="textPaneBorder" path="resource/tableBorder.png"
+    <imagePainter method="textAreaBorder" path="resource/tableBorder.png"
+                  sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
+    <imagePainter method="textPaneBorder" path="resource/tableBorder.png"
                   sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
     <imagePainter method="editorPaneBorder" path="resource/tableBorder.png"
-                  sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>-->
+                  sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
     <state>
       <color type="TEXT_FOREGROUND" value="BLACK"/>
       <color type="TEXT_BACKGROUND" value="WHITE"/>
@@ -610,23 +718,6 @@ limitations under the License.
   </style>
   <bind style="spinnerStyle" type="region" key="Spinner"/>
 
-  <!--The style for the list renderer of JComboBox-->
-  <style id="ComboBoxListRenderer">
-    <opaque value="true"/>
-    <insets top="3" left="5" right="5" bottom="3"/>
-    <state>
-      <!--<color type="TEXT_FOREGROUND" value="#000000"/>-->
-    </state>
-    <state value="DISABLED">
-      <color type="TEXT_FOREGROUND" value="#999999"/>
-    </state>
-    <state value="SELECTED">
-      <color type="TEXT_FOREGROUND" value="#CC6600"/>
-      <color type="TEXT_BACKGROUND" value="#FFEEDD"/>
-    </state>
-  </style>
-  <bind style="ComboBoxListRenderer" type="name" key="ComboBox.listRenderer"/>
-
 
   <!--
   *******************************************************************************
@@ -636,6 +727,8 @@ limitations under the License.
 
   <style id="tree">
     <opaque value="true"/>
+    <imagePainter method="treeBorder" path="resource/tableBorder.png"
+                  sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
     <imageIcon id="treeExpandedIcon" path="resource/treeExpandedIcon.png"/>
     <imageIcon id="treeCollapsedIcon" path="resource/treeCollapsedIcon.png"/>
     <!--<imageIcon id="treeLeafIcon" path="resource/treeLeafIcon.png" />

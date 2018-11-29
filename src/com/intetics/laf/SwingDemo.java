@@ -162,6 +162,7 @@ public class SwingDemo extends JFrame{
     comboBox = new JComboBox<>(petStrings);
     comboBox.setMaximumRowCount(5);
     comboBox.setSelectedIndex(0);
+//    comboBox.setEnabled(false);
     rootPane.add(comboBox);
     testBtn = new JButton("Test 204");
     rootPane.add(testBtn);
