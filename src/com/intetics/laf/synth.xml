@@ -227,7 +227,7 @@ limitations under the License.
     <defaultsProperty key="LafSynth.combobox.bordercolor" type="idref" value="foreground"/>
     <painter method="comboBoxBorder" idref="painter"/>
     <state>
-      <!--<color value="#F5F5F5" type="BACKGROUND"/>-->
+      <color value="#F5F5F5" type="BACKGROUND"/>
     </state>
 
   </style>
@@ -236,7 +236,7 @@ limitations under the License.
   <!--The style for the list renderer of JComboBox-->
   <style id="ComboBoxRenderer">
     <opaque value="true"/>
-    <insets top="4" left="8" right="8" bottom="4"/>
+    <insets top="3" left="5" right="5" bottom="3"/>
     <state>
       <!--<color type="TEXT_FOREGROUND" value="#000000"/>-->
     </state>
@@ -402,18 +402,17 @@ limitations under the License.
 
   <!--The style for scroll pane component.-->
   <style id="scrollPaneStyle">
-<!--
-    <insets top="3" left="2" bottom="3" right="1"/>
+    <insets top="1" left="1" bottom="1" right="1"/>
 
-    <property key="ScrollPane.viewportBorderInsets" type="insets" value="0 0 0 0" default="false"/>-->
-    <!--<state>-->
-      <!--<imagePainter method="scrollPaneBorder" path="resource/1263604524327_border_enabled.png"
-                    sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>-->
-    <!--</state>-->
-    <!--<state value="DISABLED">
+    <!--<property key="ScrollPane.viewportBorderInsets" type="insets" value="1 1 1 1" default="false"/>-->
+    <state>
+      <imagePainter method="scrollPaneBorder" path="resource/tableBorder.png"
+                    sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
+    </state>
+    <state value="DISABLED">
       <imagePainter method="scrollPaneBorder" path="resource/1263604559077_border_disabled.png"
                     sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
-    </state>-->
+    </state>
   </style>
   <bind style="scrollPaneStyle" type="region" key="ScrollPane"/>
 
@@ -501,22 +500,6 @@ limitations under the License.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <!--The style for the divider of split pane.-->
   <style id="splitPaneDividerStyle">
     <object id="SplitPaneDividerMainColor" idref="foreground"/>
@@ -555,7 +538,7 @@ limitations under the License.
 
   <!--The style for the header component of table.-->
   <style id="tableHeader">
-    <insets top="2" left="5" bottom="3" right="5" />
+    <insets top="3" left="5" bottom="3" right="5" />
 
     <painter method="tableHeaderBorder" idref="painter"/>
     <state>
@@ -570,8 +553,8 @@ limitations under the License.
   </style>
   <bind style="tableHeader" type="region" key="TableHeader"/>
 
-  <style id="labelStyle">
-    <insets top="3" left="8" bottom="3" right="3" />
+  <style id="tableHeaderStyle">
+    <insets top="3" left="8" bottom="3" right="8" />
     <state>
       <color type="BACKGROUND" idref="LightBlue"/>
     </state>
@@ -581,7 +564,7 @@ limitations under the License.
       <color type="TEXT_FOREGROUND" value="#CCCCCC"/>
     </state>
   </style>
-  <bind style="labelStyle" type="name" key="TableHeader.renderer"/>
+  <bind style="tableHeaderStyle" type="name" key="TableHeader.renderer"/>
 
   <style id="cellRenderer">
     <opaque value="true"/>
@@ -598,7 +581,7 @@ limitations under the License.
 
   <!--The style for the tabs of tabbed pane.-->
   <style id="tabbedPaneTabStyle">
-    <insets top="5" left="5" bottom="2" right="5"/>
+    <insets top="5" left="5" bottom="3" right="5"/>
     <imagePainter method="tabbedPaneTabBorder" path="resource/1204440390390_tab_border.png"
                   sourceInsets="0 1 0 1" paintCenter="true" stretch="true"/>
     <imagePainter method="tabbedPaneTabBackground" path="resource/1204726737093_tab_bg_enabled.png"
@@ -688,12 +671,12 @@ limitations under the License.
   <!--The style for text pane components.-->
   <style id="textPane">
     <opaque value="true"/>
-    <imagePainter method="textAreaBorder" path="resource/tableBorder.png"
+    <!--<imagePainter method="textAreaBorder" path="resource/tableBorder.png"
                   sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
     <imagePainter method="textPaneBorder" path="resource/tableBorder.png"
                   sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
     <imagePainter method="editorPaneBorder" path="resource/tableBorder.png"
-                  sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
+                  sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>-->
     <state>
       <color type="TEXT_FOREGROUND" value="BLACK"/>
       <color type="TEXT_BACKGROUND" value="WHITE"/>
@@ -727,8 +710,8 @@ limitations under the License.
 
   <style id="tree">
     <opaque value="true"/>
-    <imagePainter method="treeBorder" path="resource/tableBorder.png"
-                  sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
+    <!--<imagePainter method="treeBorder" path="resource/tableBorder.png"
+                  sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>-->
     <imageIcon id="treeExpandedIcon" path="resource/treeExpandedIcon.png"/>
     <imageIcon id="treeCollapsedIcon" path="resource/treeCollapsedIcon.png"/>
     <!--<imageIcon id="treeLeafIcon" path="resource/treeLeafIcon.png" />
@@ -811,13 +794,13 @@ limitations under the License.
     <painter idref="painter" method="progressBarForeground"/>
     <painter idref="painter" method="progressBarBackground"/>
     <painter idref="painter" method="progressBarBorder"/>
-    <imageIcon id="ProgressbarImage" path="resource/1204213052578_progressbar_indication.png"/>
+    <imageIcon id="ProgressbarImage" path="resource/progressbar_indication.png"/>
     <property key="LafSynth.progressbar.indication.image" type="idref" value="ProgressbarImage" default="false"/>
     <object id="ProgressbarBgColor" idref="background"/>
     <defaultsProperty key="LafSynth.progressbar.background.color" type="idref" value="ProgressbarBgColor" default="true"/>
     <object id="ProgressBarLineColor" idref="foreground"/>
     <defaultsProperty key="LafSynth.progressbar.line.color" type="idref" value="ProgressBarLineColor" default="true"/>
-    <imageIcon id="ProgressbarBgImage" path="resource/1235960155687_ProgressBarBg.png"/>
+    <imageIcon id="ProgressbarBgImage" path="resource/progressBarBackground.png"/>
     <property key="LafSynth.progressbar.background.image" type="idref" value="ProgressbarBgImage" default="false"/>
     <object id="ProgressbarBgInsets" class="java.awt.Insets">
       <int>4</int>
@@ -852,13 +835,13 @@ limitations under the License.
   <style id="menu">
     <!--<opaque value="true"/>-->
     <!--<font name="Ubuntu" size="14" style="BOLD"/>-->
-    <insets top="2" left="8" bottom="2" right="0"/>
+    <insets top="3" left="8" bottom="3" right="0"/>
     <property key="Menu.textIconGap" type="integer" value="4"/>
     <imageIcon id="arrowIcon" path="resource/menuArrowIcon.png"/>
     <imageIcon id="arrowIconSelected" path="resource/menuArrowIcon_selected.png"/>
     <imageIcon id="arrowIconDisabled" path="resource/images/menuArrowIcon_disabled.png"/>
 
-    <defaultsProperty key="Synthetica.menu.iconGap" type="integer" value="20"/>
+    <!--<defaultsProperty key="Synthetica.menu.iconGap" type="integer" value="20"/>-->
 
     <object id="MenuBgColorNormal" idref="background"/>
     <object id="MenuBgColorSelected" idref="LightBlue"/>
@@ -1040,6 +1023,7 @@ limitations under the License.
 
   <!--The style for the title pane of internal frame.-->
   <style id="internalFrameTitlePaneStyle">
+    <defaultsProperty key="LafSynth.internalframe.title.main.color" type="idref" value="foreground" default="true"/>
     <property key="InternalFrameTitlePane.titleSpacing" type="integer" value="5" default="false"/>
     <property key="InternalFrameTitlePane.maxFrameIconSize" type="dimension" value="24 24" default="false"/>
     <imageIcon id="InternalFrameMaximizeButtonIcon" path="resource/1204294372812_internal_frame_max_icon.png"/>
@@ -1052,7 +1036,6 @@ limitations under the License.
     <property key="InternalFrameTitlePane.iconifyIcon" type="idref" value="InternalFrameMinimizeButtonIcon" default="false"/>
     <painter idref="painter" method="internalFrameTitlePaneBackground"/>
     <painter idref="painter" method="internalFrameTitlePaneBorder"/>
-    <defaultsProperty key="LafSynth.internalframe.main.color" type="idref" value="InternalFrameMainColor" default="true"/>
   </style>
   <bind style="internalFrameTitlePaneStyle" type="region" key="InternalFrameTitlePane"/>
 
@@ -1060,7 +1043,7 @@ limitations under the License.
   <style id="InternalFrameButton">
     <opaque value="true"/>
     <state>
-      <color idref="InternalFrameMainColor" type="BACKGROUND"/>
+      <!--<color type="BACKGROUND" idref="InternalFrameMainColor" />-->
     </state>
   </style>
   <bind style="InternalFrameButton" type="name" key="InternalFrameTitlePane.closeButton"/>
@@ -1094,9 +1077,9 @@ limitations under the License.
   <!--The style for file chooser component.-->
   <style id="fileChooserStyle">
     <insets top="10" left="10" bottom="10" right="10"/>
-    <imageIcon id="FileChooserCancelIcon" path="resource/1204902668718_filechooser_cancel_icon.png"/>
+    <imageIcon id="FileChooserCancelIcon" path="resource/filechooser_cancel_icon.png"/>
     <property key="FileChooser.cancelIcon" type="idref" value="FileChooserCancelIcon" default="false"/>
-    <imageIcon id="FileChooserOkIcon" path="resource/1204902652625_filechooser_ok_icon.png"/>
+    <imageIcon id="FileChooserOkIcon" path="resource/filechooser_ok_icon.png"/>
     <property key="FileChooser.okIcon" type="idref" value="FileChooserOkIcon" default="false"/>
     <imageIcon id="FileChooserFolderIcon" path="resource/1204876252109_filechooser_folder_icon.png"/>
     <property key="FileView.directoryIcon" type="idref" value="FileChooserFolderIcon" default="false"/>

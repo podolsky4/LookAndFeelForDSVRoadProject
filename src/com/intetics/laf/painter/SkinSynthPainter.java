@@ -518,27 +518,19 @@ public class SkinSynthPainter extends SynthPainter {
     if (color == null) {
       color = Color.GRAY;
     }
-    graphics.setColor(color.darker());
-    graphics.drawLine(x, y + 1, x, h - 2);
-    graphics.drawLine(x + w - 1, y + 1, x + w - 1, h - 2);
-    graphics.drawLine(x + 1, y, x + w - 2, y);
-    graphics.drawLine(x + 1, y + h - 1, x + w - 2, y + h - 1);
-    graphics.setColor(color.brighter());
-    graphics.drawLine(x + 2, y + 3, x + 2, h - 4);
-    graphics.drawLine(x + w - 3, y + 3, x + w - 3, h - 4);
-    graphics.drawLine(x + 3, y + 2, x + w - 4, y + 2);
-    graphics.drawLine(x + 3, y + h - 3, x + w - 4, y + h - 3);
+    graphics.setColor(new ColorUIResource(0, 38, 100));
+    graphics.drawRect(x, y, w - 1, h - 1);
   }
 
   @Override
   public void paintInternalFrameTitlePaneBorder(SynthContext context, Graphics graphics, int x, int y, int w, int h) {
     UIDefaults uIDefaults = UIManager.getDefaults();
-    Color color = uIDefaults.getColor("LafSynth.internalframe.main.color");
+    Color color = uIDefaults.getColor("LafSynth.internalframe.title.main.color");
     if (color == null) {
       color = Color.GRAY;
     }
     graphics.setColor(color.darker());
-    graphics.drawLine(x, y + h - 1, x + w, y + h - 1);
+    graphics.drawRect(x, y, w - 1, h - 1);
   }
 
   @Override
