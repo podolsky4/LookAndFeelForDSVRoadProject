@@ -402,8 +402,7 @@ limitations under the License.
 
   <!--The style for scroll pane component.-->
   <style id="scrollPaneStyle">
-    <insets top="1" left="1" bottom="1" right="1"/>
-
+    <insets top="1" left="1" right="1" bottom="1"/>
     <!--<property key="ScrollPane.viewportBorderInsets" type="insets" value="1 1 1 1" default="false"/>-->
     <state>
       <imagePainter method="scrollPaneBorder" path="resource/tableBorder.png"
@@ -431,7 +430,7 @@ limitations under the License.
 
   <!--The style for the split pane component.-->
   <style id="splitPaneStyle">
-    <insets top="4" left="2" bottom="3" right="1"/>
+    <insets top="1" left="1" bottom="1" right="1"/>
     <object id="SplitPaneBorderColor" idref="foreground"/>
     <defaultsProperty key="LafSynth.splitpane.border.color" type="idref" value="SplitPaneBorderColor" default="true"/>
     <property key="SplitPane.centerOneTouchButtons" type="boolean" value="true" default="false"/>
@@ -495,9 +494,6 @@ limitations under the License.
   </style>
   <bind style="splitPaneButton" type="name" key="SplitPaneDivider.leftOneTouchButton"/>
   <bind style="splitPaneButton" type="name" key="SplitPaneDivider.rightOneTouchButton"/>
-
-
-
 
 
   <!--The style for the divider of split pane.-->
@@ -698,6 +694,11 @@ limitations under the License.
   <!--The style for spinner component.-->
   <style id="spinnerStyle">
     <opaque value="true"/>
+    <state>
+      <color type="BACKGROUND" idref="LightBlue"/>
+    </state>
+    <imagePainter method="spinnerBorder" path="resource/tableBorder.png"
+                  sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
   </style>
   <bind style="spinnerStyle" type="region" key="Spinner"/>
 
@@ -827,8 +828,8 @@ limitations under the License.
   <style id="menu">
     <!--<opaque value="true"/>-->
     <!--<font name="Ubuntu" size="14" style="BOLD"/>-->
-    <insets top="3" left="8" bottom="3" right="0"/>
-    <property key="Menu.textIconGap" type="integer" value="4"/>
+    <insets top="3" left="2" bottom="3" right="2"/>
+    <property key="Menu.textIconGap" type="integer" value="5"/>
     <imageIcon id="arrowIcon" path="resource/arrow_right_over.png"/>
     <imageIcon id="arrowIconSelected" path="resource/arrow_right_normal.png"/>
     <imageIcon id="arrowIconDisabled" path="resource/images/menuArrowIcon_disabled.png"/>
@@ -861,6 +862,7 @@ limitations under the License.
   *******************************************************************************
   -->
   <style id="menuItem">
+    <insets top="3" left="3" bottom="3" right="3"/>
     <object id="MenuItemBgColorMouseOver" idref="LightBlue"/>
     <object id="MenuItemBgColorEnabled" idref="background"/>
     <object id="MenuItemBgColorDisabled" idref="Gray"/>
@@ -890,6 +892,7 @@ limitations under the License.
 
   <!--The style for check box menu item.-->
   <style id="checkBoxMenuItemStyle">
+    <insets top="3" left="3" bottom="3" right="3"/>
     <imageIcon id="CheckBoxMenuItemCheckIconEnabled" path="resource/1252405736906_Checkbox_MenuItem_None.png"/>
     <imageIcon id="CheckBoxMenuItemCheckIconMouseOver" path="resource/1252405890781_Checkbox_MenuItem_Hover.png"/>
     <imageIcon id="CheckBoxMenuItemCheckIconSelected" path="resource/1252405906156_Checkbox_MenuItem_Selected.png"/>
@@ -926,6 +929,7 @@ limitations under the License.
 
   <!--The style for radio button menu item.-->
   <style id="radioButtonMenuItemStyle">
+    <insets top="3" left="3" bottom="3" right="3"/>
     <imageIcon id="RadioButtonMenuItemRadioIconEnabled" path="resource/1252407137734_Radiobutton_MenuItem_Normal.png"/>
     <imageIcon id="RadioButtonMenuItemRadioIconMouseOver" path="resource/1252458649609_Radiobutton_MenuItem_Hover.png"/>
     <imageIcon id="RadioButtonMenuItemRadioIconSelected" path="resource/1252407169453_Radiobutton_MenuItem_Selected.png"/>
@@ -976,7 +980,7 @@ limitations under the License.
 
   <!--The style for popup menu.-->
   <style id="popupMenuStyle">
-    <insets top="4" left="4" bottom="8" right="8"/>
+    <insets top="2" left="2" bottom="6" right="6"/>
     <imageIcon id="SynthPopupMenuBg" path="resource/popupMenuBackground.png"/>
     <painter idref="painter" method="popupMenuBackground"/>
     <property key="LafSynth.popup.menu.bg" type="idref" value="SynthPopupMenuBg" default="false"/>
