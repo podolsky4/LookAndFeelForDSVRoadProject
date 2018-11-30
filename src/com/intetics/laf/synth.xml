@@ -100,23 +100,23 @@ limitations under the License.
     <painter idref="painter" method="arrowButtonForeground" direction="south"/>
     <painter idref="painter" method="arrowButtonForeground" direction="east"/>
     <state>
-      <imageIcon id="ArrowUpEnabled" path="resource/1204972099671_arrow_up_normal.png"/>
+      <imageIcon id="ArrowUpEnabled" path="resource/arrow_up_normal.png"/>
       <property key="LafSynth.arrow.up.enabled" type="idref" value="ArrowUpEnabled" default="false"/>
-      <imageIcon id="ArrowLeftEnabled" path="resource/1204972109765_arrow_left_normal.png"/>
+      <imageIcon id="ArrowLeftEnabled" path="resource/arrow_left_normal.png"/>
       <property key="LafSynth.arrow.left.enabled" type="idref" value="ArrowLeftEnabled" default="false"/>
-      <imageIcon id="ArrowDownEnabled" path="resource/1204972119562_arrow_down_normal.png"/>
+      <imageIcon id="ArrowDownEnabled" path="resource/arrow_down_normal.png"/>
       <property key="LafSynth.arrow.down.enabled" type="idref" value="ArrowDownEnabled" default="false"/>
-      <imageIcon id="ArrowRightEnabled" path="resource/1204972131593_arrow_right_normal.png"/>
+      <imageIcon id="ArrowRightEnabled" path="resource/arrow_right_normal.png"/>
       <property key="LafSynth.arrow.right.enabled" type="idref" value="ArrowRightEnabled" default="false"/>
     </state>
     <state value="MOUSE_OVER">
-      <imageIcon id="ArrowUpMouseOver" path="resource/1204972154296_arrow_up_over.png"/>
+      <imageIcon id="ArrowUpMouseOver" path="resource/arrow_up_over.png"/>
       <property key="LafSynth.arrow.up.mouseover" type="idref" value="ArrowUpMouseOver" default="false"/>
-      <imageIcon id="ArrowLeftMouseOver" path="resource/1204972172953_arrow_left_over.png"/>
+      <imageIcon id="ArrowLeftMouseOver" path="resource/arrow_left_over.png"/>
       <property key="LafSynth.arrow.left.mouseover" type="idref" value="ArrowLeftMouseOver" default="false"/>
-      <imageIcon id="ArrowDownMouseOver" path="resource/1204972180796_arrow_down_over.png"/>
+      <imageIcon id="ArrowDownMouseOver" path="resource/arrow_down_over.png"/>
       <property key="LafSynth.arrow.down.mouseover" type="idref" value="ArrowDownMouseOver" default="false"/>
-      <imageIcon id="ArrowRightMouseOver" path="resource/1204972188046_arrow_right_over.png"/>
+      <imageIcon id="ArrowRightMouseOver" path="resource/arrow_right_over.png"/>
       <property key="LafSynth.arrow.right.mouseover" type="idref" value="ArrowRightMouseOver" default="false"/>
     </state>
     <state value="PRESSED">
@@ -447,55 +447,55 @@ limitations under the License.
   *******************************************************************************
   -->
 
-  <!--<style id="splitPaneButton">
+  <style id="splitPaneButton">
     <property key="ArrowButton.size" type="integer" value="14" default="false"/>
     <painter idref="painter" method="arrowButtonForeground" direction="north"/>
     <painter idref="painter" method="arrowButtonForeground" direction="west"/>
     <painter idref="painter" method="arrowButtonForeground" direction="south"/>
     <painter idref="painter" method="arrowButtonForeground" direction="east"/>
     <state>
-      <imageIcon id="ArrowUpEnabled" path="resource/1204972099671_arrow_up_normal.png"/>
-      <property key="LafSynth.arrow.up.enabled" type="idref" value="ArrowUpEnabled" default="false"/>
-      <imageIcon id="ArrowLeftEnabled" path="resource/1204972109765_arrow_left_normal.png"/>
-      <property key="LafSynth.arrow.left.enabled" type="idref" value="ArrowLeftEnabled" default="false"/>
-      <imageIcon id="ArrowDownEnabled" path="resource/1204972119562_arrow_down_normal.png"/>
-      <property key="LafSynth.arrow.down.enabled" type="idref" value="ArrowDownEnabled" default="false"/>
-      <imageIcon id="ArrowRightEnabled" path="resource/1204972131593_arrow_right_normal.png"/>
-      <property key="LafSynth.arrow.right.enabled" type="idref" value="ArrowRightEnabled" default="false"/>
+      <imageIcon id="spArrowUpEnabled" path="resource/spArrowUpEnabled.png"/>
+      <property key="LafSynth.arrow.up.enabled" type="idref" value="spArrowUpEnabled" default="false"/>
+      <imageIcon id="spArrowLeftEnabled" path="resource/spArrowLeftEnabled.png"/>
+      <property key="LafSynth.arrow.left.enabled" type="idref" value="spArrowLeftEnabled" default="false"/>
+      <imageIcon id="spArrowDownEnabled" path="resource/spArrowDownEnabled.png"/>
+      <property key="LafSynth.arrow.down.enabled" type="idref" value="spArrowDownEnabled" default="false"/>
+      <imageIcon id="spArrowRightEnabled" path="resource/spArrowRightEnabled.png"/>
+      <property key="LafSynth.arrow.right.enabled" type="idref" value="spArrowRightEnabled" default="false"/>
     </state>
     <state value="MOUSE_OVER">
-      <imageIcon id="ArrowUpMouseOver" path="resource/1204972154296_arrow_up_over.png"/>
-      <property key="LafSynth.arrow.up.mouseover" type="idref" value="ArrowUpMouseOver" default="false"/>
-      <imageIcon id="ArrowLeftMouseOver" path="resource/1204972172953_arrow_left_over.png"/>
-      <property key="LafSynth.arrow.left.mouseover" type="idref" value="ArrowLeftMouseOver" default="false"/>
-      <imageIcon id="ArrowDownMouseOver" path="resource/1204972180796_arrow_down_over.png"/>
-      <property key="LafSynth.arrow.down.mouseover" type="idref" value="ArrowDownMouseOver" default="false"/>
-      <imageIcon id="ArrowRightMouseOver" path="resource/1204972188046_arrow_right_over.png"/>
-      <property key="LafSynth.arrow.right.mouseover" type="idref" value="ArrowRightMouseOver" default="false"/>
+      <imageIcon id="spArrowUpMouseOver" path="resource/spArrowUpMouseOver.png"/>
+      <property key="LafSynth.arrow.up.mouseover" type="idref" value="spArrowUpMouseOver" default="false"/>
+      <imageIcon id="spArrowLeftMouseOver" path="resource/spArrowLeftMouseOver.png"/>
+      <property key="LafSynth.arrow.left.mouseover" type="idref" value="spArrowLeftMouseOver" default="false"/>
+      <imageIcon id="spArrowDownMouseOver" path="resource/spArrowDownMouseOver.png"/>
+      <property key="LafSynth.arrow.down.mouseover" type="idref" value="spArrowDownMouseOver" default="false"/>
+      <imageIcon id="spArrowRightMouseOver" path="resource/spArrowRightMouseOver.png"/>
+      <property key="LafSynth.arrow.right.mouseover" type="idref" value="spArrowRightMouseOver" default="false"/>
     </state>
     <state value="PRESSED">
-      <imageIcon id="ArrowUpPressed" path="resource/1204972222593_arrow_up_press.png"/>
-      <property key="LafSynth.arrow.up.pressed" type="idref" value="ArrowUpPressed" default="false"/>
-      <imageIcon id="ArrowLeftPressed" path="resource/1204972229812_arrow_left_press.png"/>
-      <property key="LafSynth.arrow.left.pressed" type="idref" value="ArrowLeftPressed" default="false"/>
-      <imageIcon id="ArrowDownPressed" path="resource/1204972236828_arrow_down_press.png"/>
-      <property key="LafSynth.arrow.down.pressed" type="idref" value="ArrowDownPressed" default="false"/>
-      <imageIcon id="ArrowRightPressed" path="resource/1204972243953_arrow_right_press.png"/>
-      <property key="LafSynth.arrow.right.pressed" type="idref" value="ArrowRightPressed" default="false"/>
+      <imageIcon id="spArrowUpPressed" path="resource/1204972222593_arrow_up_press.png"/>
+      <property key="LafSynth.arrow.up.pressed" type="idref" value="spArrowUpPressed" default="false"/>
+      <imageIcon id="spArrowLeftPressed" path="resource/1204972229812_arrow_left_press.png"/>
+      <property key="LafSynth.arrow.left.pressed" type="idref" value="spArrowLeftPressed" default="false"/>
+      <imageIcon id="spArrowDownPressed" path="resource/1204972236828_arrow_down_press.png"/>
+      <property key="LafSynth.arrow.down.pressed" type="idref" value="spArrowDownPressed" default="false"/>
+      <imageIcon id="spArrowRightPressed" path="resource/1204972243953_arrow_right_press.png"/>
+      <property key="LafSynth.arrow.right.pressed" type="idref" value="spArrowRightPressed" default="false"/>
     </state>
     <state value="DISABLED">
-      <imageIcon id="ArrowUpDisabled" path="resource/1204972279156_arrow_up_disable.png"/>
-      <property key="LafSynth.arrow.up.disabled" type="idref" value="ArrowUpDisabled" default="false"/>
-      <imageIcon id="ArrowLeftDisabled" path="resource/1204972286015_arrow_left_disable.png"/>
-      <property key="LafSynth.arrow.left.disabled" type="idref" value="ArrowLeftDisabled" default="false"/>
-      <imageIcon id="ArrowDownDisabled" path="resource/1204972293703_arrow_down_disable.png"/>
-      <property key="LafSynth.arrow.down.disabled" type="idref" value="ArrowDownDisabled" default="false"/>
-      <imageIcon id="ArrowRightDisabled" path="resource/1204972301171_arrow_right_disable.png"/>
-      <property key="LafSynth.arrow.right.disabled" type="idref" value="ArrowRightDisabled" default="false"/>
+      <imageIcon id="spArrowUpDisabled" path="resource/1204972279156_arrow_up_disable.png"/>
+      <property key="LafSynth.arrow.up.disabled" type="idref" value="spArrowUpDisabled" default="false"/>
+      <imageIcon id="spArrowLeftDisabled" path="resource/1204972286015_arrow_left_disable.png"/>
+      <property key="LafSynth.arrow.left.disabled" type="idref" value="spArrowLeftDisabled" default="false"/>
+      <imageIcon id="spArrowDownDisabled" path="resource/1204972293703_arrow_down_disable.png"/>
+      <property key="LafSynth.arrow.down.disabled" type="idref" value="spArrowDownDisabled" default="false"/>
+      <imageIcon id="spArrowRightDisabled" path="resource/1204972301171_arrow_right_disable.png"/>
+      <property key="LafSynth.arrow.right.disabled" type="idref" value="spArrowRightDisabled" default="false"/>
     </state>
   </style>
   <bind style="splitPaneButton" type="name" key="SplitPaneDivider.leftOneTouchButton"/>
-  <bind style="splitPaneButton" type="name" key="SplitPaneDivider.rightOneTouchButton"/>-->
+  <bind style="splitPaneButton" type="name" key="SplitPaneDivider.rightOneTouchButton"/>
 
 
 
