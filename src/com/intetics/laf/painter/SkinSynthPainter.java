@@ -519,25 +519,25 @@ public class SkinSynthPainter extends SynthPainter {
       color = Color.GRAY;
     }
     graphics.setColor(new ColorUIResource(0, 38, 100));
-    graphics.drawRect(x, y, w - 1, h - 1);
+    graphics.drawRoundRect(x, y, w - 1, h - 1, 10, 10);
   }
 
   @Override
   public void paintInternalFrameTitlePaneBorder(SynthContext context, Graphics graphics, int x, int y, int w, int h) {
+
+  }
+
+  @Override
+  public void paintInternalFrameTitlePaneBackground(SynthContext context, Graphics graphics, int x, int y, int w, int h) {
     UIDefaults uIDefaults = UIManager.getDefaults();
     Color color = uIDefaults.getColor("LafSynth.internalframe.title.main.color");
     if (color == null) {
       color = Color.GRAY;
     }
     graphics.setColor(color.darker());
-    graphics.drawRect(x, y, w - 1, h - 1);
-  }
-
-  @Override
-  public void paintInternalFrameTitlePaneBackground(SynthContext context, Graphics graphics, int x, int y, int w, int h) {
-    this.paintInternalFrameBackground(context, graphics, x, y, w, h);
+    graphics.fillRect(x, y, w - 1, h - 1);
     String string = System.getProperty("java.version");
-    if (string.compareTo("1.6") < 0) {
+    /*if (string.compareTo("1.6") < 0) {
       Container container;
       JInternalFrame jInternalFrame;
       int n5 = context.getStyle().getInt(context, "InternalFrameTitlePane.titleSpacing", 0);
@@ -553,6 +553,6 @@ public class SkinSynthPainter extends SynthPainter {
         graphics.setColor(Color.BLACK);
         graphics.drawString(jInternalFrame.getTitle(), 20 + n5, 15);
       }
-    }
+    }*/
   }
 }

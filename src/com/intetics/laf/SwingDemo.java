@@ -178,7 +178,7 @@ public class SwingDemo extends JFrame implements ActionListener {
   private static void createAndShowGUI() {
 
     // Set custom defined look and feel through external XML
-    /*SynthLookAndFeel synth = new SynthLookAndFeel();
+    SynthLookAndFeel synth = new SynthLookAndFeel();
     try {
       synth.load(SwingDemo.class.getResourceAsStream("synth.xml"), SwingDemo.class);
     } catch (ParseException e) {
@@ -189,7 +189,7 @@ public class SwingDemo extends JFrame implements ActionListener {
     } catch (UnsupportedLookAndFeelException e1) {
       e1.printStackTrace();
       System.out.println("Look and Feel file not found");
-    }*/
+    }
     //Ask for window decorations provided by the look and feel.
     JFrame.setDefaultLookAndFeelDecorated(true);
 

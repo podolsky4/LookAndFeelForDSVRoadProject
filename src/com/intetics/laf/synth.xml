@@ -781,14 +781,6 @@ limitations under the License.
   </style>
   <bind style="toolBarDragWindowStyle" type="region" key="ToolBarDragWindow"/>
 
-  <!--The style for root pane.-->
-  <style id="rootPaneStyle">
-    <state>
-      <color type="BACKGROUND" value="WHITE"/>
-    </state>
-  </style>
-  <bind style="rootPaneStyle" type="region" key="RootPane"/>
-
   <!--The style for progress bar component.-->
   <style id="progressBarStyle">
     <painter idref="painter" method="progressBarForeground"/>
@@ -1013,29 +1005,36 @@ limitations under the License.
 
   <!--The style for internal frame.-->
   <style id="internalFrameStyle">
+    <insets top="2" left="3" bottom="3" right="3"/>
     <imageIcon id="InternalFrameIcon" path="resource/1204292723703_internal_frame_icon.png"/>
     <property key="InternalFrame.icon" type="idref" value="InternalFrameIcon" default="false"/>
     <defaultsProperty key="LafSynth.internalframe.main.color" type="idref" value="InternalFrameMainColor" default="true"/>
+    <imagePainter method="internalFrameBorder" path="resource/internal_frame_border.png"
+                  sourceInsets="3 4 3 4" paintCenter="true" stretch="true"/>
     <painter idref="painter" method="internalFrameBackground"/>
-    <painter idref="painter" method="internalFrameBorder"/>
+    <!--<painter idref="painter" method="internalFrameBorder"/>-->
   </style>
   <bind style="internalFrameStyle" type="region" key="InternalFrame"/>
 
   <!--The style for the title pane of internal frame.-->
   <style id="internalFrameTitlePaneStyle">
-    <defaultsProperty key="LafSynth.internalframe.title.main.color" type="idref" value="foreground" default="true"/>
-    <property key="InternalFrameTitlePane.titleSpacing" type="integer" value="5" default="false"/>
-    <property key="InternalFrameTitlePane.maxFrameIconSize" type="dimension" value="24 24" default="false"/>
-    <imageIcon id="InternalFrameMaximizeButtonIcon" path="resource/1204294372812_internal_frame_max_icon.png"/>
+    <opaque value="true"/>
+    <state>
+      <color type="BACKGROUND" idref="foreground" />
+      <color type="TEXT_FOREGROUND" idref="background" />
+    </state>
+    <!--<defaultsProperty key="LafSynth.internalframe.title.main.color" type="idref" value="Gray" default="true"/>-->
+    <!--<property key="InternalFrameTitlePane.titleSpacing" type="integer" value="5" default="false"/>-->
+    <property key="InternalFrameTitlePane.buttonSpacing" type="integer" value="5" default="false"/>
+    <!--<property key="InternalFrameTitlePane.maxFrameIconSize" type="dimension" value="9 9" default="false"/>-->
+    <imageIcon id="InternalFrameMaximizeButtonIcon" path="resource/internal_frame_max_icon.png"/>
     <property key="InternalFrameTitlePane.maximizeIcon" type="idref" value="InternalFrameMaximizeButtonIcon" default="false"/>
-    <imageIcon id="InternalFrameCloseButtonIcon" path="resource/1204294470625_internal_frame_close_icon.png"/>
+    <imageIcon id="InternalFrameCloseButtonIcon" path="resource/filechooser_cancel_icon.png"/>
     <property key="InternalFrameTitlePane.closeIcon" type="idref" value="InternalFrameCloseButtonIcon" default="false"/>
     <imageIcon id="InternalFrameRestoreButtonIcon" path="resource/1204295742281_internal_frame_restore_icon.png"/>
     <property key="InternalFrameTitlePane.minimizeIcon" type="idref" value="InternalFrameRestoreButtonIcon" default="false"/>
-    <imageIcon id="InternalFrameMinimizeButtonIcon" path="resource/1204296642906_internal_frame_min_icon.png"/>
+    <imageIcon id="InternalFrameMinimizeButtonIcon" path="resource/internal_frame_min_icon.png"/>
     <property key="InternalFrameTitlePane.iconifyIcon" type="idref" value="InternalFrameMinimizeButtonIcon" default="false"/>
-    <painter idref="painter" method="internalFrameTitlePaneBackground"/>
-    <painter idref="painter" method="internalFrameTitlePaneBorder"/>
   </style>
   <bind style="internalFrameTitlePaneStyle" type="region" key="InternalFrameTitlePane"/>
 
@@ -1043,7 +1042,7 @@ limitations under the License.
   <style id="InternalFrameButton">
     <opaque value="true"/>
     <state>
-      <!--<color type="BACKGROUND" idref="InternalFrameMainColor" />-->
+      <color type="BACKGROUND" idref="foreground" />
     </state>
   </style>
   <bind style="InternalFrameButton" type="name" key="InternalFrameTitlePane.closeButton"/>
@@ -1052,7 +1051,10 @@ limitations under the License.
 
   <!--The style for desktop icon (iconified internal frame).-->
   <style id="desktopIconStyle">
-     <!--describe your styles here   -->
+    <opaque value="true"/>
+    <state>
+      <color type="BACKGROUND" idref="LightBlue" />
+    </state>
   </style>
   <bind style="desktopIconStyle" type="region" key="DesktopIcon"/>
 
@@ -1073,6 +1075,14 @@ limitations under the License.
     <!--describe your styles here   -->
   </style>
   <bind style="panelStyle" type="region" key="Panel"/>
+
+  <!--The style for root pane.-->
+  <style id="rootPaneStyle">
+    <state>
+      <!--<color type="BACKGROUND" value="WHITE"/>-->
+    </state>
+  </style>
+  <bind style="rootPaneStyle" type="region" key="RootPane"/>
 
   <!--The style for file chooser component.-->
   <style id="fileChooserStyle">
