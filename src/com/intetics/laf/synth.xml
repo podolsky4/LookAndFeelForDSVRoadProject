@@ -895,13 +895,13 @@ limitations under the License.
 
   <!--The style for check box menu item.-->
   <style id="checkBoxMenuItemStyle">
+    <object id="MenuItemBgColorEnabled" idref="background"/>
     <imageIcon id="CheckBoxMenuItemCheckIconEnabled" path="resource/1252405736906_Checkbox_MenuItem_None.png"/>
     <imageIcon id="CheckBoxMenuItemCheckIconMouseOver" path="resource/1252405890781_Checkbox_MenuItem_Hover.png"/>
     <imageIcon id="CheckBoxMenuItemCheckIconSelected" path="resource/1252405906156_Checkbox_MenuItem_Selected.png"/>
     <imageIcon id="CheckBoxMenuItemCheckIconDisabled" path="resource/1252405809406_Checkbox_MenuItem_None.png"/>
     <state>
-      <imagePainter method="checkBoxMenuItemBackground" path="resource/1204817049984_menu_item_bg_enabled.png"
-                    sourceInsets="0 0 0 0" paintCenter="true" stretch="true"/>
+      <painter method="menuItemBackground" idref="painter"/>
       <color type="TEXT_FOREGROUND" value="#000000"/>
       <property key="CheckBoxMenuItem.checkIcon" type="idref" value="CheckBoxMenuItemCheckIconEnabled" default="false"/>
     </state>
@@ -927,6 +927,7 @@ limitations under the License.
       <imagePainter method="checkBoxMenuItemBackground" path="resource/1264231987812_MenuItem_Selected.png"
                     sourceInsets="2 2 2 2" paintCenter="true" stretch="true"/>
     </state>
+
   </style>
   <bind style="checkBoxMenuItemStyle" type="region" key="CheckBoxMenuItem"/>
 
