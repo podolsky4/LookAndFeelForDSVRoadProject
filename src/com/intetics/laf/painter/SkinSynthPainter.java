@@ -20,19 +20,7 @@ import java.lang.reflect.Method;
 
 public class SkinSynthPainter extends SynthPainter {
 
-  public void paintPanelBackground(SynthContext context, Graphics g, int x, int y, int w, int h) {
-    Color start = UIManager.getColor("Panel.startBackground");
-    Color end = UIManager.getColor("Panel.endBackground");
-    Graphics2D g2 = (Graphics2D) g;
-    GradientPaint grPaint = new GradientPaint(
-            (float) x, (float) y, start,
-            (float) w, (float) h, end);
-    g2.setPaint(grPaint);
-    g2.fillRect(x, y, w, h);
-    g2.setPaint(null);
-    g2.setColor(new Color(255, 255, 255, 120));
-    g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-  }
+
 
   @Override
   public void paintPanelBorder(SynthContext context, Graphics g, int x, int y, int w, int h) {
