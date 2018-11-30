@@ -262,7 +262,7 @@ public class SkinSynthPainter extends SynthPainter {
       color = Color.DARK_GRAY;
     }
     g.setColor(color);
-    g.fillRect(x, y, w, h);
+    g.drawRect(x, y, w - 1, h - 1);
   }
 
   @Override
