@@ -89,7 +89,7 @@ public class DocumentFrame extends JInternalFrame {
 //    comboBox.setEnabled(false);
     rootPane.add(comboBox);
     JButton testBtn = new JButton("Test 204");
-    testBtn.setName("TransparentButton");
+    testBtn.setName("DarkButton");
     rootPane.add(testBtn);
     JRadioButton radioButton1 = new JRadioButton("Agile");
     JRadioButton radioButton2 = new JRadioButton("Waterfall");
