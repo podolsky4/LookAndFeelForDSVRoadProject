@@ -76,7 +76,7 @@ public class DocumentFrame extends JInternalFrame {
     JList<String> list = new JList<>(data); //data has type Object[]
     list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
     list.setLayoutOrientation(JList.VERTICAL);
-    list.setVisibleRowCount(-1);
+    list.setVisibleRowCount(5);
     JScrollPane listScroller = new JScrollPane(list);
     listScroller.setPreferredSize(new Dimension(120, 100));
     rootPane.add(listScroller);

@@ -144,10 +144,12 @@ limitations under the License.
 
   <!--Button style-->
   <style id="button">
-    // describe colors, fonts, and states
     <opaque value="true"/>
-    <!--<insets top="3" left="15" right="15" bottom="3"/>-->
-    <property key="Button.margin" type="insets" value="3 15 3 15" default="false"/>
+    <property key="Button.textShiftOffset" type="integer" value="1"/>
+    <insets top="4" left="4" right="4" bottom="4"/>
+    <property key="Button.margin" type="insets" value="0 10 0 10" default="false"/>
+    <imagePainter method="buttonBorder" path="resource/tableBorder.png"
+                  sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
 
     <state>
       <color idref="foreground" type="BACKGROUND"/>
@@ -1029,7 +1031,7 @@ limitations under the License.
     <property key="InternalFrameTitlePane.maximizeIcon" type="idref" value="InternalFrameMaximizeButtonIcon" default="false"/>
     <imageIcon id="InternalFrameCloseButtonIcon" path="resource/filechooser_cancel_icon.png"/>
     <property key="InternalFrameTitlePane.closeIcon" type="idref" value="InternalFrameCloseButtonIcon" default="false"/>
-    <imageIcon id="InternalFrameRestoreButtonIcon" path="resource/1204295742281_internal_frame_restore_icon.png"/>
+    <imageIcon id="InternalFrameRestoreButtonIcon" path="resource/internal_frame_restore_icon.png"/>
     <property key="InternalFrameTitlePane.minimizeIcon" type="idref" value="InternalFrameRestoreButtonIcon" default="false"/>
     <imageIcon id="InternalFrameMinimizeButtonIcon" path="resource/internal_frame_min_icon.png"/>
     <property key="InternalFrameTitlePane.iconifyIcon" type="idref" value="InternalFrameMinimizeButtonIcon" default="false"/>
