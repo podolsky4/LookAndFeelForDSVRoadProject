@@ -89,6 +89,7 @@ public class DocumentFrame extends JInternalFrame {
 //    comboBox.setEnabled(false);
     rootPane.add(comboBox);
     JButton testBtn = new JButton("Test 204");
+    testBtn.setName("DarkButton");
     rootPane.add(testBtn);
     JRadioButton radioButton1 = new JRadioButton("Agile");
     JRadioButton radioButton2 = new JRadioButton("Waterfall");
@@ -281,6 +282,7 @@ public class DocumentFrame extends JInternalFrame {
             BorderFactory.createEmptyBorder(5,5,5,5)));
     rootPane.add(rightPane);
     JButton dialogBtn = new JButton("Show dialog");
+    dialogBtn.setName("DarkButton");
     dialogBtn.setToolTipText("Click this button to disable the middle button.");
     dialogBtn.addActionListener(e -> {
       //ok dialog
@@ -292,6 +294,7 @@ public class DocumentFrame extends JInternalFrame {
     progressBar.setStringPainted(true);
     rootPane.add(progressBar);
     JButton openFrame = new JButton("Create frame");
+    openFrame.setName("DarkButton");
     openFrame.setToolTipText("Click this button to create a new frame.");
     openFrame.addActionListener(e -> {
 
@@ -302,6 +305,7 @@ public class DocumentFrame extends JInternalFrame {
     final JFileChooser fc = new JFileChooser();
 
     JButton openFile = new JButton("Open File");
+    openFile.setName("DarkButton");
     openFile.setToolTipText("Click this button to open a file.");
     openFile.addActionListener(e -> {
       //Handle open button action.

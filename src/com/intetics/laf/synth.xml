@@ -145,6 +145,25 @@ limitations under the License.
   <!--Button style-->
   <style id="button">
     <opaque value="false"/>
+    <property key="Button.textShiftOffset" type="integer" value="1"/>
+    <insets top="4" left="4" right="4" bottom="4"/>
+    <property key="Button.margin" type="insets" value="0 10 0 10" default="false"/>
+    <!--<imagePainter method="buttonBorder" path="resource/border.png"
+                  sourceInsets="3 3 3 3" paintCenter="true" stretch="true"/>-->
+    <state>
+      <!--<color idref="foreground" type="BACKGROUND"/>
+      <color value="#F47920" type="FOREGROUND"/>-->
+    </state>
+    <state value="PRESSED">
+      <color value="#0026AA" type="BACKGROUND"/>
+    </state>
+  </style>
+  <bind style="button" type="region" key="Button"/>
+
+
+  <!--Redefined button-->
+  <style id="darkbutton">
+    <opaque value="true"/>
     <font name="Arial" size="12" style="BOLD"/>
     <property key="Button.textShiftOffset" type="integer" value="1"/>
     <insets top="4" left="4" right="4" bottom="4"/>
@@ -159,7 +178,8 @@ limitations under the License.
       <color value="#0026AA" type="BACKGROUND"/>
     </state>
   </style>
-  <bind style="button" type="region" key="Button"/>
+  <bind style="darkbutton" type="name" key="DarkButton"/>
+
 
 
   <!--
