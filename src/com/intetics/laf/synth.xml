@@ -144,13 +144,13 @@ limitations under the License.
 
   <!--Button style-->
   <style id="button">
-    <opaque value="true"/>
+    <opaque value="false"/>
+    <font name="Arial" size="12" style="BOLD"/>
     <property key="Button.textShiftOffset" type="integer" value="1"/>
     <insets top="4" left="4" right="4" bottom="4"/>
     <property key="Button.margin" type="insets" value="0 10 0 10" default="false"/>
-    <imagePainter method="buttonBorder" path="resource/tableBorder.png"
-                  sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
-
+    <!--<imagePainter method="buttonBorder" path="resource/border.png"
+                  sourceInsets="3 3 3 3" paintCenter="true" stretch="true"/>-->
     <state>
       <color idref="foreground" type="BACKGROUND"/>
       <color value="#F47920" type="FOREGROUND"/>
@@ -160,6 +160,35 @@ limitations under the License.
     </state>
   </style>
   <bind style="button" type="region" key="Button"/>
+
+
+  <!--
+*******************************************************************************
+ToggleButton
+*******************************************************************************
+-->
+  <style id="toggleButton">
+    <opaque value="true"/>
+    <insets top="4" left="4" bottom="4" right="4"/>
+    <property key="ToggleButton.margin" type="insets" value="0 0 0 0"/>
+
+    <state>
+      <color type="BACKGROUND" value="#8BB3D3"/>
+      <color type="TEXT_FOREGROUND" idref="background"/>
+      <defaultsProperty key="Synthetica.toggleButton.border.insets" type="insets" value="4 4 4 4"/>
+      <imagePainter method="toggleButtonBorder" path="resource/tableBorder.png"
+                    sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
+    </state>
+    <state value="SELECTED">
+      <color type="BACKGROUND" value="#D6E0EE"/>
+      <color type="TEXT_FOREGROUND" idref="foreground"/>
+      <imagePainter method="toggleButtonBorder" path="resource/tableBorder.png"
+                    sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
+    </state>
+
+  </style>
+  <bind style="toggleButton" type="region" key="ToggleButton"/>
+
 
   <!--The style for radio button.-->
   <style id="radioButtonStyle">
@@ -287,6 +316,7 @@ limitations under the License.
     <property key="Slider.paintValue" type="boolean" value="true"/>
     <property key="Slider.thumbWidth" type="integer" value="14"/>
     <property key="Slider.thumbHeight" type="integer" value="14"/>
+    <!--<property key="Slider.trackBorder" type="integer" value="1"/>-->
   </style>
   <bind style="sliderStyle" type="region" key="Slider"/>
 
@@ -572,10 +602,24 @@ limitations under the License.
 
 
   <!--The style for the tabbed pane component.-->
-  <style id="tabbedPaneStyle">
+  <style id="tabbedPane">
+    <insets top="2" left="2" bottom="2" right="2"/>
     <property key="TabbedPane.textIconGap" type="integer" value="2" default="true"/>
   </style>
-  <bind style="tabbedPaneStyle" type="region" key="TabbedPane"/>
+  <bind style="tabbedPane" type="region" key="TabbedPane"/>
+
+  <style id="tabbedPaneContent">
+    <insets top="3" left="3" bottom="3" right="3"/>
+    <state>
+      <imagePainter method="tabbedPaneContentBorder" path="resource/border.png"
+                    sourceInsets="3 3 3 3" paintCenter="true" stretch="true"/>
+    </state>
+    <state value="DISABLED">
+      <imagePainter method="tabbedPaneContentBorder" path="resource/border_disabled.png"
+                    sourceInsets="3 3 3 3" paintCenter="true" stretch="true"/>
+    </state>
+  </style>
+  <bind style="tabbedPaneContent" type="region" key="TabbedPaneContent"/>
 
   <!--The style for the tabs of tabbed pane.-->
   <style id="tabbedPaneTabStyle">
@@ -779,8 +823,9 @@ limitations under the License.
 
   <!--The style for tool bar drag window.-->
   <style id="toolBarDragWindowStyle">
-    <imagePainter method="toolBarDragWindowBackground" path="resource/1204466391828_toolbar_background_enabled.png"
-                  sourceInsets="0 0 0 0" paintCenter="true" stretch="true"/>
+    <state>
+      <color type="BACKGROUND" idref="background"/>
+    </state>
   </style>
   <bind style="toolBarDragWindowStyle" type="region" key="ToolBarDragWindow"/>
 
@@ -811,6 +856,8 @@ limitations under the License.
   <!--The style for menu bar.-->
   <style id="menuBarStyle">
     <opaque value="true"/>
+    <insets top="3" left="3" bottom="3" right="3"/>
+
     <state>
       <color value="#F5F5F5" type="BACKGROUND"/>
     </state>
@@ -829,7 +876,7 @@ limitations under the License.
 
   <style id="menu">
     <!--<opaque value="true"/>-->
-    <!--<font name="Ubuntu" size="14" style="BOLD"/>-->
+    <font name="Arial" size="12" style="BOLD"/>
     <insets top="3" left="2" bottom="3" right="2"/>
     <property key="Menu.textIconGap" type="integer" value="5"/>
     <imageIcon id="arrowIcon" path="resource/arrow_right_over.png"/>
@@ -1019,6 +1066,7 @@ limitations under the License.
   <!--The style for the title pane of internal frame.-->
   <style id="internalFrameTitlePaneStyle">
     <opaque value="true"/>
+    <insets top="3" left="5" bottom="3" right="5"/>
     <state>
       <color type="BACKGROUND" idref="foreground" />
       <color type="TEXT_FOREGROUND" idref="background" />
@@ -1051,17 +1099,23 @@ limitations under the License.
 
   <!--The style for desktop icon (iconified internal frame).-->
   <style id="desktopIconStyle">
+    <!--describe your styles here   -->
     <opaque value="true"/>
-    <insets top="3" left="5" bottom="3" right="5"/>
-    <state>
-      <color type="BACKGROUND" idref="LightBlue" />
-    </state>
+    <insets top="3" left="3" bottom="3" right="3"/>
+    <imagePainter method="desktopIconBorder" path="resource/desktopBorder.png"
+                  sourceInsets="4 4 4 4" paintCenter="true" stretch="true"/>
   </style>
   <bind style="desktopIconStyle" type="region" key="DesktopIcon"/>
 
   <!--The style for desktop pane (the internal frame container).-->
   <style id="desktopPaneStyle">
-    <!--describe your styles here   -->
+    <state>
+      <opaque value="true" />
+
+      <color type="BACKGROUND" idref="background" />
+      <!-- <string id="desktopManager">de.javasoft.plaf.synthetica.SyntheticaDesktopManager</string>
+      <defaultsProperty key="Synthetica.desktopPane.desktopManager.className" type="idref" value="desktopManager"/> -->
+    </state>
   </style>
   <bind style="desktopPaneStyle" type="region" key="DesktopPane"/>
 
@@ -1125,5 +1179,6 @@ limitations under the License.
     </state>
   </style>
   <bind style="viewport" type="region" key="Viewport"/>
+
 
 </synth>
