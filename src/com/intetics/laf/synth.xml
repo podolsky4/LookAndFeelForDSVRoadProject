@@ -144,15 +144,14 @@ limitations under the License.
 
   <!--Button style-->
   <style id="button">
-    <opaque value="false"/>
+    <opaque value="true"/>
+    <!--<font name="Arial" size="12" style="BOLD"/>-->
     <property key="Button.textShiftOffset" type="integer" value="1"/>
     <insets top="4" left="4" right="4" bottom="4"/>
     <property key="Button.margin" type="insets" value="0 10 0 10" default="false"/>
-    <!--<imagePainter method="buttonBorder" path="resource/border.png"
-                  sourceInsets="3 3 3 3" paintCenter="true" stretch="true"/>-->
     <state>
-      <!--<color idref="foreground" type="BACKGROUND"/>
-      <color value="#F47920" type="FOREGROUND"/>-->
+      <color idref="foreground" type="BACKGROUND"/>
+      <color value="#F47920" type="FOREGROUND"/>
     </state>
     <state value="PRESSED">
       <color value="#0026AA" type="BACKGROUND"/>
@@ -162,24 +161,23 @@ limitations under the License.
 
 
   <!--Redefined button-->
-  <style id="darkbutton">
-    <opaque value="true"/>
-    <font name="Arial" size="12" style="BOLD"/>
+  <style id="transbutton">
+    <opaque value="false"/>
+    <!--<font name="Arial" size="12" style="BOLD"/>-->
     <property key="Button.textShiftOffset" type="integer" value="1"/>
     <insets top="4" left="4" right="4" bottom="4"/>
     <property key="Button.margin" type="insets" value="0 10 0 10" default="false"/>
-    <!--<imagePainter method="buttonBorder" path="resource/border.png"
-                  sourceInsets="3 3 3 3" paintCenter="true" stretch="true"/>-->
+    <imagePainter method="buttonBorder" path="resource/border.png"
+                  sourceInsets="3 3 3 3" paintCenter="true" stretch="true"/>
     <state>
-      <color idref="foreground" type="BACKGROUND"/>
-      <color value="#F47920" type="FOREGROUND"/>
+      <color idref="foreground" type="TEXT_FOREGROUND"/>
     </state>
     <state value="PRESSED">
       <color value="#0026AA" type="BACKGROUND"/>
     </state>
   </style>
-  <bind style="darkbutton" type="name" key="DarkButton"/>
-
+  <bind style="transbutton" type="name" key="TransparentButton"/>
+  <!--<bind style="transbutton" type="name" key="OptionPane.button"/>-->
 
 
   <!--
@@ -826,8 +824,9 @@ ToggleButton
 
 <!--The style for tool bar component.-->
   <style id="toolBarStyle">
+    <insets top="2" left="2" bottom="2" right="2"/>
     <imageIcon id="ToolBarHandleIcon" path="resource/1204547880578_toolbar_handle_icon.png"/>
-    <property key="ToolBar.handleIcon" type="idref" value="ToolBarHandleIcon" default="false"/>
+    <property key="ToolBar.handleIcon" type="idref" value="ToolBarHandleIcon"/>
     <object id="ToolBarBgColor" idref="background"/>
     <defaultsProperty key="LafSynth.toolbar.bgcolor" type="idref" value="ToolBarBgColor" default="true"/>
     <painter idref="painter" method="toolBarBackground"/>
@@ -844,7 +843,7 @@ ToggleButton
   <!--The style for tool bar drag window.-->
   <style id="toolBarDragWindowStyle">
     <state>
-      <color type="BACKGROUND" idref="background"/>
+      <!--<color type="BACKGROUND" idref="background"/>-->
     </state>
   </style>
   <bind style="toolBarDragWindowStyle" type="region" key="ToolBarDragWindow"/>
@@ -897,7 +896,7 @@ ToggleButton
   <style id="menu">
     <!--<opaque value="true"/>-->
     <font name="Arial" size="12" style="BOLD"/>
-    <insets top="3" left="2" bottom="3" right="2"/>
+    <insets top="3" left="8" bottom="3" right="2"/>
     <property key="Menu.textIconGap" type="integer" value="5"/>
     <imageIcon id="arrowIcon" path="resource/arrow_right_over.png"/>
     <imageIcon id="arrowIconSelected" path="resource/arrow_right_normal.png"/>

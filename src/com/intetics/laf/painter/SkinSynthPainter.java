@@ -61,6 +61,7 @@ public class SkinSynthPainter extends SynthPainter {
     }
     graphics2D.drawLine(x + start - 1, y, x + start - 1, y + h - 1);
     graphics2D.drawLine(0, 0, x + tableColumnModel.getTotalColumnWidth(), 0);
+    graphics2D.drawLine(0, y + h, x + tableColumnModel.getTotalColumnWidth(), y + h);
 
   }
 
