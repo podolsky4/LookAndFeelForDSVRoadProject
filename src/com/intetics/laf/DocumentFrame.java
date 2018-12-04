@@ -293,7 +293,7 @@ public class DocumentFrame extends JInternalFrame {
     progressBar.setValue(72);
     progressBar.setStringPainted(true);
     rootPane.add(progressBar);
-    JButton openFrame = new JButton("Create frame");
+    JButton openFrame = new JButton("Create frame", new ImageIcon("/resource/issueTicket-icon.png"));
     openFrame.setName("TransparentButton");
     openFrame.setToolTipText("Click this button to create a new frame.");
     openFrame.addActionListener(e -> {
@@ -324,10 +324,13 @@ public class DocumentFrame extends JInternalFrame {
     rootPane.add(openFile);
 
     JToggleButton confBtn = new JToggleButton("Load General Shipment");
-    confBtn.setEnabled(false);
+//    confBtn.setEnabled(false);
     rootPane.add(confBtn);
     JToggleButton transportBtn = new JToggleButton("Transport Order");
     rootPane.add(transportBtn);
+    ButtonGroup bg = new ButtonGroup(); // создаем группу взаимного исключения
+    bg.add(confBtn);
+    bg.add(transportBtn); // сделали кнопки tButton1 и tButton2 взаимоисключающими
 
 
     getContentPane().add(rootPane);
