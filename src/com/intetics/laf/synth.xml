@@ -178,7 +178,7 @@ limitations under the License.
   </style>
   <bind style="darkbutton" type="name" key="DarkButton"/>
   <bind style="darkbutton" type="name" key="OptionPane.button"/>
-  <bind style="darkbutton" type="name" key="FileChooser.button"/>
+  <!--<bind style="darkbutton" type="name" key="FileChooser.button"/>-->
 
   <!--
 *******************************************************************************
@@ -641,18 +641,22 @@ ToggleButton
 
   <!--The style for the tabs of tabbed pane.-->
   <style id="tabbedPaneTabStyle">
-    <insets top="5" left="5" bottom="3" right="5"/>
-    <imagePainter method="tabbedPaneTabBorder" path="resource/1204440390390_tab_border.png"
+    <insets top="3" left="8" bottom="3" right="8"/>
+    <state>
+      <imagePainter method="tabbedPaneTabBorder" path="resource/1204440390390_tab_border.png"
                   sourceInsets="0 1 0 1" paintCenter="true" stretch="true"/>
-    <imagePainter method="tabbedPaneTabBackground" path="resource/1204726737093_tab_bg_enabled.png"
-                  sourceInsets="6 5 3 5" paintCenter="true" stretch="true"/>
+      <imagePainter method="tabbedPaneTabBackground" path="resource/tab_bg_enabled.png"
+                  sourceInsets="5 5 5 5" paintCenter="true" stretch="true"/>
+      <color type="TEXT_FOREGROUND" idref="background"/>
+    </state>
     <state value="DISABLED">
-      <imagePainter method="tabbedPaneTabBackground" path="resource/1204439604828_tab_bg_disabled.png"
-                    sourceInsets="6 5 3 5" paintCenter="true" stretch="true"/>
+      <imagePainter method="tabbedPaneTabBackground" path="resource/tab_bg_disabled.png"
+                    sourceInsets="5 5 5 5" paintCenter="true" stretch="true"/>
     </state>
     <state value="SELECTED">
-      <imagePainter method="tabbedPaneTabBackground" path="resource/1204451361468_tab_bg_selected.png"
-                    sourceInsets="6 5 3 5" paintCenter="true" stretch="true"/>
+      <imagePainter method="tabbedPaneTabBackground" path="resource/tab_bg_selected.png"
+                    sourceInsets="5 5 5 5" paintCenter="true" stretch="true"/>
+      <color type="TEXT_FOREGROUND" idref="foreground"/>
     </state>
   </style>
   <bind style="tabbedPaneTabStyle" type="region" key="TabbedPaneTab"/>
