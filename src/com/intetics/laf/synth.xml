@@ -144,25 +144,6 @@ limitations under the License.
 
   <!--Button style-->
   <style id="button">
-    <opaque value="false"/>
-    <!--<font name="Arial" size="12" style="BOLD"/>-->
-    <property key="Button.textShiftOffset" type="integer" value="1"/>
-    <insets top="4" left="4" right="4" bottom="4"/>
-    <property key="Button.margin" type="insets" value="0 10 0 10" default="false"/>
-    <!--<imagePainter method="buttonBorder" path="resource/border.png"
-                  sourceInsets="3 3 3 3" paintCenter="true" stretch="true"/>-->
-    <state>
-      <color idref="foreground" type="TEXT_FOREGROUND"/>
-    </state>
-    <state value="PRESSED">
-      <color value="#0026AA" type="BACKGROUND"/>
-    </state>
-  </style>
-  <bind style="button" type="region" key="Button"/>
-
-
-  <!--Redefined button-->
-  <style id="darkbutton">
     <opaque value="true"/>
     <!--<font name="Arial" size="12" style="BOLD"/>-->
     <property key="Button.textShiftOffset" type="integer" value="1"/>
@@ -175,9 +156,29 @@ limitations under the License.
     <state value="PRESSED">
       <color value="#0026AA" type="BACKGROUND"/>
     </state>
+
   </style>
-  <bind style="darkbutton" type="name" key="DarkButton"/>
-  <bind style="darkbutton" type="name" key="OptionPane.button"/>
+  <bind style="button" type="region" key="Button"/>
+
+
+  <!--Redefined button-->
+  <style id="transbutton">
+    <opaque value="false"/>
+    <!--<font name="Arial" size="12" style="BOLD"/>-->
+    <property key="Button.textShiftOffset" type="integer" value="1"/>
+    <insets top="4" left="4" right="4" bottom="4"/>
+    <property key="Button.margin" type="insets" value="0 10 0 10" default="false"/>
+    <!--<imagePainter method="buttonBorder" path="resource/border.png"
+                  sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>-->
+    <state>
+      <color idref="foreground" type="TEXT_FOREGROUND"/>
+    </state>
+    <state value="PRESSED">
+      <color value="#0026AA" type="BACKGROUND"/>
+    </state>
+  </style>
+  <bind style="transbutton" type="name" key="TransparentButton"/>
+  <!--<bind style="transbutton" type="name" key="OptionPane.button"/>-->
   <!--<bind style="darkbutton" type="name" key="FileChooser.button"/>-->
 
   <!--
@@ -188,7 +189,7 @@ ToggleButton
   <style id="toggleButton">
     <opaque value="true"/>
     <insets top="4" left="4" bottom="4" right="4"/>
-    <property key="ToggleButton.margin" type="insets" value="0 0 0 0"/>
+    <property key="ToggleButton.margin" type="insets" value="3 5 3 5"/>
 
     <state>
       <color type="BACKGROUND" value="#8BB3D3"/>
@@ -200,6 +201,11 @@ ToggleButton
     <state value="SELECTED">
       <color type="BACKGROUND" value="#D6E0EE"/>
       <color type="TEXT_FOREGROUND" idref="foreground"/>
+      <imagePainter method="toggleButtonBorder" path="resource/tableBorder.png"
+                    sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
+    </state>
+    <state value="DISABLED">
+      <color type="BACKGROUND" value="#EEEEEE"/>
       <imagePainter method="toggleButtonBorder" path="resource/tableBorder.png"
                     sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
     </state>
@@ -455,7 +461,7 @@ ToggleButton
     <insets top="1" left="1" right="1" bottom="1"/>
     <!--<property key="ScrollPane.viewportBorderInsets" type="insets" value="1 1 1 1" default="false"/>-->
     <state>
-      <imagePainter method="scrollPaneBorder" path="resource/tableBorder.png"
+      <imagePainter method="scrollPaneBorder" path="resource/border.png"
                     sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
     </state>
     <state value="DISABLED">
@@ -567,7 +573,7 @@ ToggleButton
     <property key="Table.rendererUseUIBorder" type="boolean" value="false"/>
     <object id="TableGridColor" idref="foreground" />
     <property key="Table.gridColor" type="idref" value="TableGridColor" default="false"/>
-    <imagePainter method="tableBorder" path="resource/tableBorder.png"
+    <imagePainter method="tableBorder" path="resource/border.png"
                   sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
 
     <state value="DISABLED">
@@ -630,7 +636,7 @@ ToggleButton
     <insets top="3" left="3" bottom="3" right="3"/>
     <state>
       <imagePainter method="tabbedPaneContentBorder" path="resource/border.png"
-                    sourceInsets="3 3 3 3" paintCenter="true" stretch="true"/>
+                    sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
     </state>
     <state value="DISABLED">
       <imagePainter method="tabbedPaneContentBorder" path="resource/border_disabled.png"

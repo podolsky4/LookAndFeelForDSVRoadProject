@@ -27,22 +27,6 @@ public class SkinSynthPainter extends SynthPainter {
     super.paintPanelBorder(context, g, x, y, w, h);
   }
 
-  /**
-   * Make an existing colour transparent.
-   */
-  private static Color createTransparentColor(Color color) {
-    return new Color(color.getRed(), color.getGreen(), color.getBlue(), 0x88);
-  }
-
-  private int getArc(SynthContext context) {
-    return getArc(context.getComponent());
-  }
-
-  public static int getArc(Component component) {
-    // lists appear to mess up arcs
-    return component instanceof JList ? 0 : component.getFont().getSize() / 2;
-  }
-
   @Override
   public void paintTableHeaderBorder(SynthContext synthContext, Graphics graphics, int x, int y, int w, int h) {
     Graphics2D graphics2D = (Graphics2D)graphics.create();
@@ -54,14 +38,12 @@ public class SkinSynthPainter extends SynthPainter {
     graphics2D.drawLine(x + start, y, x + start, y + h - 1);
     for (int i = 0; i < columns; ++i) {
       graphics2D.drawLine(x + start - 1, y, x + start - 1, y + h - 1);
-      /*graphics2D.setPaint(color2);
-      graphics2D.drawLine(x + start, y, x + (start += tableColumnModel.getColumn(i).getWidth() - 1), y + h - 1);*/
       start += tableColumnModel.getColumn(i).getWidth() - 1;
       start += tableColumnModel.getColumnMargin();
     }
     graphics2D.drawLine(x + start - 1, y, x + start - 1, y + h - 1);
     graphics2D.drawLine(0, 0, x + tableColumnModel.getTotalColumnWidth(), 0);
-    graphics2D.drawLine(0, y + h, x + tableColumnModel.getTotalColumnWidth(), y + h);
+    graphics2D.drawLine(0, y + h - 1, x + tableColumnModel.getTotalColumnWidth(), y + h - 1);
 
   }
 
@@ -525,23 +507,5 @@ public class SkinSynthPainter extends SynthPainter {
     }
     graphics.setColor(color.darker());
     graphics.fillRect(x, y, w - 1, h - 1);
-    String string = System.getProperty("java.version");
-    /*if (string.compareTo("1.6") < 0) {
-      Container container;
-      JInternalFrame jInternalFrame;
-      int n5 = context.getStyle().getInt(context, "InternalFrameTitlePane.titleSpacing", 0);
-      for (container = context.getComponent(); !(container instanceof JInternalFrame) && container != null; container = container.getParent()) {
-      }
-      if (container instanceof JInternalFrame && (jInternalFrame = (JInternalFrame)container).getTitle() != null) {
-        graphics.setColor(Color.BLACK);
-        graphics.drawString(jInternalFrame.getTitle(), 20 + n5, 15);
-      }
-      for (container = context.getComponent(); !(container instanceof JInternalFrame.JDesktopIcon) && container != null; container = container.getParent()) {
-      }
-      if (container instanceof JInternalFrame.JDesktopIcon && (jInternalFrame = ((JInternalFrame.JDesktopIcon)container).getInternalFrame()).getTitle() != null) {
-        graphics.setColor(Color.BLACK);
-        graphics.drawString(jInternalFrame.getTitle(), 20 + n5, 15);
-      }
-    }*/
   }
 }
