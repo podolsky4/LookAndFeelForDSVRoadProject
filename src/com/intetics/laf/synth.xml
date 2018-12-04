@@ -193,22 +193,27 @@ ToggleButton
 
     <state>
       <color type="BACKGROUND" value="#8BB3D3"/>
+      <color type="TEXT_BACKGROUND" value="#8BB3D3"/>
       <color type="TEXT_FOREGROUND" idref="background"/>
-      <defaultsProperty key="Synthetica.toggleButton.border.insets" type="insets" value="4 4 4 4"/>
-      <imagePainter method="toggleButtonBorder" path="resource/tableBorder.png"
-                    sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
+    </state>
+    <state value="MOUSE_OVER">
+      <color type="BACKGROUND" value="#8BB3DD"/>
+      <color type="TEXT_FOREGROUND" idref="background"/>
     </state>
     <state value="SELECTED">
       <color type="BACKGROUND" value="#D6E0EE"/>
       <color type="TEXT_FOREGROUND" idref="foreground"/>
-      <imagePainter method="toggleButtonBorder" path="resource/tableBorder.png"
-                    sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
+    </state>
+    <state value="SELECTED and MOUSE_OVER">
+      <color type="BACKGROUND" value="#D6E0EE"/>
+      <color type="TEXT_FOREGROUND" idref="foreground"/>
     </state>
     <state value="DISABLED">
       <color type="BACKGROUND" value="#EEEEEE"/>
-      <imagePainter method="toggleButtonBorder" path="resource/tableBorder.png"
-                    sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
+
     </state>
+    <imagePainter method="toggleButtonBorder" path="resource/border.png"
+                  sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
 
   </style>
   <bind style="toggleButton" type="region" key="ToggleButton"/>
