@@ -190,6 +190,7 @@ public class SwingDemo extends JFrame implements ActionListener {
       e1.printStackTrace();
       System.out.println("Look and Feel file not found");
     }
+
     //Ask for window decorations provided by the look and feel.
     JFrame.setDefaultLookAndFeelDecorated(true);
 

@@ -55,7 +55,7 @@ limitations under the License.
    do not match a specific style will have a default style.-->
   <style id="default">
     <opaque value="false"/>
-    <font name="Ubuntu" size="14" />
+    <font name="Arial" size="14" />
     <state>
       <color type="FOREGROUND" idref="foreground"/>
       <color type="BACKGROUND" idref="background"/>
@@ -110,7 +110,7 @@ limitations under the License.
       <property key="LafSynth.arrow.right.enabled" type="idref" value="ArrowRightEnabled" default="false"/>
     </state>
     <state value="MOUSE_OVER">
-      <imageIcon id="ArrowUpMouseOver" path="resource/arrow_up_over.png"/>
+      <imageIcon id="ArrowUpMouseOver" path="resource/arrow_up_normal.png"/>
       <property key="LafSynth.arrow.up.mouseover" type="idref" value="ArrowUpMouseOver" default="false"/>
       <imageIcon id="ArrowLeftMouseOver" path="resource/arrow_left_over.png"/>
       <property key="LafSynth.arrow.left.mouseover" type="idref" value="ArrowLeftMouseOver" default="false"/>
@@ -182,14 +182,15 @@ limitations under the License.
   <!--<bind style="darkbutton" type="name" key="FileChooser.button"/>-->
 
   <!--
-*******************************************************************************
-ToggleButton
-*******************************************************************************
--->
+  *******************************************************************************
+  ToggleButton
+  *******************************************************************************
+  -->
+
   <style id="toggleButton">
     <opaque value="true"/>
-    <insets top="4" left="4" bottom="4" right="4"/>
-    <property key="ToggleButton.margin" type="insets" value="3 5 3 5"/>
+    <insets top="5" left="5" bottom="5" right="5"/>
+    <property key="ToggleButton.margin" type="insets" value="3 4 3 4"/>
 
     <state>
       <color type="BACKGROUND" value="#8BB3D3"/>
@@ -205,6 +206,10 @@ ToggleButton
       <color type="TEXT_FOREGROUND" idref="foreground"/>
     </state>
     <state value="SELECTED and MOUSE_OVER">
+      <color type="BACKGROUND" value="#D6E0EE"/>
+      <color type="TEXT_FOREGROUND" idref="foreground"/>
+    </state>
+    <state value="FOCUSED">
       <color type="BACKGROUND" value="#D6E0EE"/>
       <color type="TEXT_FOREGROUND" idref="foreground"/>
     </state>
@@ -625,7 +630,7 @@ ToggleButton
 
   <style id="cellRenderer">
     <opaque value="true"/>
-    <insets top="3" left="5" bottom="3" right="5"/>
+    <insets top="1" left="4" bottom="0" right="4"/>
   </style>
   <bind style="cellRenderer" type="name" key="Table.cellRenderer"/>
 
@@ -1135,9 +1140,12 @@ ToggleButton
   <style id="desktopIconStyle">
     <!--describe your styles here   -->
     <opaque value="true"/>
-    <insets top="3" left="3" bottom="3" right="3"/>
-    <imagePainter method="desktopIconBorder" path="resource/desktopBorder.png"
-                  sourceInsets="4 4 4 4" paintCenter="true" stretch="true"/>
+    <insets top="5" left="5" bottom="5" right="5"/>
+    <!--<imagePainter method="desktopIconBorder" path="resource/desktopBorder.png"
+                  sourceInsets="4 4 4 4" paintCenter="true" stretch="true"/>-->
+    <state>
+      <color type="BACKGROUND" value="BLUE"/>
+    </state>
   </style>
   <bind style="desktopIconStyle" type="region" key="DesktopIcon"/>
 
