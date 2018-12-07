@@ -63,6 +63,7 @@ limitations under the License.
       <color type="FOCUS" idref="focus"/>
     </state>
     <state value="DISABLED">
+      <color type="BACKGROUND" idref="Gray"/>
       <color type="TEXT_FOREGROUND" value="#999999"/>
     </state>
     <defaultsProperty key="TitledBorder.titleColor" type="idref" value="foreground" default="true"/>
@@ -110,7 +111,7 @@ limitations under the License.
       <property key="LafSynth.arrow.right.enabled" type="idref" value="ArrowRightEnabled" default="false"/>
     </state>
     <state value="MOUSE_OVER">
-      <imageIcon id="ArrowUpMouseOver" path="resource/arrow_up_normal.png"/>
+      <imageIcon id="ArrowUpMouseOver" path="resource/arrow_up_over.png"/>
       <property key="LafSynth.arrow.up.mouseover" type="idref" value="ArrowUpMouseOver" default="false"/>
       <imageIcon id="ArrowLeftMouseOver" path="resource/arrow_left_over.png"/>
       <property key="LafSynth.arrow.left.mouseover" type="idref" value="ArrowLeftMouseOver" default="false"/>
@@ -195,7 +196,7 @@ limitations under the License.
     <state>
       <color type="BACKGROUND" value="#8BB3D3"/>
       <color type="TEXT_BACKGROUND" value="#8BB3D3"/>
-      <color type="TEXT_FOREGROUND" idref="background"/>
+      <color type="TEXT_FOREGROUND" value="#F5F5F5"/>
     </state>
     <state value="MOUSE_OVER">
       <color type="BACKGROUND" value="#8BB3DD"/>
@@ -475,7 +476,7 @@ limitations under the License.
                     sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
     </state>
     <state value="DISABLED">
-      <imagePainter method="scrollPaneBorder" path="resource/1263604559077_border_disabled.png"
+      <imagePainter method="scrollPaneBorder" path="resource/border_disabled.png"
                     sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
     </state>
   </style>
@@ -609,13 +610,23 @@ limitations under the License.
     <state value="DISABLED">
       <!--<imagePainter method="tableHeaderBackground" path="resource/table_header_bg_disabled.png"
                     sourceInsets="0 0 0 0" paintCenter="true" stretch="true"/>-->
-      <color type="BACKGROUND" idref="Gray"/>
-      <color type="TEXT_FOREGROUND" value="#CCCCCC"/>
+      <color type="TEXT_FOREGROUND" value="#CCCCCC" />
+      <color type="BACKGROUND" value="#EEEEEE" />
     </state>
   </style>
   <bind style="tableHeader" type="region" key="TableHeader"/>
 
+  <style id="DarkTableHeader" clone="tableHeader">
+    <state>
+      <color type="BACKGROUND" idref="foreground"/>
+      <color type="FOREGROUND" idref="background"/>
+    </state>
+  </style>
+  <bind style="DarkTableHeader" type="name" key="DarkTableHeader"/>
+
+
   <style id="tableHeaderStyle">
+    <opaque value="true"/>
     <insets top="3" left="8" bottom="3" right="8" />
     <state>
       <color type="BACKGROUND" idref="LightBlue"/>
@@ -631,6 +642,10 @@ limitations under the License.
   <style id="cellRenderer">
     <opaque value="true"/>
     <insets top="1" left="4" bottom="0" right="4"/>
+    <state value="DISABLED">
+      <color type="BACKGROUND" idref="Gray"/>
+      <color type="TEXT_FOREGROUND" value="#CCCCCC"/>
+    </state>
   </style>
   <bind style="cellRenderer" type="name" key="Table.cellRenderer"/>
 
@@ -650,7 +665,7 @@ limitations under the License.
     </state>
     <state value="DISABLED">
       <imagePainter method="tabbedPaneContentBorder" path="resource/border_disabled.png"
-                    sourceInsets="3 3 3 3" paintCenter="true" stretch="true"/>
+                    sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
     </state>
   </style>
   <bind style="tabbedPaneContent" type="region" key="TabbedPaneContent"/>
@@ -658,6 +673,7 @@ limitations under the License.
   <!--The style for the tabs of tabbed pane.-->
   <style id="tabbedPaneTabStyle">
     <insets top="3" left="8" bottom="3" right="8"/>
+    <font name="Arial" size="13" style="BOLD"/>
     <state>
       <imagePainter method="tabbedPaneTabBorder" path="resource/1204440390390_tab_border.png"
                   sourceInsets="0 1 0 1" paintCenter="true" stretch="true"/>
@@ -673,6 +689,11 @@ limitations under the License.
       <imagePainter method="tabbedPaneTabBackground" path="resource/tab_bg_selected.png"
                     sourceInsets="5 5 5 5" paintCenter="true" stretch="true"/>
       <color type="TEXT_FOREGROUND" idref="foreground"/>
+    </state>
+    <state value="SELECTED and DISABLED">
+      <imagePainter method="tabbedPaneTabBackground" path="resource/tab_bg_disabled.png"
+                    sourceInsets="5 5 5 5" paintCenter="true" stretch="true"/>
+      <color type="TEXT_FOREGROUND" value="#eeeeee"/>
     </state>
   </style>
   <bind style="tabbedPaneTabStyle" type="region" key="TabbedPaneTab"/>
@@ -751,12 +772,6 @@ limitations under the License.
   <!--The style for text pane components.-->
   <style id="textPane">
     <opaque value="true"/>
-    <!--<imagePainter method="textAreaBorder" path="resource/tableBorder.png"
-                  sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
-    <imagePainter method="textPaneBorder" path="resource/tableBorder.png"
-                  sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
-    <imagePainter method="editorPaneBorder" path="resource/tableBorder.png"
-                  sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>-->
     <state>
       <color type="TEXT_FOREGROUND" value="BLACK"/>
       <color type="TEXT_BACKGROUND" value="WHITE"/>
@@ -845,9 +860,11 @@ limitations under the License.
 <!--The style for tool bar component.-->
   <style id="toolBarStyle">
     <insets top="2" left="2" bottom="2" right="2"/>
+    <imagePainter method="toolBarBorder" path="resource/tableBorder.png"
+                  sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
     <imageIcon id="ToolBarHandleIcon" path="resource/1204547880578_toolbar_handle_icon.png"/>
     <property key="ToolBar.handleIcon" type="idref" value="ToolBarHandleIcon"/>
-    <object id="ToolBarBgColor" idref="background"/>
+    <object id="ToolBarBgColor" idref="Gray"/>
     <defaultsProperty key="LafSynth.toolbar.bgcolor" type="idref" value="ToolBarBgColor" default="true"/>
     <painter idref="painter" method="toolBarBackground"/>
   </style>
@@ -887,7 +904,7 @@ limitations under the License.
       <int>4</int>
       <int>4</int>
     </object>
-    <property key="LafSynth.progressbar.bg.insets" type="idref" value="ProgressbarBgInsets" default="false"/>
+    <property key="LafSynth.progressbar.bg.insets" type="idref" value="ProgressbarBgInsets"/>
     <property key="LafSynth.progressbar.indeterminate.paintstring" type="boolean" value="true" default="false"/>
   </style>
   <bind style="progressBarStyle" type="region" key="ProgressBar"/>
@@ -950,6 +967,7 @@ limitations under the License.
   *******************************************************************************
   -->
   <style id="menuItem">
+    <opaque value="true"/>
     <insets top="3" left="3" bottom="3" right="3"/>
     <object id="MenuItemBgColorMouseOver" idref="LightBlue"/>
     <object id="MenuItemBgColorEnabled" idref="background"/>
@@ -963,9 +981,10 @@ limitations under the License.
       <!--<property key="LafSynth.menuitem.bg" type="idref" value="MenuItemBgColorEnabled" default="false" />-->
     </state>
     <state value="MOUSE_OVER">
-      <color idref="foreground" type="TEXT_FOREGROUND"/>
-      <defaultsProperty key="LafSynth.menuitem.bgcolor" type="idref" value="MenuItemBgColorMouseOver" default="false" />
-      <painter method="menuItemBackground" idref="painter"/>
+      <color type="BACKGROUND" idref="LightBlue"/>
+      <color type="TEXT_FOREGROUND" idref="foreground"/>
+      <!--<defaultsProperty key="LafSynth.menuitem.bgcolor" type="idref" value="MenuItemBgColorMouseOver" default="false" />-->
+      <!--<painter method="menuItemBackground" idref="painter"/>-->
     </state>
   </style>
   <bind style="menuItem" type="region" key="MenuItem"/>
@@ -980,6 +999,7 @@ limitations under the License.
 
   <!--The style for check box menu item.-->
   <style id="checkBoxMenuItemStyle">
+    <opaque value="true"/>
     <insets top="3" left="3" bottom="3" right="3"/>
     <imageIcon id="CheckBoxMenuItemCheckIconEnabled" path="resource/1252405736906_Checkbox_MenuItem_None.png"/>
     <imageIcon id="CheckBoxMenuItemCheckIconMouseOver" path="resource/1252405890781_Checkbox_MenuItem_Hover.png"/>
@@ -990,26 +1010,25 @@ limitations under the License.
       <property key="CheckBoxMenuItem.checkIcon" type="idref" value="CheckBoxMenuItemCheckIconEnabled" default="false"/>
     </state>
     <state value="MOUSE_OVER">
-      <imagePainter method="checkBoxMenuItemBackground" path="resource/1264231987812_MenuItem_Selected.png"
-                    sourceInsets="2 2 2 2" paintCenter="true" stretch="true"/>
+      <!--<imagePainter method="checkBoxMenuItemBackground" path="resource/1264231987812_MenuItem_Selected.png"
+                    sourceInsets="2 2 2 2" paintCenter="true" stretch="true"/>-->
       <color type="TEXT_FOREGROUND" value="#002664"/>
+      <color type="BACKGROUND" idref="LightBlue"/>
       <property key="CheckBoxMenuItem.checkIcon" type="idref" value="CheckBoxMenuItemCheckIconMouseOver" default="false"/>
     </state>
     <state value="DISABLED">
-      <imagePainter method="checkBoxMenuItemBackground" path="resource/1204817081656_menu_item_bg_disabled.png"
-                    sourceInsets="0 0 0 0" paintCenter="true" stretch="true"/>
+      <!--<imagePainter method="checkBoxMenuItemBackground" path="resource/1204817081656_menu_item_bg_disabled.png"
+                    sourceInsets="0 0 0 0" paintCenter="true" stretch="true"/>-->
       <color type="TEXT_FOREGROUND" value="#999999"/>
       <property key="CheckBoxMenuItem.checkIcon" type="idref" value="CheckBoxMenuItemCheckIconDisabled" default="false"/>
     </state>
     <state value="SELECTED">
-      <imagePainter method="checkBoxMenuItemBackground" path="resource/1204817049984_menu_item_bg_enabled.png"
-                    sourceInsets="0 0 0 0" paintCenter="true" stretch="true"/>
+      <color type="BACKGROUND" idref="LightBlue"/>
       <color type="TEXT_FOREGROUND" value="#002664"/>
       <property key="CheckBoxMenuItem.checkIcon" type="idref" value="CheckBoxMenuItemCheckIconSelected" default="false"/>
     </state>
     <state value="MOUSE_OVER and SELECTED">
-      <imagePainter method="checkBoxMenuItemBackground" path="resource/1264231987812_MenuItem_Selected.png"
-                    sourceInsets="2 2 2 2" paintCenter="true" stretch="true"/>
+      <color type="BACKGROUND" idref="LightBlue"/>
     </state>
 
   </style>
@@ -1017,6 +1036,7 @@ limitations under the License.
 
   <!--The style for radio button menu item.-->
   <style id="radioButtonMenuItemStyle">
+    <opaque value="true"/>
     <insets top="3" left="3" bottom="3" right="3"/>
     <imageIcon id="RadioButtonMenuItemRadioIconEnabled" path="resource/1252407137734_Radiobutton_MenuItem_Normal.png"/>
     <imageIcon id="RadioButtonMenuItemRadioIconMouseOver" path="resource/1252458649609_Radiobutton_MenuItem_Hover.png"/>
@@ -1029,14 +1049,15 @@ limitations under the License.
       <property key="RadioButtonMenuItem.checkIcon" type="idref" value="RadioButtonMenuItemRadioIconEnabled" default="false"/>
     </state>
     <state value="MOUSE_OVER">
-      <imagePainter method="radioButtonMenuItemBackground" path="resource/1264231987812_MenuItem_Selected.png"
-                    sourceInsets="2 2 2 2" paintCenter="true" stretch="true"/>
+      <!--<imagePainter method="radioButtonMenuItemBackground" path="resource/1264231987812_MenuItem_Selected.png"
+                    sourceInsets="2 2 2 2" paintCenter="true" stretch="true"/>-->
       <color type="TEXT_FOREGROUND" idref="foreground"/>
+      <color type="BACKGROUND" idref="LightBlue"/>
       <property key="RadioButtonMenuItem.checkIcon" type="idref" value="RadioButtonMenuItemRadioIconMouseOver" default="false"/>
     </state>
     <state value="DISABLED">
-      <imagePainter method="radioButtonMenuItemBackground" path="resource/1204817081656_menu_item_bg_disabled.png"
-                    sourceInsets="0 0 0 0" paintCenter="true" stretch="true"/>
+      <!--<imagePainter method="radioButtonMenuItemBackground" path="resource/1204817081656_menu_item_bg_disabled.png"
+                    sourceInsets="0 0 0 0" paintCenter="true" stretch="true"/>-->
       <color type="TEXT_FOREGROUND" idref="Gray"/>
       <property key="RadioButtonMenuItem.checkIcon" type="idref" value="RadioButtonMenuItemRadioIconDisabled" default="false"/>
     </state>
@@ -1047,8 +1068,7 @@ limitations under the License.
       <property key="RadioButtonMenuItem.checkIcon" type="idref" value="RadioButtonMenuItemRadioIconSelected" default="false"/>
     </state>
     <state value="MOUSE_OVER and SELECTED">
-      <imagePainter method="radioButtonMenuItemBackground" path="resource/1264231987812_MenuItem_Selected.png"
-                    sourceInsets="2 2 2 2" paintCenter="true" stretch="true"/>
+      <color type="BACKGROUND" idref="LightBlue"/>
     </state>
   </style>
   <bind style="radioButtonMenuItemStyle" type="region" key="RadioButtonMenuItem"/>
@@ -1112,8 +1132,8 @@ limitations under the License.
     </state>
     <!--<defaultsProperty key="LafSynth.internalframe.title.main.color" type="idref" value="Gray" default="true"/>-->
     <!--<property key="InternalFrameTitlePane.titleSpacing" type="integer" value="5" default="false"/>-->
-    <property key="InternalFrameTitlePane.buttonSpacing" type="integer" value="5" default="false"/>
-    <!--<property key="InternalFrameTitlePane.maxFrameIconSize" type="dimension" value="9 9" default="false"/>-->
+    <!--<property key="InternalFrameTitlePane.buttonSpacing" type="integer" value="20" default="false"/>-->
+    <!--<property key="InternalFrameTitlePane.maxFrameIconSize" type="dimension" value="16 16" default="false"/>-->
     <imageIcon id="InternalFrameMaximizeButtonIcon" path="resource/internal_frame_max_icon.png"/>
     <property key="InternalFrameTitlePane.maximizeIcon" type="idref" value="InternalFrameMaximizeButtonIcon" default="false"/>
     <imageIcon id="InternalFrameCloseButtonIcon" path="resource/filechooser_cancel_icon.png"/>
@@ -1127,10 +1147,7 @@ limitations under the License.
 
   <!--Button styles for internal frame-->
   <style id="InternalFrameButton">
-    <opaque value="true"/>
-    <state>
-      <color type="BACKGROUND" idref="foreground" />
-    </state>
+
   </style>
   <bind style="InternalFrameButton" type="name" key="InternalFrameTitlePane.closeButton"/>
   <bind style="InternalFrameButton" type="name" key="InternalFrameTitlePane.iconifyButton"/>
@@ -1167,7 +1184,7 @@ limitations under the License.
   </style>
   <bind style="colorChooserStyle" type="region" key="ColorChooser"/>
 
-  <!--TThe style for panel component..-->
+  <!--The style for panel component..-->
   <style id="panelStyle">
     <!--describe your styles here   -->
   </style>
@@ -1175,9 +1192,9 @@ limitations under the License.
 
   <!--The style for root pane.-->
   <style id="rootPaneStyle">
-    <state>
-      <!--<color type="BACKGROUND" value="WHITE"/>-->
-    </state>
+    <!--<state>
+      <color type="BACKGROUND" value="GREEN"/>
+    </state>-->
   </style>
   <bind style="rootPaneStyle" type="region" key="RootPane"/>
 

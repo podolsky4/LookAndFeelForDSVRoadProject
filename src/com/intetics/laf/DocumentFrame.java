@@ -86,7 +86,7 @@ public class DocumentFrame extends JInternalFrame {
     JComboBox<String> comboBox = new JComboBox<>(petStrings);
     comboBox.setMaximumRowCount(5);
     comboBox.setSelectedIndex(0);
-//    comboBox.setEnabled(false);
+    comboBox.setEnabled(false);
     rootPane.add(comboBox);
     JButton testBtn = new JButton("Test 204");
 //    testBtn.setName("DarkButton");
@@ -147,6 +147,8 @@ public class DocumentFrame extends JInternalFrame {
     final JTable table = new JTable(dataTable, columnNames);
     table.setPreferredScrollableViewportSize(new Dimension(550, 120));
     table.setFillsViewportHeight(true);
+    table.getTableHeader().setName("DarkTableHeader");
+//    table.setEnabled(false);
 
     //Create the scroll pane and add the table to it.
     JScrollPane tableScrollPane = new JScrollPane(table);
@@ -235,9 +237,7 @@ public class DocumentFrame extends JInternalFrame {
     JToolBar toolBar = new JToolBar("Toolbar");
     addButtons(toolBar);
     rootPane.add(toolBar);
-    ImageIcon imageIcon = createImageIcon("images/anonymous-300x300.gif");
-    JLabel labelImage = new JLabel(imageIcon, JLabel.CENTER);
-    panel1.add(labelImage);
+//    tabbedPane.setEnabled(false);
 
     //Add the tabbed pane to this panel.
     rootPane.add(tabbedPane);
@@ -290,7 +290,9 @@ public class DocumentFrame extends JInternalFrame {
     });
     rootPane.add(dialogBtn);
     JProgressBar progressBar = new JProgressBar(0, 100);
-    progressBar.setValue(72);
+    progressBar.setValue(63);
+//    progressBar.setIndeterminate(true);
+    progressBar.setPreferredSize(new Dimension(250, 10));
     progressBar.setStringPainted(true);
     rootPane.add(progressBar);
     JButton openFrame = new JButton("Create frame", new ImageIcon("/resource/issueTicket-icon.png"));
@@ -394,9 +396,10 @@ public class DocumentFrame extends JInternalFrame {
     JButton button;
 
     //first button
-    button = makeNavigationButton("Back24",
+    button = makeNavigationButton("help-icon",
             "Back to previous something-or-other",
-            "Previous");
+            "");
+    button.setName("TransparentButton");
     toolBar.add(button);
 
     //second button
@@ -412,9 +415,9 @@ public class DocumentFrame extends JInternalFrame {
                                          String toolTipText,
                                          String altText) {
     //Look for the image.
-    String imgLocation = "images/"
+    String imgLocation = "resource/"
             + imageName
-            + ".gif";
+            + ".png";
     URL imageURL = SwingDemo.class.getResource(imgLocation);
 
     //Create and initialize the button.

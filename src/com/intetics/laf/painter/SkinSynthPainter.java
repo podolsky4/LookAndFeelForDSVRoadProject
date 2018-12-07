@@ -197,6 +197,9 @@ public class SkinSynthPainter extends SynthPainter {
   public void paintArrowButtonBorder(SynthContext context, Graphics g, int x, int y, int w, int h) {
     UIDefaults uIDefaults = UIManager.getDefaults();
     Color color = uIDefaults.getColor("LafSynth.combobox.bordercolor");
+    if (color == null || (context.getComponentState() & 8) != 0) {
+      color = Color.GRAY;
+    }
     g.setColor(color);
     g.drawLine(x,y, x, y + h);
   }
@@ -336,27 +339,6 @@ public class SkinSynthPainter extends SynthPainter {
       if (color != null) {
         graphics2D.setColor(color);
         graphics2D.fillRect(x, y, w, h);
-      }
-    }
-    JProgressBar progressBar = (JProgressBar) context.getComponent();
-    ImageIcon image = (ImageIcon)context.getStyle().getIcon(context, "LafSynth.progressbar.indication.image");
-    if (image != null && w > 0 && h > 0) {
-      int iconWidth = image.getIconWidth();
-      int iconHeight = image.getIconHeight();
-      if (progressBar.getOrientation() == JProgressBar.HORIZONTAL) {
-        graphics2D.setPaint(new Color(0, 0, 0, 130));
-        graphics2D.drawLine((x + w) / 2 - 1, y + iconHeight / 2, (x + w) / 2 - 1, y + h - iconHeight / 2);
-        graphics2D.setPaint(new Color(255, 255, 255, 130));
-        graphics2D.drawLine((x + w) / 2 + 1, y + iconHeight / 2, (x + w) / 2 + 1, y + h - iconHeight / 2);
-        graphics2D.setPaint(new Color(0, 0, 0, 180));
-        graphics2D.drawLine((x + w) / 2, y + iconHeight / 2, (x + w) / 2, y + h - iconHeight / 2);
-      } else {
-        graphics2D.setPaint(new Color(0, 0, 0, 130));
-        graphics2D.drawLine(x + iconWidth / 2, (y + h) / 2 - 1, x + w - iconWidth / 2, (y + h) / 2 - 1);
-        graphics2D.setPaint(new Color(255, 255, 255, 130));
-        graphics2D.drawLine(x + iconWidth / 2, (y + h) / 2 + 1, x + w - iconWidth / 2, (y + h) / 2 + 1);
-        graphics2D.setPaint(new Color(0, 0, 0, 180));
-        graphics2D.drawLine(x + iconWidth / 2, (y + h) / 2, x + w - iconWidth / 2, (y + h) / 2);
       }
     }
   }
