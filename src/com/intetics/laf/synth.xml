@@ -143,10 +143,22 @@ limitations under the License.
   </style>
   <bind style="arrowButton" type="region" key="ArrowButton"/>
 
+
+  <!--Label style-->
+  <style id="labelStyle">
+    <state>
+      <color value="#F47920" type="TEXT_FOREGROUND"/>
+    </state>
+  </style>
+  <bind style="labelStyle" type="name" key="OrangeLabel"/>
+
+
   <!--Button style-->
   <style id="button">
     <opaque value="true"/>
     <!--<font name="Arial" size="12" style="BOLD"/>-->
+    <imagePainter method="buttonBorder" path="resource/border.png"
+                  sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
     <property key="Button.textShiftOffset" type="integer" value="1"/>
     <insets top="4" left="4" right="4" bottom="4"/>
     <property key="Button.margin" type="insets" value="0 10 0 10" default="false"/>
@@ -181,6 +193,18 @@ limitations under the License.
   <bind style="transbutton" type="name" key="TransparentButton"/>
   <!--<bind style="transbutton" type="name" key="OptionPane.button"/>-->
   <!--<bind style="darkbutton" type="name" key="FileChooser.button"/>-->
+
+  <style id="bluebutton" clone="button">
+    <state>
+      <color type="BACKGROUND" idref="LightBlue"/>
+      <color idref="foreground" type="TEXT_FOREGROUND"/>
+    </state>
+    <state value="PRESSED">
+      <color type="BACKGROUND" value="#8BB3D3"/>
+      <color value="WHITE" type="TEXT_FOREGROUND"/>
+    </state>
+  </style>
+  <bind style="bluebutton" type="name" key="BlueButton"/>
 
   <!--
   *******************************************************************************

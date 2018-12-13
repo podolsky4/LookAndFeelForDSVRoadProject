@@ -333,7 +333,12 @@ public class DocumentFrame extends JInternalFrame {
     ButtonGroup bg = new ButtonGroup(); // создаем группу взаимного исключения
     bg.add(confBtn);
     bg.add(transportBtn); // сделали кнопки tButton1 и tButton2 взаимоисключающими
-
+    JButton blueBtn = new JButton("Changed button");
+    blueBtn.setName("BlueButton");
+    rootPane.add(blueBtn);
+    JLabel justaLabel = new JLabel("This is just a orange label");
+    justaLabel.setName("OrangeLabel");
+    rootPane.add(justaLabel);
 
     getContentPane().add(rootPane);
 //    setJMenuBar(menuBar);
