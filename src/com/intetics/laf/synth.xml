@@ -380,6 +380,7 @@ limitations under the License.
 
 
   <style id="panel">
+    <font name="Arial" size="13" style="BOLD"/>
     <object id="LineBorder" class="javax.swing.border.LineBorder">
       <object idref="foreground"/>
     </object>
