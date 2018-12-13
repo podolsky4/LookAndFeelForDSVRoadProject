@@ -40,6 +40,11 @@ limitations under the License.
     <int>224</int>
     <int>238</int>
   </object>
+  <object id="Blue" class="javax.swing.plaf.ColorUIResource">
+    <int>139</int>
+    <int>179</int>
+    <int>211</int>
+  </object>
   <object id="Gray" class="javax.swing.plaf.ColorUIResource">
     <int>238</int>
     <int>238</int>
@@ -212,35 +217,26 @@ limitations under the License.
   -->
 
   <style id="toggleButton">
-    <opaque value="true"/>
+    <opaque value="false"/>
     <insets top="5" left="5" bottom="5" right="5"/>
     <property key="ToggleButton.margin" type="insets" value="3 4 3 4"/>
 
     <state>
-      <color type="BACKGROUND" value="#8BB3D3"/>
-      <color type="TEXT_BACKGROUND" value="#8BB3D3"/>
-      <color type="TEXT_FOREGROUND" value="#F5F5F5"/>
-    </state>
-    <state value="MOUSE_OVER">
-      <color type="BACKGROUND" value="#8BB3DD"/>
       <color type="TEXT_FOREGROUND" idref="background"/>
+      <imagePainter method="toggleButtonBackground" path="resource/ToggleBtnBackgroundEnabled.png"
+                    sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
     </state>
     <state value="SELECTED">
-      <color type="BACKGROUND" value="#D6E0EE"/>
       <color type="TEXT_FOREGROUND" idref="foreground"/>
-    </state>
-    <state value="SELECTED and MOUSE_OVER">
-      <color type="BACKGROUND" value="#D6E0EE"/>
-      <color type="TEXT_FOREGROUND" idref="foreground"/>
-    </state>
-    <state value="FOCUSED">
-      <color type="BACKGROUND" value="#D6E0EE"/>
-      <color type="TEXT_FOREGROUND" idref="foreground"/>
+      <imagePainter method="toggleButtonBackground" path="resource/ToggleBtnBackgroundSelected.png"
+                    sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
     </state>
     <state value="DISABLED">
-      <color type="BACKGROUND" value="#EEEEEE"/>
-
+      <color type="TEXT_FOREGROUND" value="#686868"/>
+      <imagePainter method="toggleButtonBackground" path="resource/ToggleBtnBackgroundDisabled.png"
+                    sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
     </state>
+
     <imagePainter method="toggleButtonBorder" path="resource/border.png"
                   sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
 
