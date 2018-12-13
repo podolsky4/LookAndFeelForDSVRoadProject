@@ -143,7 +143,6 @@ limitations under the License.
   </style>
   <bind style="arrowButton" type="region" key="ArrowButton"/>
 
-
   <!--Label style-->
   <style id="labelStyle">
     <state>
