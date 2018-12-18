@@ -72,6 +72,16 @@ limitations under the License.
       <color type="TEXT_FOREGROUND" value="#999999"/>
     </state>
     <defaultsProperty key="TitledBorder.titleColor" type="idref" value="foreground" default="true"/>
+    <object id="LineBorder" class="javax.swing.border.LineBorder">
+      <object idref="foreground"/>
+    </object>
+    <object id="Font" class="javax.swing.plaf.FontUIResource">
+      <string>Arial</string>
+      <int>1</int>
+      <int>13</int>
+    </object>
+    <defaultsProperty key="TitledBorder.border" type="idref" value="LineBorder"/>
+    <defaultsProperty key="TitledBorder.font" type="idref" value="Font"/>
   </style>
   <bind style="default" type="region" key=".*"/>
 
@@ -399,11 +409,6 @@ limitations under the License.
 
 
   <style id="panel">
-    <font name="Arial" size="13" style="BOLD"/>
-    <object id="LineBorder" class="javax.swing.border.LineBorder">
-      <object idref="foreground"/>
-    </object>
-    <defaultsProperty key="TitledBorder.border" type="idref" value="LineBorder"/>
     <state>
       <color value="#F5F5F5" type="BACKGROUND" />
     </state>
@@ -672,11 +677,6 @@ limitations under the License.
 
   <!--The style for the tabbed pane component.-->
   <style id="tabbedPane">
-    <font name="Arial" size="13" style="BOLD"/>
-    <object id="LineBorder" class="javax.swing.border.LineBorder">
-      <object idref="foreground"/>
-    </object>
-    <defaultsProperty key="TitledBorder.border" type="idref" value="LineBorder"/>
     <insets top="2" left="2" bottom="2" right="2"/>
     <property key="TabbedPane.textIconGap" type="integer" value="2" default="true"/>
   </style>
