@@ -207,8 +207,18 @@ public class DocumentFrame extends JInternalFrame {
     rootPane.add(yourPassword);
     rootPane.add(passwordField);
     JTabbedPane tabbedPane = new JTabbedPane();
+    tabbedPane.setBorder(BorderFactory.createTitledBorder("Tabbed pane"));
+    JTabbedPane tabbedPane2 = new JTabbedPane();
+    JComponent panel1_inner = makeTextPanel("Place your personal info here.");
+    tabbedPane2.addTab("Dorozna", panel1_inner);
+    tabbedPane2.setMnemonicAt(0, KeyEvent.VK_1);
+
+    JComponent panel2_inner = makeTextPanel("Describe your skills.");
+    tabbedPane2.addTab("Skizhy", panel2_inner);
+    tabbedPane2.setMnemonicAt(1, KeyEvent.VK_2);
 
     JComponent panel1 = makeTextPanel("Place your personal info here.");
+    panel1.add(tabbedPane2);
     tabbedPane.addTab("Profile", panel1);
     tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
 
@@ -244,10 +254,9 @@ public class DocumentFrame extends JInternalFrame {
 
     //The following line enables to use scrolling tabs.
     tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
-    JTree tree;
     DefaultMutableTreeNode top = new DefaultMutableTreeNode("The Java Series");
     createNodes(top);
-    tree = new JTree(top);
+    JTree tree = new JTree(top);
     JScrollPane treeView = new JScrollPane(tree);
     treeView.setPreferredSize(new Dimension(380, 330));
     rootPane.add(treeView);
@@ -268,9 +277,13 @@ public class DocumentFrame extends JInternalFrame {
     paneScrollPane.setPreferredSize(new Dimension(250, 155));
     paneScrollPane.setMinimumSize(new Dimension(10, 10));
 
+    JPanel spPanel1 = new JPanel();
+    spPanel1.setBorder(BorderFactory.createTitledBorder("EditorPane"));
+    spPanel1.add(editorScrollPane);
+
     //Put the editor pane and the text pane in a split pane.
     JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
-            editorScrollPane,
+            spPanel1,
             paneScrollPane);
     splitPane.setOneTouchExpandable(true);
     splitPane.setResizeWeight(0.5);
