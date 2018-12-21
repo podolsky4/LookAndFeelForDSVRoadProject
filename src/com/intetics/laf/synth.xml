@@ -723,6 +723,17 @@ limitations under the License.
   </style>
   <bind style="tabbedPaneTabStyle" type="region" key="TabbedPaneTab"/>
 
+  <!-- Custom tab just for test, remove if unnecessary -->
+  <style id="customTabStyle" clone="tabbedPaneTabStyle">
+    <state>
+      <color type="TEXT_FOREGROUND" value="#ff0000"/>
+    </state>
+  </style>
+  <bind style="customTabStyle" type="name" key="CustomTab"/>
+
+
+
+
   <!--The style for the tab area of tabbed pane.-->
   <style id="tabbedPaneTabAreaStyle">
     <insets top="3" left="5" bottom="0" right="5"/>

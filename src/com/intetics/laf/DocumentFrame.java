@@ -209,6 +209,8 @@ public class DocumentFrame extends JInternalFrame {
     JTabbedPane tabbedPane = new JTabbedPane();
     tabbedPane.setBorder(BorderFactory.createTitledBorder("Tabbed pane"));
     JTabbedPane tabbedPane2 = new JTabbedPane();
+    tabbedPane2.setName("CustomTab");
+
     JComponent panel1_inner = makeTextPanel("Place your personal info here.");
     tabbedPane2.addTab("Dorozna", panel1_inner);
     tabbedPane2.setMnemonicAt(0, KeyEvent.VK_1);
