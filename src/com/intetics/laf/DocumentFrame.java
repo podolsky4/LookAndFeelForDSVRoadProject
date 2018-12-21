@@ -320,7 +320,7 @@ public class DocumentFrame extends JInternalFrame {
     final JFileChooser fc = new JFileChooser();
 
     JButton openFile = new JButton("Open File");
-//    openFile.setName("DarkButton");
+    openFile.setName("TransparentButton");
     openFile.setToolTipText("Click this button to open a file.");
     openFile.addActionListener(e -> {
       //Handle open button action.
