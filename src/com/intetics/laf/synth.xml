@@ -681,6 +681,7 @@ limitations under the License.
     <property key="TabbedPane.textIconGap" type="integer" value="2" default="true"/>
   </style>
   <bind style="tabbedPane" type="region" key="TabbedPane"/>
+  <bind style="tabbedPane" type="region" key="DBSMVTabbedPane2"/>
 
   <style id="tabbedPaneContent">
     <insets top="3" left="3" bottom="3" right="3"/>
@@ -701,7 +702,7 @@ limitations under the License.
     <font name="Arial" size="13" style="BOLD"/>
     <state>
       <imagePainter method="tabbedPaneTabBorder" path="resource/1204440390390_tab_border.png"
-                  sourceInsets="0 1 0 1" paintCenter="true" stretch="true"/>
+                  sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
       <imagePainter method="tabbedPaneTabBackground" path="resource/tab_bg_enabled.png"
                   sourceInsets="5 5 5 5" paintCenter="true" stretch="true"/>
       <color type="TEXT_FOREGROUND" value="#24455a"/>

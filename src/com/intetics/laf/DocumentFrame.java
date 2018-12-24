@@ -31,6 +31,8 @@
 package com.intetics.laf;
 
 
+import com.intetics.laf.component.DBSMVTabbedPane2;
+
 import javax.swing.*;
 import javax.swing.text.*;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -208,8 +210,8 @@ public class DocumentFrame extends JInternalFrame {
     rootPane.add(passwordField);
     JTabbedPane tabbedPane = new JTabbedPane();
     tabbedPane.setBorder(BorderFactory.createTitledBorder("Tabbed pane"));
-    JTabbedPane tabbedPane2 = new JTabbedPane();
-    tabbedPane2.setName("CustomTab");
+    JTabbedPane tabbedPane2 = new DBSMVTabbedPane2();
+    tabbedPane2.updateUI();
 
     JComponent panel1_inner = makeTextPanel("Place your personal info here.");
     tabbedPane2.addTab("Dorozna", panel1_inner);
@@ -297,7 +299,7 @@ public class DocumentFrame extends JInternalFrame {
             BorderFactory.createEmptyBorder(5,5,5,5)));
     rootPane.add(rightPane);
     JButton dialogBtn = new JButton("Show dialog");
-//    dialogBtn.setName("TransparentButton");
+    dialogBtn.setName("TransparentButton");
     dialogBtn.setToolTipText("Click this button to disable the middle button.");
     dialogBtn.addActionListener(e -> {
       //ok dialog
@@ -354,6 +356,12 @@ public class DocumentFrame extends JInternalFrame {
     JLabel justaLabel = new JLabel("This is just a orange label");
     justaLabel.setName("OrangeLabel");
     rootPane.add(justaLabel);
+    /*JTabbedPane customTabbedPane = new CustomTabbedPane();
+    JComponent panelForCustom = makeTextPanel("This is panel in custom Tabbed pane.");
+    customTabbedPane.addTab("Tab 1", panelForCustom);
+    customTabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
+    panelForCustom.setPreferredSize(new Dimension(400, 100));
+    rootPane.add(customTabbedPane);*/
 
     getContentPane().add(rootPane);
 //    setJMenuBar(menuBar);
