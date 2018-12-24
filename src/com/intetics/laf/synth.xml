@@ -700,25 +700,32 @@ limitations under the License.
   <style id="tabbedPaneTabStyle">
     <insets top="3" left="8" bottom="3" right="8"/>
     <font name="Arial" size="13" style="BOLD"/>
+    <imageIcon id="TabbedTabImageEnabled" path="resource/tab_bg_enabled.png"/>
+    <imageIcon id="TabbedTabImageDisabled" path="resource/tab_bg_disabled.png"/>
+    <imageIcon id="TabbedTabImageSelected" path="resource/tab_bg_selected.png"/>
+    <property key="LafSynth.tabbedTab.background.enabled" type="idref" value="TabbedTabImageEnabled" default="false"/>
+    <property key="LafSynth.tabbedTab.background.disabled" type="idref" value="TabbedTabImageDisabled" default="false"/>
+    <property key="LafSynth.tabbedTab.background.selected" type="idref" value="TabbedTabImageSelected" default="false"/>
+    <painter method="tabbedPaneTabBackground" idref="painter"/>
     <state>
       <imagePainter method="tabbedPaneTabBorder" path="resource/1204440390390_tab_border.png"
                   sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
-      <imagePainter method="tabbedPaneTabBackground" path="resource/tab_bg_enabled.png"
-                  sourceInsets="5 5 5 5" paintCenter="true" stretch="true"/>
+      <!--<imagePainter method="tabbedPaneTabBackground" path="resource/tab_bg_enabled.png"-->
+                  <!--sourceInsets="5 5 5 5" paintCenter="true" stretch="true"/>-->
       <color type="TEXT_FOREGROUND" value="#24455a"/>
     </state>
     <state value="DISABLED">
-      <imagePainter method="tabbedPaneTabBackground" path="resource/tab_bg_disabled.png"
-                    sourceInsets="5 5 5 5" paintCenter="true" stretch="true"/>
+      <!--<imagePainter method="tabbedPaneTabBackground" path="resource/tab_bg_disabled.png"-->
+                    <!--sourceInsets="5 5 5 5" paintCenter="true" stretch="true"/>-->
     </state>
     <state value="SELECTED">
-      <imagePainter method="tabbedPaneTabBackground" path="resource/tab_bg_selected.png"
-                    sourceInsets="5 5 5 5" paintCenter="true" stretch="true"/>
+      <!--<imagePainter method="tabbedPaneTabBackground" path="resource/tab_bg_selected.png"-->
+                    <!--sourceInsets="5 5 5 5" paintCenter="true" stretch="true"/>-->
       <color type="TEXT_FOREGROUND" idref="foreground"/>
     </state>
     <state value="SELECTED and DISABLED">
-      <imagePainter method="tabbedPaneTabBackground" path="resource/tab_bg_disabled.png"
-                    sourceInsets="5 5 5 5" paintCenter="true" stretch="true"/>
+      <!--<imagePainter method="tabbedPaneTabBackground" path="resource/tab_bg_disabled.png"-->
+                    <!--sourceInsets="5 5 5 5" paintCenter="true" stretch="true"/>-->
       <color type="TEXT_FOREGROUND" value="#eeeeee"/>
     </state>
   </style>

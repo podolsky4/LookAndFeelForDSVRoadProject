@@ -111,6 +111,19 @@ public class SkinSynthPainter extends SynthPainter {
   }
 
   @Override
+  public void paintTabbedPaneTabBackground(SynthContext context, Graphics g, int x, int y, int w, int h, int tabIndex) {
+    ImageIcon imageIcon;
+    imageIcon = (context.getComponentState() & 8) != 0
+            ? (ImageIcon) context.getStyle().getIcon(context, "LafSynth.tabbedTab.background.disabled")
+            : ((context.getComponentState() & 520) != 0
+            ? (ImageIcon) context.getStyle().getIcon(context, "LafSynth.tabbedTab.background.selected")
+            : (ImageIcon) context.getStyle().getIcon(context, "LafSynth.tabbedTab.background.enabled"));
+    if (imageIcon != null) {
+      g.drawImage(imageIcon.getImage(), x, y, w, h,null);
+    }
+  }
+
+  @Override
   public void paintScrollBarBackground(SynthContext context, Graphics graphics, int x, int y, int w, int h) {
     UIDefaults uIDefaults = UIManager.getDefaults();
     Color color = uIDefaults.getColor("LafSynth.scrollbar.bgcolor");
