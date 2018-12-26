@@ -844,6 +844,7 @@ limitations under the License.
                   sourceInsets="1 1 1 1" paintCenter="true" stretch="true"/>
   </style>
   <bind style="spinnerStyle" type="region" key="Spinner"/>
+  <bind style="spinnerStyle" type="name" key="JCSpinField"/>
 
 
   <!--
