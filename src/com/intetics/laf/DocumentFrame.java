@@ -353,9 +353,26 @@ public class DocumentFrame extends JInternalFrame {
     JButton blueBtn = new JButton("Changed button");
     blueBtn.setName("BlueButton");
     rootPane.add(blueBtn);
-    JLabel justaLabel = new JLabel("This is just a orange label");
-    justaLabel.setName("OrangeLabel");
-    rootPane.add(justaLabel);
+
+    JPanel labelsPanel = new JPanel();
+    labelsPanel.setLayout(new BoxLayout(labelsPanel, BoxLayout.Y_AXIS));
+
+    JLabel redLabel = new JLabel("This is an example of red label");
+    redLabel.setName("redLabel");
+    JLabel redBoldLabel = new JLabel("This is an example of red bold label");
+    redBoldLabel.setName("redBoldLabel");
+    JLabel blackLabel = new JLabel("This is an example of black label");
+    blackLabel.setName("blackLabel");
+    JLabel blackBoldLabel = new JLabel("This is an example of black bold label");
+    blackBoldLabel.setName("blackBoldLabel");
+
+    labelsPanel.add(redLabel);
+    labelsPanel.add(redBoldLabel);
+    labelsPanel.add(blackLabel);
+    labelsPanel.add(blackBoldLabel);
+
+    rootPane.add(labelsPanel);
+
     /*JTabbedPane customTabbedPane = new CustomTabbedPane();
     JComponent panelForCustom = makeTextPanel("This is panel in custom Tabbed pane.");
     customTabbedPane.addTab("Tab 1", panelForCustom);
